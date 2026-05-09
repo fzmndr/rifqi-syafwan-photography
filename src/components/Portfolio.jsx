@@ -1,35 +1,11 @@
 import { useState } from "react";
-import photo1 from "../assets/photo-1.jpg";
-import photo2 from "../assets/photo-2.jpg";
-import photo3 from "../assets/photo-3.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight } from "lucide-react";
-
-const portfolioItems = [
-  {
-    id: 1,
-    image: photo1,
-    title: "Elegant Wedding",
-    category: "Wedding",
-    desc: "A cinematic wedding story captured with warm tones, intimate details, and timeless emotion.",
-  },
-  {
-    id: 2,
-    image: photo2,
-    title: "Creative Portrait",
-    category: "Portrait",
-    desc: "A clean portrait session focused on personality, mood, lighting, and visual confidence.",
-  },
-  {
-    id: 3,
-    image: photo3,
-    title: "Brand Visual",
-    category: "Brand",
-    desc: "Premium brand photography crafted for campaigns, product identity, and digital presence.",
-  },
-];
-
-const categories = ["All", "Wedding", "Portrait", "Brand"];
+import {
+  portfolioItems,
+  portfolioCategories,
+} from "../data/portfolioData";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -56,7 +32,7 @@ function Portfolio() {
           </div>
 
           <div className="portfolio-filter">
-            {categories.map((category) => (
+            {portfolioCategories.map((category) => (
               <button
                 type="button"
                 key={category}
@@ -69,19 +45,19 @@ function Portfolio() {
           </div>
         </motion.div>
 
-        <motion.div layout className="portfolio-grid">
+        <motion.div layout className="portfolio-grid portfolio-masonry">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
               <motion.article
                 layout
-                className="portfolio-card"
+                className={`portfolio-card portfolio-${item.size || "normal"}`}
                 key={item.id}
                 initial={{ y: 70, opacity: 0, scale: 0.96 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 exit={{ y: 30, opacity: 0, scale: 0.94 }}
                 transition={{
                   duration: 0.55,
-                  delay: index * 0.08,
+                  delay: index * 0.06,
                   ease: "easeOut",
                 }}
                 onClick={() => setSelectedItem(item)}
@@ -135,7 +111,9 @@ function Portfolio() {
                 <p>{selectedItem.desc}</p>
 
                 <a
-                  href="https://wa.me/6281234567890"
+                  href={createWhatsAppLink(
+                    `Halo Rifqi Syafwan, saya tertarik membuat sesi foto seperti project ${selectedItem.title}.`
+                  )}
                   target="_blank"
                   rel="noreferrer"
                 >

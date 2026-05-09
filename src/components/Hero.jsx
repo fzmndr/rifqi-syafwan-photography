@@ -1,18 +1,37 @@
-import heroImage from "../assets/hero.jpg";
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { heroSlides } from "../data/heroData";
 
 function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((current) =>
+        current === heroSlides.length - 1 ? 0 : current + 1
+      );
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentSlide = heroSlides[activeSlide];
+
   return (
     <section className="hero" id="home">
-      <motion.img
-        src={heroImage}
-        alt="Rifqi Syafwan Photography"
-        className="hero-img"
-        initial={{ scale: 1.12, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.4, ease: "easeOut" }}
-      />
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentSlide.image}
+          src={currentSlide.image}
+          alt={currentSlide.label}
+          className="hero-img"
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.04 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
+      </AnimatePresence>
 
       <div className="hero-overlay"></div>
 
@@ -36,6 +55,7 @@ function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 2.1, ease: "easeOut" }}
         >
+          <span className="hero-slide-label">{currentSlide.label}</span>
           <h2>Great photography should feel unforgettable.</h2>
           <p>
             From wedding to brand visuals, I capture honest moments with
@@ -81,6 +101,18 @@ function Hero() {
           <p>Creative Direction</p>
         </div>
       </motion.div>
+
+      <div className="hero-slider-dots">
+        {heroSlides.map((slide, index) => (
+          <button
+            type="button"
+            key={slide.label}
+            className={activeSlide === index ? "active" : ""}
+            onClick={() => setActiveSlide(index)}
+            aria-label={`Go to ${slide.label}`}
+          />
+        ))}
+      </div>
     </section>
   );
 }
