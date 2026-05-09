@@ -3084,3 +3084,88 @@ img {
     display: none;
   }
 }
+/* =========================================================
+   HERO MOBILE FINAL FIX
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 860px;
+    padding: 58px 20px 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(50px, 15vw, 68px);
+    line-height: 0.9;
+    letter-spacing: -0.08em;
+  }
+
+  .hero-right h2 {
+    font-size: 23px;
+    line-height: 1.05;
+  }
+
+  .hero-right p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .floating-cta {
+    left: 20px;
+    bottom: 330px;
+    padding: 13px 18px;
+  }
+
+  .hero-slider-dots {
+    left: 20px;
+    right: auto;
+    bottom: 292px;
+  }
+
+  .hero-bottom {
+    left: 20px;
+    right: 20px;
+    bottom: 36px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-bottom div {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .hero-bottom span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .hero-bottom p {
+    margin-top: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Biar tidak mengganggu tampilan hero mobile */
+  .theme-toggle {
+    display: none;
+  }
+
+  .floating-buttons {
+    right: 12px;
+    bottom: 14px;
+    gap: 10px;
+  }
+
+  .floating-buttons a,
+  .floating-buttons button {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Tombol back to top tidak terlalu penting di tampilan awal mobile */
+  .float-top {
+    display: none;
+  }
+}
