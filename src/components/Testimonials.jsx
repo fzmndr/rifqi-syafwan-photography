@@ -1,23 +1,6 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Alya & Raka",
-    role: "Wedding Client",
-    text: "The photos feel elegant, warm, and very emotional. Every moment was captured beautifully.",
-  },
-  {
-    name: "Nadira Studio",
-    role: "Brand Client",
-    text: "Rifqi understood the visual direction perfectly. The final images made our brand look premium.",
-  },
-  {
-    name: "Fajar Mahendra",
-    role: "Portrait Client",
-    text: "The session was relaxed and professional. The result exceeded my expectations.",
-  },
-];
+import { testimonials } from "../data/testimonialsData";
 
 function Testimonials() {
   return (
@@ -49,11 +32,9 @@ function Testimonials() {
               }}
             >
               <div className="stars">
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
-                <Star size={16} fill="currentColor" />
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={16} fill="currentColor" />
+                ))}
               </div>
 
               <p>"{item.text}"</p>
