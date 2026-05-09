@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollProgress from "./components/ScrollProgress";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Trusted from "./components/Trusted";
@@ -13,6 +14,7 @@ import Process from "./components/Process";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
+import SectionDivider from "./components/SectionDivider";
 import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -33,6 +35,7 @@ function App() {
     <>
       <LoadingScreen isLoading={isLoading} />
       <ScrollProgress />
+      <CustomCursor />
 
       <main className="site-wrapper">
         <div className="background-glow background-glow-one"></div>
@@ -53,6 +56,7 @@ function App() {
         <Pricing />
         <Testimonials />
         <FAQ />
+        <SectionDivider text="Book Your Session Today" />
         <CTA />
         <Contact />
         <Footer />

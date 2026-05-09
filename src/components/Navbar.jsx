@@ -1,38 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
-
-const navLinks = [
-  {
-    label: "Home",
-    href: "#home",
-    id: "home",
-  },
-  {
-    label: "About",
-    href: "#about",
-    id: "about",
-  },
-  {
-    label: "Projects",
-    href: "#portfolio",
-    id: "portfolio",
-  },
-  {
-    label: "Services",
-    href: "#services",
-    id: "services",
-  },
-  {
-    label: "Pricing",
-    href: "#pricing",
-    id: "pricing",
-  },
-  {
-    label: "Contact",
-    href: "#contact",
-    id: "contact",
-  },
-];
+import { navLinks, siteConfig } from "../data/siteData";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

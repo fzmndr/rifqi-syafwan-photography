@@ -1,30 +1,28 @@
 import { ArrowRight, Mail, Phone } from "lucide-react";
+import { siteConfig } from "../data/siteData";
 
 function Footer() {
   return (
-    <footer className="footer" id="contact">
+    <footer className="footer" id="footer">
       <div className="section-inner footer-grid">
         <div>
-          <h2>Rifqi Syafwan</h2>
-          <p>
-            Premium photography portfolio for wedding, portrait, event, and brand
-            storytelling.
-          </p>
+          <h2>{siteConfig.brandName}</h2>
+          <p>{siteConfig.description}</p>
         </div>
 
         <div className="footer-contact">
-          <a href="mailto:hello@rifqisyafwan.com">
+          <a href={`mailto:${siteConfig.email}`}>
             <Mail size={18} />
-            hello@rifqisyafwan.com
+            {siteConfig.email}
           </a>
 
-          <a href="tel:+6281234567890">
+          <a href={`tel:${siteConfig.phoneRaw}`}>
             <Phone size={18} />
-            +62 812 3456 7890
+            {siteConfig.phone}
           </a>
 
           <a
-            href="https://instagram.com"
+            href={siteConfig.instagramUrl}
             target="_blank"
             rel="noreferrer"
           >
@@ -34,7 +32,7 @@ function Footer() {
         </div>
 
         <a
-          href="https://wa.me/6281234567890"
+          href={siteConfig.whatsappUrl}
           target="_blank"
           rel="noreferrer"
           className="footer-button"
@@ -44,9 +42,7 @@ function Footer() {
         </a>
       </div>
 
-      <p className="copyright">
-        © 2026 Rifqi Syafwan Photography. All Rights Reserved.
-      </p>
+      <p className="copyright">{siteConfig.copyright}</p>
     </footer>
   );
 }

@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteConfig } from "../data/siteData";
 
 function Contact() {
   return (
@@ -20,21 +21,21 @@ function Contact() {
           </p>
 
           <div className="contact-details">
-            <a href="mailto:hello@rifqisyafwan.com">
-              <Mail size={18} />
-              hello@rifqisyafwan.com
+            <a href={`mailto:${siteConfig.email}`}>
+                <Mail size={18} />
+                {siteConfig.email}
             </a>
 
-            <a href="tel:+6281234567890">
-              <Phone size={18} />
-              +62 812 3456 7890
+            <a href={`tel:${siteConfig.phoneRaw}`}>
+                <Phone size={18} />
+                {siteConfig.phone}
             </a>
 
             <span>
-              <MapPin size={18} />
-              Indonesia
+                <MapPin size={18} />
+                {siteConfig.location}
             </span>
-          </div>
+            </div>
         </motion.div>
 
         <motion.form
@@ -51,7 +52,7 @@ function Contact() {
             const message = form.message.value;
 
             const text = `Halo Rifqi Syafwan, saya ${name}. Saya tertarik untuk booking ${service}. ${message}`;
-            const url = `https://wa.me/6281234567890?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(text)}`;
 
             window.open(url, "_blank");
           }}
