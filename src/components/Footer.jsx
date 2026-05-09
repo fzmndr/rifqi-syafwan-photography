@@ -1,5 +1,6 @@
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { siteConfig } from "../data/siteData";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 function Footer() {
   return (
@@ -32,7 +33,7 @@ function Footer() {
         </div>
 
         <a
-          href={siteConfig.whatsappUrl}
+          href={createWhatsAppLink("Halo Rifqi Syafwan, saya ingin booking sesi foto.")}
           target="_blank"
           rel="noreferrer"
           className="footer-button"

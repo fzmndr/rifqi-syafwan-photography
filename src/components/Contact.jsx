@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "../data/siteData";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 function Contact() {
   return (
@@ -52,7 +53,7 @@ function Contact() {
             const message = form.message.value;
 
             const text = `Halo Rifqi Syafwan, saya ${name}. Saya tertarik untuk booking ${service}. ${message}`;
-            const url = `https://wa.me/${siteConfig.phoneRaw}?text=${encodeURIComponent(text)}`;
+            const url = createWhatsAppLink(text);
 
             window.open(url, "_blank");
           }}

@@ -1,5 +1,5 @@
 import { ArrowUp, MessageCircle } from "lucide-react";
-import { siteConfig } from "../data/siteData";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 function FloatingButtons() {
   const scrollTop = () => {
@@ -12,7 +12,7 @@ function FloatingButtons() {
   return (
     <div className="floating-buttons">
       <a
-        href={siteConfig.whatsappUrl}
+        href={createWhatsAppLink("Halo Rifqi Syafwan, saya ingin booking sesi foto.")}
         target="_blank"
         rel="noreferrer"
         className="float-whatsapp"

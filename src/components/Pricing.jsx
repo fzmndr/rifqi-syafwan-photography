@@ -1,5 +1,6 @@
 import { Check, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 const packages = [
   {
@@ -64,7 +65,9 @@ function Pricing() {
               </ul>
 
               <a
-                href="https://wa.me/6281234567890"
+                href={createWhatsAppLink(
+                `Halo Rifqi Syafwan, saya tertarik dengan paket ${item.name} seharga ${item.price}.`
+                )}
                 target="_blank"
                 rel="noreferrer"
               >

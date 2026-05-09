@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Trusted from "./components/Trusted";
 import About from "./components/About";
 import Stats from "./components/Stats";
+import SectionDivider from "./components/SectionDivider";
 import Portfolio from "./components/Portfolio";
 import GalleryMarquee from "./components/GalleryMarquee";
 import Services from "./components/Services";
@@ -14,14 +15,19 @@ import Process from "./components/Process";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
-import SectionDivider from "./components/SectionDivider";
 import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
+import NotFound from "./components/NotFound";
+import EditGuide from "./components/EditGuide";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = window.location.pathname;
+
+  const isEditGuide = pathname === "/edit-guide";
+  const isNotFound = pathname !== "/" && pathname !== "/edit-guide";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,6 +36,28 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  if (isEditGuide) {
+    return (
+      <>
+        <LoadingScreen isLoading={isLoading} />
+        <ScrollProgress />
+        <CustomCursor />
+        <EditGuide />
+      </>
+    );
+  }
+
+  if (isNotFound) {
+    return (
+      <>
+        <LoadingScreen isLoading={isLoading} />
+        <ScrollProgress />
+        <CustomCursor />
+        <NotFound />
+      </>
+    );
+  }
 
   return (
     <>
@@ -49,6 +77,7 @@ function App() {
 
         <About />
         <Stats />
+        <SectionDivider />
         <Portfolio />
         <GalleryMarquee />
         <Services />

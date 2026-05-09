@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { createWhatsAppLink } from "../utils/whatsapp";
 
 function CTA() {
   return (
@@ -20,7 +21,9 @@ function CTA() {
           </p>
 
           <a
-            href="https://wa.me/6281234567890"
+            href={createWhatsAppLink(
+              "Halo Rifqi Syafwan, saya ingin booking sesi photography."
+            )}
             target="_blank"
             rel="noreferrer"
           >
