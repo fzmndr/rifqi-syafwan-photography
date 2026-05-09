@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { stats } from "../data/statsData";
+import CountUpNumber from "./CountUpNumber";
 
 function Stats() {
   return (
@@ -18,7 +19,9 @@ function Stats() {
               ease: "easeOut",
             }}
           >
-            <h3>{item.number}</h3>
+            <h3>
+              <CountUpNumber value={item.value} suffix={item.suffix} />
+            </h3>
             <p>{item.label}</p>
           </motion.div>
         ))}

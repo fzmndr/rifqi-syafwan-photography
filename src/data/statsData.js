@@ -1,18 +1,22 @@
 export const stats = [
   {
-    number: "120+",
+    value: 120,
+    suffix: "+",
     label: "Projects Completed",
   },
   {
-    number: "80+",
+    value: 80,
+    suffix: "+",
     label: "Happy Clients",
   },
   {
-    number: "6+",
+    value: 6,
+    suffix: "+",
     label: "Years Experience",
   },
   {
-    number: "15K+",
+    value: 15,
+    suffix: "K+",
     label: "Photos Delivered",
   },
 ];
