@@ -11,7 +11,7 @@ export const siteConfig = {
   phoneRaw: "6281234567890",
   location: "Indonesia",
 
-  instagramUrl: "https://instagram.com",
+  instagramUrl: "https://instagram.com/iqirisone",
   whatsappUrl: "https://wa.me/6281234567890",
 
   copyright: "© 2026 Rifqi Syafwan Photography. All Rights Reserved.",
