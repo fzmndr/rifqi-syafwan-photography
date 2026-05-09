@@ -33,6 +33,7 @@ function EditingPreview() {
 
         <motion.div
           className="before-after-box"
+          style={{ "--slider-position": `${sliderValue}%` }}
           initial={{ y: 55, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -41,17 +42,11 @@ function EditingPreview() {
           <div className="before-after-image">
             <img src={beforeImage} alt="Before editing" />
 
-            <div
-              className="after-image"
-              style={{ width: `${sliderValue}%` }}
-            >
+            <div className="after-image">
               <img src={afterImage} alt="After editing" />
             </div>
 
-            <div
-              className="slider-line"
-              style={{ left: `${sliderValue}%` }}
-            >
+            <div className="slider-line">
               <span></span>
             </div>
 
