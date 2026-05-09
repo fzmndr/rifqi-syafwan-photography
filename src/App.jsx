@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollProgress from "./components/ScrollProgress";
 import CustomCursor from "./components/CustomCursor";
+import ThemeToggle from "./components/ThemeToggle";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Trusted from "./components/Trusted";
@@ -19,11 +22,19 @@ import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
+import EditingPreview from "./components/EditingPreview";
+import PackageComparison from "./components/PackageComparison";
+import InstagramShowcase from "./components/InstagramShowcase";
+
 import NotFound from "./components/NotFound";
 import EditGuide from "./components/EditGuide";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [theme, setTheme] = useState(() => {
+  return localStorage.getItem("rifqi-theme") || "dark";
+    });
+
   const pathname = window.location.pathname;
 
   const isEditGuide = pathname === "/edit-guide";
@@ -43,7 +54,11 @@ function App() {
         <LoadingScreen isLoading={isLoading} />
         <ScrollProgress />
         <CustomCursor />
-        <EditGuide />
+
+        <div className={`theme-${theme}`}>
+          <EditGuide />
+          <ThemeToggle theme={theme} setTheme={setTheme} />
+        </div>
       </>
     );
   }
@@ -54,7 +69,11 @@ function App() {
         <LoadingScreen isLoading={isLoading} />
         <ScrollProgress />
         <CustomCursor />
-        <NotFound />
+
+        <div className={`theme-${theme}`}>
+          <NotFound />
+          <ThemeToggle theme={theme} setTheme={setTheme} />
+        </div>
       </>
     );
   }
@@ -65,7 +84,7 @@ function App() {
       <ScrollProgress />
       <CustomCursor />
 
-      <main className="site-wrapper">
+      <main className={`site-wrapper theme-${theme}`}>
         <div className="background-glow background-glow-one"></div>
         <div className="background-glow background-glow-two"></div>
 
@@ -77,19 +96,28 @@ function App() {
 
         <About />
         <Stats />
+
         <SectionDivider />
+
         <Portfolio />
         <GalleryMarquee />
+        <EditingPreview />
         <Services />
         <Process />
         <Pricing />
+        <PackageComparison />
         <Testimonials />
+        <InstagramShowcase />
         <FAQ />
+
         <SectionDivider text="Book Your Session Today" />
+
         <CTA />
         <Contact />
         <Footer />
+
         <FloatingButtons />
+        <ThemeToggle theme={theme} setTheme={setTheme} />
       </main>
     </>
   );

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight } from "lucide-react";
+import { X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   portfolioItems,
   portfolioCategories,
@@ -9,12 +9,69 @@ import { createWhatsAppLink } from "../utils/whatsapp";
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const filteredItems =
     activeCategory === "All"
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === activeCategory);
+
+  const selectedItem =
+    selectedIndex !== null ? filteredItems[selectedIndex] : null;
+
+  const closeLightbox = () => {
+    setSelectedIndex(null);
+  };
+
+  const showPrevious = () => {
+    setSelectedIndex((current) => {
+      if (current === null) return null;
+      return current === 0 ? filteredItems.length - 1 : current - 1;
+    });
+  };
+
+  const showNext = () => {
+    setSelectedIndex((current) => {
+      if (current === null) return null;
+      return current === filteredItems.length - 1 ? 0 : current + 1;
+    });
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (selectedIndex === null) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex, filteredItems.length]);
+
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => document.body.classList.remove("no-scroll");
+  }, [selectedIndex]);
+
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [activeCategory]);
 
   return (
     <section className="portfolio-section" id="portfolio">
@@ -60,7 +117,7 @@ function Portfolio() {
                   delay: index * 0.06,
                   ease: "easeOut",
                 }}
-                onClick={() => setSelectedItem(item)}
+                onClick={() => setSelectedIndex(index)}
               >
                 <img src={item.image} alt={item.title} loading="lazy" />
 
@@ -81,44 +138,103 @@ function Portfolio() {
       <AnimatePresence>
         {selectedItem && (
           <motion.div
-            className="portfolio-modal"
+            className="lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedItem(null)}
+            onClick={closeLightbox}
           >
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={closeLightbox}
+              aria-label="Close lightbox"
+            >
+              <X size={22} />
+            </button>
+
+            <button
+              type="button"
+              className="lightbox-nav lightbox-prev"
+              onClick={(event) => {
+                event.stopPropagation();
+                showPrevious();
+              }}
+              aria-label="Previous project"
+            >
+              <ChevronLeft size={26} />
+            </button>
+
+            <button
+              type="button"
+              className="lightbox-nav lightbox-next"
+              onClick={(event) => {
+                event.stopPropagation();
+                showNext();
+              }}
+              aria-label="Next project"
+            >
+              <ChevronRight size={26} />
+            </button>
+
             <motion.div
-              className="portfolio-modal-card"
-              initial={{ y: 60, scale: 0.96, opacity: 0 }}
+              className="lightbox-card"
+              initial={{ y: 50, scale: 0.96, opacity: 0 }}
               animate={{ y: 0, scale: 1, opacity: 1 }}
               exit={{ y: 40, scale: 0.96, opacity: 0 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(event) => event.stopPropagation()}
             >
-              <button
-                type="button"
-                className="modal-close"
-                onClick={() => setSelectedItem(null)}
-              >
-                <X size={20} />
-              </button>
+              <div className="lightbox-image-wrap">
+                <img src={selectedItem.image} alt={selectedItem.title} />
 
-              <img src={selectedItem.image} alt={selectedItem.title} />
+                <div className="lightbox-counter">
+                  {String(selectedIndex + 1).padStart(2, "0")} /{" "}
+                  {String(filteredItems.length).padStart(2, "0")}
+                </div>
+              </div>
 
-              <div className="modal-content">
+              <div className="lightbox-content">
                 <span>{selectedItem.category}</span>
                 <h3>{selectedItem.title}</h3>
                 <p>{selectedItem.desc}</p>
 
+                <div className="project-meta">
+                    <div>
+                    <small>Year</small>
+                    <strong>{selectedItem.year}</strong>
+                    </div>
+
+                    <div>
+                    <small>Location</small>
+                    <strong>{selectedItem.location}</strong>
+                    </div>
+
+                    <div>
+                    <small>Service</small>
+                    <strong>{selectedItem.service}</strong>
+                    </div>
+
+                    <div>
+                    <small>Duration</small>
+                    <strong>{selectedItem.duration}</strong>
+                    </div>
+
+                    <div>
+                    <small>Deliverables</small>
+                    <strong>{selectedItem.deliverables}</strong>
+                    </div>
+                </div>
+
                 <a
-                  href={createWhatsAppLink(
+                    href={createWhatsAppLink(
                     `Halo Rifqi Syafwan, saya tertarik membuat sesi foto seperti project ${selectedItem.title}.`
-                  )}
-                  target="_blank"
-                  rel="noreferrer"
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
                 >
-                  Book Similar Session
-                  <ArrowUpRight size={17} />
+                    Book Similar Session
+                    <ArrowUpRight size={17} />
                 </a>
               </div>
             </motion.div>
