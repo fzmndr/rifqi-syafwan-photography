@@ -1,4 +1,4 @@
-import { Instagram, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { instagramPosts } from "../data/instagramData";
 import { siteConfig } from "../data/siteData";
@@ -25,7 +25,7 @@ function InstagramShowcase() {
             rel="noreferrer"
             className="instagram-button"
           >
-            <Instagram size={18} />
+            <span className="ig-text">IG</span>
             Follow Instagram
             <ArrowUpRight size={17} />
           </a>
@@ -51,7 +51,7 @@ function InstagramShowcase() {
               <img src={post.image} alt={post.caption} loading="lazy" />
 
               <div className="instagram-overlay">
-                <Instagram size={24} />
+                <span className="ig-text">IG</span>
                 <span>{post.caption}</span>
               </div>
             </motion.a>
