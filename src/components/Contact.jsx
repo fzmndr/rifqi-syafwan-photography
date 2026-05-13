@@ -52,7 +52,7 @@ function Contact() {
             const service = form.service.value;
             const message = form.message.value;
 
-            const text = `Halo Rifqi Syafwan, saya ${name}. Saya tertarik untuk booking ${service}. ${message}`;
+            const text = `Halo Rifqi Syafwan, I ${name}. I am interested in booking ${service}. ${message}`;
             const url = createWhatsAppLink(text);
 
             window.open(url, "_blank");

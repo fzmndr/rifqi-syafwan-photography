@@ -33,7 +33,7 @@ function Footer() {
         </div>
 
         <a
-          href={createWhatsAppLink("Halo Rifqi Syafwan, saya ingin booking sesi foto.")}
+          href={createWhatsAppLink("Hello Rifqi Syafwan, I want to book a photo session.")}
           target="_blank"
           rel="noreferrer"
           className="footer-button"
