@@ -1,20 +1,47 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  portfolioItems,
-  portfolioCategories,
-} from "../data/portfolioData";
+import { portfolioItems } from "../data/portfolioData";
 import { createWhatsAppLink } from "../utils/whatsapp";
+
+const portfolioCategories = ["All", "Portrait", "Brand", "Automotive"];
+
+function normalizeCategory(category) {
+  if (!category) return "Portrait";
+
+  const value = category.toLowerCase();
+
+  if (value.includes("wedding")) return "Portrait";
+  if (value.includes("portrait")) return "Portrait";
+  if (value.includes("brand")) return "Brand";
+  if (value.includes("product")) return "Automotive";
+  if (value.includes("automotive")) return "Automotive";
+  if (value.includes("event")) return "Portrait";
+
+  return category;
+}
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedIndex, setSelectedIndex] = useState(null);
 
+  const updatedItems = portfolioItems.map((item) => ({
+    ...item,
+    category: normalizeCategory(item.category),
+    title:
+      item.title?.toLowerCase().includes("wedding")
+        ? item.title.replace(/wedding/gi, "Portrait")
+        : item.title,
+    service:
+      item.service?.toLowerCase().includes("wedding")
+        ? item.service.replace(/wedding/gi, "Portrait")
+        : item.service,
+  }));
+
   const filteredItems =
     activeCategory === "All"
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeCategory);
+      ? updatedItems
+      : updatedItems.filter((item) => item.category === activeCategory);
 
   const selectedItem =
     selectedIndex !== null ? filteredItems[selectedIndex] : null;
@@ -200,41 +227,41 @@ function Portfolio() {
                 <p>{selectedItem.desc}</p>
 
                 <div className="project-meta">
-                    <div>
+                  <div>
                     <small>Year</small>
                     <strong>{selectedItem.year}</strong>
-                    </div>
+                  </div>
 
-                    <div>
+                  <div>
                     <small>Location</small>
                     <strong>{selectedItem.location}</strong>
-                    </div>
+                  </div>
 
-                    <div>
+                  <div>
                     <small>Service</small>
                     <strong>{selectedItem.service}</strong>
-                    </div>
+                  </div>
 
-                    <div>
+                  <div>
                     <small>Duration</small>
                     <strong>{selectedItem.duration}</strong>
-                    </div>
+                  </div>
 
-                    <div>
+                  <div>
                     <small>Deliverables</small>
                     <strong>{selectedItem.deliverables}</strong>
-                    </div>
+                  </div>
                 </div>
 
                 <a
-                    href={createWhatsAppLink(
+                  href={createWhatsAppLink(
                     `Halo Rifqi Syafwan, saya tertarik membuat sesi foto seperti project ${selectedItem.title}.`
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
+                  )}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                    Book Similar Session
-                    <ArrowUpRight size={17} />
+                  Book Similar Session
+                  <ArrowUpRight size={17} />
                 </a>
               </div>
             </motion.div>

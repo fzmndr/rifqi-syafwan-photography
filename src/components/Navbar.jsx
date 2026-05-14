@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { navLinks, siteConfig } from "../data/siteData";
+import { navLinks } from "../data/siteData";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

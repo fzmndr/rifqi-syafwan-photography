@@ -12,7 +12,11 @@ function About() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <p className="section-label">Behind the Lens</p>
-          <h2>Shaping Moments That Make Life Timeless</h2>
+
+          <h2>
+            Crafting Visuals <br />
+            That Feel Alive
+          </h2>
         </motion.div>
 
         <motion.div
@@ -23,9 +27,8 @@ function About() {
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
           <p>
-            I'm a photographer focused on creating clean, cinematic, and
-            emotional visuals that help people remember their most meaningful
-            moments.
+            I'm a photographer focused on creating clean, emotional, and
+            story-driven imagery that people truly connect with.
           </p>
 
           <span>Let's Build Something Meaningful Together</span>

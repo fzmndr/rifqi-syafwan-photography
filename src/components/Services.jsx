@@ -1,5 +1,28 @@
 import { motion } from "framer-motion";
-import { services } from "../data/servicesData";
+import { Heart, Camera, CalendarDays, Car } from "lucide-react";
+
+const updatedServices = [
+  {
+    icon: Heart,
+    title: "Wedding",
+    desc: "Timeless wedding photography with cinematic emotion and natural storytelling.",
+  },
+  {
+    icon: Camera,
+    title: "Portrait",
+    desc: "Clean and expressive portrait sessions for personal or professional needs.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Event",
+    desc: "Capturing important moments with detail, mood, and atmosphere.",
+  },
+  {
+    icon: Car,
+    title: "Automotive",
+    desc: "Premium automotive photography for brands, catalogs, and campaigns.",
+  },
+];
 
 function Services() {
   return (
@@ -17,13 +40,13 @@ function Services() {
         </motion.div>
 
         <div className="services-grid">
-          {services.map((service, index) => {
+          {updatedServices.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <motion.div
                 className="service-card"
-                key={index}
+                key={service.title}
                 initial={{ y: 70, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true, amount: 0.25 }}

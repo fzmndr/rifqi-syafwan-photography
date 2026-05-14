@@ -24,7 +24,7 @@ function Hero() {
         <motion.img
           key={currentSlide.image}
           src={currentSlide.image}
-          alt={currentSlide.label}
+          alt="Photographer"
           className="hero-img"
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -43,9 +43,9 @@ function Hero() {
           transition={{ duration: 0.9, delay: 1.9, ease: "easeOut" }}
         >
           <p className="eyebrow">Hey, I'm a</p>
+
           <h1>
-            Visual <br />
-            Storyteller
+            Photographer
           </h1>
         </motion.div>
 
@@ -55,11 +55,14 @@ function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 2.1, ease: "easeOut" }}
         >
-          <span className="hero-slide-label">{currentSlide.label}</span>
-          <h2>Great photography should feel unforgettable.</h2>
+          <span className="hero-slide-label">Portrait Session</span>
+
+          <h2>
+            Documenting moments and creating visuals that tell stories.
+          </h2>
+
           <p>
-            From wedding to brand visuals, I capture honest moments with
-            cinematic light, emotion, and timeless composition.
+            I create, explore, and turn ideas into visuals.
           </p>
         </motion.div>
       </div>
@@ -83,22 +86,22 @@ function Hero() {
       >
         <div>
           <span>#01</span>
-          <p>Wedding Photography</p>
+          <p>Event</p>
         </div>
 
         <div>
           <span>#02</span>
-          <p>Portrait Session</p>
+          <p>Portrait</p>
         </div>
 
         <div>
           <span>#03</span>
-          <p>Brand Visual</p>
+          <p>Brand</p>
         </div>
 
         <div>
           <span>#04</span>
-          <p>Creative Direction</p>
+          <p>Automotive</p>
         </div>
       </motion.div>
 
@@ -109,7 +112,7 @@ function Hero() {
             key={slide.label}
             className={activeSlide === index ? "active" : ""}
             onClick={() => setActiveSlide(index)}
-            aria-label={`Go to ${slide.label}`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

@@ -5,7 +5,7 @@ import hero3 from "../assets/photo-2.jpg";
 export const heroSlides = [
   {
     image: hero1,
-    label: "Wedding Photography",
+    label: "Wedding",
   },
   {
     image: hero2,
@@ -13,6 +13,6 @@ export const heroSlides = [
   },
   {
     image: hero3,
-    label: "Brand Visual",
+    label: "Brand",
   },
 ];

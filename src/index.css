@@ -5,19 +5,19 @@
    ========================================================= */
 
 :root {
-  --bg: #080808;
-  --bg-deep: #050505;
-  --bg-soft: #111111;
-  --card: #151515;
+  --bg: #4a4a4a;
+  --bg-deep: #4a4a4a;
+  --bg-soft: #5a5a5a;
+  --card: #5a5a5a;
   --text: #ffffff;
-  --muted: #a6a6a6;
+  --muted: #d0d0d0;
   --orange: #ff5a1f;
   --orange-light: #ff8a3d;
-  --border: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.14);
   --radius-xl: 36px;
   --radius-lg: 28px;
   --radius-md: 22px;
-  --shadow-orange: 0 30px 100px rgba(255, 90, 31, 0.18);
+  --shadow-orange: 0 30px 100px rgba(255, 90, 31, 0.14);
 }
 
 * {
@@ -94,9 +94,9 @@ img {
   position: relative;
   padding: 48px 20px;
   background:
-    radial-gradient(circle at top left, rgba(255, 90, 31, 0.28), transparent 35%),
-    radial-gradient(circle at top right, rgba(255, 42, 0, 0.18), transparent 30%),
-    var(--bg-deep);
+    radial-gradient(circle at top left, rgba(255, 90, 31, 0.16), transparent 35%),
+    radial-gradient(circle at top right, rgba(255, 42, 0, 0.1), transparent 30%),
+    #4a4a4a;
 }
 
 .section-inner {
@@ -144,7 +144,7 @@ img {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  background: rgba(12, 12, 12, 0.82);
+  background: rgba(74, 74, 74, 0.88);
   box-shadow: var(--shadow-orange);
   backdrop-filter: blur(18px);
 }
@@ -262,7 +262,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(12, 12, 12, 0.68);
+  background: rgba(74, 74, 74, 0.72);
   backdrop-filter: blur(20px);
 }
 
@@ -402,9 +402,9 @@ img {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.5) 45%, rgba(8, 8, 8, 0.15) 100%),
-    linear-gradient(0deg, rgba(8, 8, 8, 0.92) 0%, transparent 55%),
-    radial-gradient(circle at center, transparent 0%, rgba(8, 8, 8, 0.18) 100%);
+    linear-gradient(90deg, rgba(74, 74, 74, 0.86) 0%, rgba(74, 74, 74, 0.48) 45%, rgba(74, 74, 74, 0.16) 100%),
+    linear-gradient(0deg, rgba(74, 74, 74, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at center, transparent 0%, rgba(74, 74, 74, 0.16) 100%);
 }
 
 .hero-content {
@@ -629,7 +629,7 @@ img {
   padding: 32px;
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .stat-card::before {
@@ -1373,7 +1373,7 @@ img {
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.09);
   transition: 0.3s ease;
 }
 
@@ -1996,8 +1996,8 @@ img {
   border: 1px solid var(--border);
   border-radius: 28px;
   background:
-    radial-gradient(circle at top right, rgba(255, 90, 31, 0.18), transparent 32%),
-    rgba(255, 255, 255, 0.055);
+    radial-gradient(circle at top right, rgba(255, 90, 31, 0.14), transparent 32%),
+    rgba(255, 255, 255, 0.09);
 }
 
 .form-group {
@@ -2020,9 +2020,13 @@ img {
   border: 1px solid var(--border);
   border-radius: 16px;
   outline: none;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
   font-size: 14px;
+}
+.form-group select option {
+  background: #4a4a4a;
+  color: white;
 }
 
 .form-group textarea {
@@ -3168,4 +3172,64 @@ img {
   .float-top {
     display: none;
   }
+}
+
+/* =========================================================
+   REVISION OVERRIDE
+   Dark theme changed to gray #4A4A4A
+   ========================================================= */
+
+body {
+  background: #4a4a4a;
+}
+
+.theme-dark {
+  --bg: #4a4a4a;
+  --bg-deep: #4a4a4a;
+  --bg-soft: #5a5a5a;
+  --card: #5a5a5a;
+}
+
+.theme-dark.site-wrapper {
+  background:
+    radial-gradient(circle at top left, rgba(255, 90, 31, 0.16), transparent 35%),
+    radial-gradient(circle at top right, rgba(255, 42, 0, 0.1), transparent 30%),
+    #4a4a4a;
+}
+
+.theme-dark .main-container,
+.theme-dark .navbar {
+  background: rgba(74, 74, 74, 0.78);
+}
+
+.theme-dark .hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(74, 74, 74, 0.86) 0%, rgba(74, 74, 74, 0.48) 45%, rgba(74, 74, 74, 0.16) 100%),
+    linear-gradient(0deg, rgba(74, 74, 74, 0.9) 0%, transparent 55%),
+    radial-gradient(circle at center, transparent 0%, rgba(74, 74, 74, 0.16) 100%);
+}
+
+.theme-dark .service-card,
+.theme-dark .stat-card,
+.theme-dark .process-item,
+.theme-dark .contact-form,
+.theme-dark .project-meta div {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.theme-dark .portfolio-card,
+.theme-dark .lightbox-card,
+.theme-dark .lightbox-image-wrap {
+  background: #5a5a5a;
+}
+
+.theme-dark .form-group input,
+.theme-dark .form-group select,
+.theme-dark .form-group textarea {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-dark .form-group select option {
+  background: #4a4a4a;
+  color: white;
 }
