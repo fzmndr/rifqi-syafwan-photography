@@ -1,12 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import beforeImage from "../assets/before.jpeg";
-import afterImage from "../assets/after.jpeg";
+import beforeImage from "../assets/before.jpg";
+import afterImage from "../assets/after.jpg";
 
 function EditingPreview() {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const imageRef = useRef(null);
+
+  const updateSliderPosition = (clientX) => {
+    if (!imageRef.current) return;
+
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = (x / rect.width) * 100;
+
+    const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
+    setSliderPosition(clampedPercentage);
+  };
+
+  const handlePointerDown = (event) => {
+    updateSliderPosition(event.clientX);
+
+    const handlePointerMove = (moveEvent) => {
+      updateSliderPosition(moveEvent.clientX);
+    };
+
+    const handlePointerUp = () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+  };
 
   const moveLeft = () => {
     setSliderPosition((prev) => Math.max(prev - 5, 0));
@@ -48,7 +76,7 @@ function EditingPreview() {
 
           <p>
             Compare the original photo and the final edited result. Drag the
-            slider or use the arrow buttons to see the transformation.
+            center handle or use the arrow buttons to see the transformation.
           </p>
 
           <div className="editing-points">
@@ -67,7 +95,11 @@ function EditingPreview() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
         >
-          <div className="before-after-image">
+          <div
+            ref={imageRef}
+            className="before-after-image"
+            onPointerDown={handlePointerDown}
+          >
             <img src={beforeImage} alt="Before editing" />
 
             <div className="after-image">
@@ -78,14 +110,27 @@ function EditingPreview() {
             <span className="before-after-label after-label">After</span>
 
             <div className="slider-line">
-              <span></span>
+              <button
+                type="button"
+                className="slider-handle"
+                onPointerDown={(event) => {
+                  event.stopPropagation();
+                  handlePointerDown(event);
+                }}
+                aria-label="Drag before after slider"
+              >
+                <span></span>
+              </button>
             </div>
 
             <button
               type="button"
               className="before-after-arrow before-after-left"
-              onClick={moveLeft}
-              aria-label="Move before after slider left"
+              onClick={(event) => {
+                event.stopPropagation();
+                moveLeft();
+              }}
+              aria-label="Move slider left"
             >
               <ChevronLeft size={22} />
             </button>
@@ -93,21 +138,14 @@ function EditingPreview() {
             <button
               type="button"
               className="before-after-arrow before-after-right"
-              onClick={moveRight}
-              aria-label="Move before after slider right"
+              onClick={(event) => {
+                event.stopPropagation();
+                moveRight();
+              }}
+              aria-label="Move slider right"
             >
               <ChevronRight size={22} />
             </button>
-
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderPosition}
-              className="before-after-range"
-              onChange={(e) => setSliderPosition(Number(e.target.value))}
-              aria-label="Before after slider"
-            />
           </div>
         </motion.div>
       </div>
