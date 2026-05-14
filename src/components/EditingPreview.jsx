@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import beforeImage from "../assets/before.jpeg";
 import afterImage from "../assets/after.jpeg";
@@ -15,8 +14,8 @@ function EditingPreview() {
     const rect = imageRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = (x / rect.width) * 100;
-
     const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
+
     setSliderPosition(clampedPercentage);
   };
 
@@ -36,30 +35,6 @@ function EditingPreview() {
     window.addEventListener("pointerup", handlePointerUp);
   };
 
-  const moveLeft = () => {
-    setSliderPosition((prev) => Math.max(prev - 5, 0));
-  };
-
-  const moveRight = () => {
-    setSliderPosition((prev) => Math.min(prev + 5, 100));
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "ArrowLeft") {
-        moveLeft();
-      }
-
-      if (event.key === "ArrowRight") {
-        moveRight();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   return (
     <section className="editing-preview-section" id="editing">
       <div className="section-inner editing-preview-grid">
@@ -76,7 +51,7 @@ function EditingPreview() {
 
           <p>
             Compare the original photo and the final edited result. Drag the
-            center handle or use the arrow buttons to see the transformation.
+            center handle to see the transformation.
           </p>
 
           <div className="editing-points">
@@ -122,30 +97,6 @@ function EditingPreview() {
                 <span></span>
               </button>
             </div>
-
-            <button
-              type="button"
-              className="before-after-arrow before-after-left"
-              onClick={(event) => {
-                event.stopPropagation();
-                moveLeft();
-              }}
-              aria-label="Move slider left"
-            >
-              <ChevronLeft size={22} />
-            </button>
-
-            <button
-              type="button"
-              className="before-after-arrow before-after-right"
-              onClick={(event) => {
-                event.stopPropagation();
-                moveRight();
-              }}
-              aria-label="Move slider right"
-            >
-              <ChevronRight size={22} />
-            </button>
           </div>
         </motion.div>
       </div>
