@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import beforeImage from "../assets/before.jpg";
-import afterImage from "../assets/after.jpg";
+import beforeImage from "../assets/before.jpeg";
+import afterImage from "../assets/after.jpeg";
 
 function EditingPreview() {
   const [sliderPosition, setSliderPosition] = useState(50);
