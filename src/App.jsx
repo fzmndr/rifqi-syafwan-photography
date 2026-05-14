@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Portfolio from "./components/Portfolio";
+import EditingPreview from "./components/EditingPreview";
 import Services from "./components/Services";
 import Process from "./components/Process";
 import Contact from "./components/Contact";
@@ -88,6 +89,7 @@ function App() {
 
         <About />
         <Portfolio />
+        <EditingPreview />
         <Services />
         <Process />
         <Contact />
