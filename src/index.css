@@ -270,11 +270,12 @@ img {
   font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.05em;
+  color: white;
   transition: 0.3s ease;
 }
 
 .logo span {
-  color: var(--orange);
+  color: white;
 }
 
 .logo:hover {
@@ -3231,5 +3232,12 @@ body {
 
 .theme-dark .form-group select option {
   background: #4a4a4a;
+  color: white;
+}
+/* Logo revision: Rifqi Syafwan putih semua */
+.logo,
+.logo span,
+.theme-luxury .logo span,
+.theme-dark .logo span {
   color: white;
 }
