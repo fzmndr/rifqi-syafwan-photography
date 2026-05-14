@@ -8,7 +8,6 @@ import ThemeToggle from "./components/ThemeToggle";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Stats from "./components/Stats";
 import Portfolio from "./components/Portfolio";
 import Services from "./components/Services";
 import Process from "./components/Process";
@@ -88,16 +87,9 @@ function App() {
         </section>
 
         <About />
-        <Stats />
-
-    
-
         <Portfolio />
         <Services />
         <Process />
-
-
-
         <Contact />
 
         <FloatingButtons />
