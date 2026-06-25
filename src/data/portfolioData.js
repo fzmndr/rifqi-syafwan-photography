@@ -4,6 +4,15 @@ import gallery3 from "../assets/gallery-3.jpeg";
 import gallery4 from "../assets/gallery-4.jpeg";
 import gallery5 from "../assets/gallery-5.jpeg";
 import gallery6 from "../assets/gallery-6.jpeg";
+import gallery1 from "../assets/gallery7.jpg";
+import gallery1 from "../assets/gallery8.jpg";
+import gallery1 from "../assets/gallery9.jpg";
+import gallery1 from "../assets/gallery10.jpg";
+import gallery1 from "../assets/gallery11.jpg";
+import gallery1 from "../assets/gallery12.jpg";
+import gallery1 from "../assets/gallery13.jpg";
+import gallery1 from "../assets/gallery14.jpg";
+import gallery1 from "../assets/gallery15.jpg";
 
 export const portfolioItems = [
   {
@@ -14,9 +23,6 @@ export const portfolioItems = [
     size: "large",
     year: "2026",
     location: "Jakarta, Indonesia",
-    service: "Portrait Photography",
-    duration: "Full Day",
-    deliverables: "150+ Edited Photos",
     desc: "A cinematic portrait story captured with warm tones, intimate details, and timeless emotion.",
   },
   {
@@ -27,9 +33,6 @@ export const portfolioItems = [
     size: "normal",
     year: "2026",
     location: "Bandung, Indonesia",
-    service: "Portrait Session",
-    duration: "1 Hour",
-    deliverables: "15 Edited Photos",
     desc: "A clean portrait session focused on personality, mood, lighting, and visual confidence.",
   },
   {
@@ -40,9 +43,6 @@ export const portfolioItems = [
     size: "normal",
     year: "2026",
     location: "Indonesia",
-    service: "Brand Photography",
-    duration: "2 Hours",
-    deliverables: "30 Edited Photos",
     desc: "Premium brand photography crafted for campaigns, identity, and digital presence.",
   },
   {
@@ -53,9 +53,6 @@ export const portfolioItems = [
     size: "wide",
     year: "2026",
     location: "Urban Studio",
-    service: "Creative Portrait",
-    duration: "90 Minutes",
-    deliverables: "20 Edited Photos",
     desc: "A modern portrait concept with dramatic lighting, urban mood, and confident composition.",
   },
   {
@@ -66,9 +63,6 @@ export const portfolioItems = [
     size: "normal",
     year: "2026",
     location: "Indonesia",
-    service: "Portrait Detail",
-    duration: "Half Day",
-    deliverables: "80+ Edited Photos",
     desc: "Soft and emotional portrait details captured with elegant framing and natural atmosphere.",
   },
   {
@@ -79,11 +73,100 @@ export const portfolioItems = [
     size: "large",
     year: "2026",
     location: "Studio",
-    service: "Automotive Photography",
-    duration: "2 Hours",
-    deliverables: "35 Edited Photos",
     desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
   },
+  {
+    id: 7,
+    image: gallery7,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "large",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 8,
+    image: gallery8,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "wide",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 9,
+    image: gallery9,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "large",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 10,
+    image: gallery10,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "normal",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 11,
+    image: gallery11,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "potrait",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 12,
+    image: gallery12,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "wide",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 13,
+    image: gallery13,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "potrait",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 14,
+    image: gallery14,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "normal",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+  {
+    id: 15,
+    image: gallery15,
+    title: "VESPA SNAKE POP UP",
+    category: "Brand",
+    size: "large",
+    year: "2026",
+    location: "Studio",
+    desc: "A premium automotive photography project for catalog, branding, and digital campaign visuals.",
+  },
+
+
 ];
 
 export const portfolioCategories = ["All", "Portrait", "Brand", "Automotive"];
