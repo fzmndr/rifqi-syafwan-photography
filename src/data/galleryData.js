@@ -8,26 +8,26 @@ import gallery6 from "../assets/gallery-6.jpg";
 export const galleryImages = [
   {
     image: gallery1,
-    title: "Wedding Detail",
+    title: "Brand",
   },
   {
     image: gallery2,
-    title: "Portrait Mood",
+    title: "Brand",
   },
   {
     image: gallery3,
-    title: "Creative Light",
+    title: "Brand",
   },
   {
     image: gallery4,
-    title: "Brand Story",
+    title: "Brand",
   },
   {
     image: gallery5,
-    title: "Event Moment",
+    title: "Brand",
   },
   {
     image: gallery6,
-    title: "Cinematic Frame",
+    title: "Brand",
   },
 ];
