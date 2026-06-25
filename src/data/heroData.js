@@ -1,6 +1,6 @@
-import hero1 from "../assets/hero.jpg";
-import hero2 from "../assets/photo-1.jpg";
-import hero3 from "../assets/photo-2.jpg";
+import hero1 from "../assets/gallery1.jpg";
+import hero2 from "../assets/gallery10.jpg";
+import hero3 from "../assets/gallery13.jpg";
 
 export const heroSlides = [
   {
