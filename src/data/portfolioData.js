@@ -4,15 +4,15 @@ import gallery3 from "../assets/gallery-3.jpeg";
 import gallery4 from "../assets/gallery-4.jpeg";
 import gallery5 from "../assets/gallery-5.jpeg";
 import gallery6 from "../assets/gallery-6.jpeg";
-import gallery1 from "../assets/gallery7.jpg";
-import gallery1 from "../assets/gallery8.jpg";
-import gallery1 from "../assets/gallery9.jpg";
-import gallery1 from "../assets/gallery10.jpg";
-import gallery1 from "../assets/gallery11.jpg";
-import gallery1 from "../assets/gallery12.jpg";
-import gallery1 from "../assets/gallery13.jpg";
-import gallery1 from "../assets/gallery14.jpg";
-import gallery1 from "../assets/gallery15.jpg";
+import gallery7 from "../assets/gallery7.jpg";
+import gallery8 from "../assets/gallery8.jpg";
+import gallery9 from "../assets/gallery9.jpg";
+import gallery10 from "../assets/gallery10.jpg";
+import gallery11 from "../assets/gallery11.jpg";
+import gallery12 from "../assets/gallery12.jpg";
+import gallery13 from "../assets/gallery13.jpg";
+import gallery14 from "../assets/gallery14.jpg";
+import gallery15 from "../assets/gallery15.jpg";
 
 export const portfolioItems = [
   {
