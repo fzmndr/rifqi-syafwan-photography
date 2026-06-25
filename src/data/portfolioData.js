@@ -1,13 +1,16 @@
-import photo1 from "../assets/photo-1.jpg";
-import photo2 from "../assets/photo-2.jpg";
-import photo3 from "../assets/photo-3.jpg";
+import gallery1 from "../assets/gallery-1.jpeg";
+import gallery2 from "../assets/gallery-2.jpeg";
+import gallery3 from "../assets/gallery-3.jpeg";
+import gallery4 from "../assets/gallery-4.jpeg";
+import gallery5 from "../assets/gallery-5.jpeg";
+import gallery6 from "../assets/gallery-6.jpeg";
 
 export const portfolioItems = [
   {
     id: 1,
-    image: photo1,
-    title: "Elegant Portrait",
-    category: "Portrait",
+    image: gallery1,
+    title: "VESPA OFFICINA 8",
+    category: "Brand",
     size: "large",
     year: "2026",
     location: "Jakarta, Indonesia",
@@ -18,9 +21,9 @@ export const portfolioItems = [
   },
   {
     id: 2,
-    image: photo2,
-    title: "Creative Portrait",
-    category: "Portrait",
+    image: gallery2,
+    title: "VESPA OFFICINA 8",
+    category: "Brand",
     size: "normal",
     year: "2026",
     location: "Bandung, Indonesia",
@@ -31,8 +34,8 @@ export const portfolioItems = [
   },
   {
     id: 3,
-    image: photo3,
-    title: "Brand Visual",
+    image: gallery3,
+    title: "VESPA OFFICINA 8",
     category: "Brand",
     size: "normal",
     year: "2026",
@@ -44,9 +47,9 @@ export const portfolioItems = [
   },
   {
     id: 4,
-    image: photo2,
-    title: "Urban Portrait",
-    category: "Portrait",
+    image: gallery4,
+    title: "VESPA OFFICINA 8",
+    category: "Brand",
     size: "wide",
     year: "2026",
     location: "Urban Studio",
@@ -57,9 +60,9 @@ export const portfolioItems = [
   },
   {
     id: 5,
-    image: photo1,
-    title: "Portrait Detail",
-    category: "Portrait",
+    image: gallery5,
+    title: "VESPA OFFICINA 8",
+    category: "Brand",
     size: "normal",
     year: "2026",
     location: "Indonesia",
@@ -70,9 +73,9 @@ export const portfolioItems = [
   },
   {
     id: 6,
-    image: photo3,
-    title: "Automotive Campaign",
-    category: "Automotive",
+    image: gallery6,
+    title: "VESPA OFFICINA 8",
+    category: "Brand",
     size: "large",
     year: "2026",
     location: "Studio",
