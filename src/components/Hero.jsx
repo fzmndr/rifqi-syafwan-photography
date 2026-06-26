@@ -1,29 +1,49 @@
 import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { heroSlides } from "../data/heroData";
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  /* ==========================
+      PRELOAD IMAGE
+  ========================== */
+
+  useEffect(() => {
+    heroSlides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
+
+  /* ==========================
+      AUTO SLIDER
+  ========================== */
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) =>
         prev === heroSlides.length - 1 ? 0 : prev + 1
       );
-    }, 5000);
+    }, 4500);
 
     return () => clearInterval(timer);
   }, []);
+
+  /* ==========================
+      CURRENT SLIDE
+  ========================== */
 
   const currentSlide = useMemo(() => {
     return (
       heroSlides[activeSlide] || {
         image: "",
         label: "Photography",
-        title: "Documenting moments beautifully.",
+        title:
+          "Documenting moments and creating visuals that tell stories.",
         description:
-          "Capturing authentic moments through timeless visual storytelling.",
+          "I create, explore, and turn ideas into visuals.",
       }
     );
   }, [activeSlide]);
@@ -31,7 +51,9 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
 
-      {/* Background */}
+      {/* ==========================
+            BACKGROUND IMAGE
+      ========================== */}
 
       <AnimatePresence mode="wait">
 
@@ -40,9 +62,12 @@ export default function Hero() {
           src={currentSlide.image}
           alt={currentSlide.title}
           className="hero-img"
+          loading="eager"
+          fetchPriority="high"
+          draggable={false}
           initial={{
             opacity: 0,
-            scale: 1.12,
+            scale: 1.08,
           }}
           animate={{
             opacity: 1,
@@ -50,38 +75,37 @@ export default function Hero() {
           }}
           exit={{
             opacity: 0,
-            scale: 1.05,
+            scale: 1.03,
           }}
           transition={{
-            duration: 1.1,
+            duration: .8,
+            ease: [0.25, 1, 0.5, 1],
           }}
         />
 
       </AnimatePresence>
 
-      {/* Overlay */}
+      {/* ==========================
+            OVERLAY
+      ========================== */}
 
       <div className="hero-overlay" />
 
-      {/* Gradient */}
-
-      <div className="hero-gradient" />
-
-      {/* Blur */}
-
-      <div className="hero-blur-circle" />
-
-      {/* Content */}
+      {/* ==========================
+            CONTENT
+      ========================== */}
 
       <div className="hero-content">
 
-        {/* LEFT */}
+        {/* ==========================
+              LEFT
+        ========================== */}
 
         <motion.div
           className="hero-left"
           initial={{
             opacity: 0,
-            y: 40,
+            y: 35,
           }}
           animate={{
             opacity: 1,
@@ -92,58 +116,38 @@ export default function Hero() {
           }}
         >
 
-          <span className="hero-small-title">
-            VISUAL STORYTELLER
-          </span>
-
           <p className="eyebrow">
-            Hey, I'm
+            Hey, I'm a
           </p>
 
           <h1>
-            Rifqi
-            <br />
-            Syafwan
+            Photographer
           </h1>
 
-          <p className="hero-description">
-            Professional photographer specializing in portrait,
-            event, commercial branding and automotive photography.
-            Creating visuals that connect people with stories.
-          </p>
-
-          <div className="hero-buttons">
-
-            <motion.a
-              href="#portfolio"
-              className="hero-btn primary"
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: .95,
-              }}
-            >
+          <motion.a
+            href="#portfolio"
+            className="floating-cta"
+            aria-label="View Portfolio"
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: .96,
+            }}
+          >
+            <span>
               View Portfolio
+            </span>
 
-              <ArrowRight
-                size={18}
-              />
+            <ArrowRight size={18} />
 
-            </motion.a>
-
-            <a
-              href="#contact"
-              className="hero-btn secondary"
-            >
-              Contact Me
-            </a>
-
-          </div>
+          </motion.a>
 
         </motion.div>
 
-        {/* RIGHT */}
+        {/* ==========================
+              RIGHT
+        ========================== */}
 
         <AnimatePresence mode="wait">
 
@@ -152,7 +156,7 @@ export default function Hero() {
             className="hero-right"
             initial={{
               opacity: 0,
-              x: 40,
+              x: 35,
             }}
             animate={{
               opacity: 1,
@@ -160,10 +164,10 @@ export default function Hero() {
             }}
             exit={{
               opacity: 0,
-              x: -40,
+              x: -35,
             }}
             transition={{
-              duration: .6,
+              duration: .45,
             }}
           >
 
@@ -185,9 +189,25 @@ export default function Hero() {
 
       </div>
 
-      {/* Bottom */}
+      {/* ==========================
+            BOTTOM NAVIGATION
+      ========================== */}
 
-      <div className="hero-bottom">
+      <motion.div
+        className="hero-bottom"
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: .35,
+          duration: .7,
+        }}
+      >
 
         {[
           "Event",
@@ -196,13 +216,11 @@ export default function Hero() {
           "Automotive",
         ].map((item, index) => (
 
-          <div
+          <button
             key={item}
-            className={
-              activeSlide === index
-                ? "active"
-                : ""
-            }
+            type="button"
+            aria-label={item}
+            className={activeSlide === index ? "active" : ""}
             onClick={() => setActiveSlide(index)}
           >
 
@@ -214,37 +232,29 @@ export default function Hero() {
               {item}
             </p>
 
-          </div>
+          </button>
 
         ))}
 
-      </div>
+      </motion.div>
 
-      {/* Dots */}
+      {/* ==========================
+            SLIDER DOTS
+      ========================== */}
 
       <div className="hero-slider-dots">
 
-        {heroSlides.map((_, index) => (
+        {heroSlides.map((slide, index) => (
 
           <button
-            key={index}
+            key={slide.id || index}
+            type="button"
+            aria-label={`Slide ${index + 1}`}
+            className={activeSlide === index ? "active" : ""}
             onClick={() => setActiveSlide(index)}
-            className={
-              activeSlide === index
-                ? "active"
-                : ""
-            }
           />
 
         ))}
-
-      </div>
-
-      {/* Scroll */}
-
-      <div className="scroll-indicator">
-
-        <span />
 
       </div>
 
