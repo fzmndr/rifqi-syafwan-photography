@@ -1,168 +1,337 @@
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { heroSlides } from "../data/heroData";
 
 function Hero() {
+
   /* ==========================================================
       STATE
   ========================================================== */
+
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const [isPaused, setIsPaused] = useState(false);
+
   const totalSlides = heroSlides.length;
+
+  const intervalRef = useRef(null);
 
   /* ==========================================================
       PRELOAD IMAGES
   ========================================================== */
+
   useEffect(() => {
+
     heroSlides.forEach((slide) => {
-      const image = new Image();
-      image.src = slide.image;
+
+      const img = new Image();
+
+      img.src = slide.image;
+
     });
+
   }, []);
 
   /* ==========================================================
-      NEXT SLIDE
+      SLIDER FUNCTIONS
   ========================================================== */
+
   const nextSlide = useCallback(() => {
-    setActiveSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+
+    setActiveSlide((prev) =>
+
+      prev === totalSlides - 1
+        ? 0
+        : prev + 1
+
+    );
+
   }, [totalSlides]);
 
-  /* ==========================================================
-      GO TO SLIDE
-  ========================================================== */
+  const prevSlide = useCallback(() => {
+
+    setActiveSlide((prev) =>
+
+      prev === 0
+        ? totalSlides - 1
+        : prev - 1
+
+    );
+
+  }, [totalSlides]);
+
   const goToSlide = useCallback((index) => {
+
     setActiveSlide(index);
+
   }, []);
 
   /* ==========================================================
       AUTO PLAY
   ========================================================== */
+
   useEffect(() => {
-    const interval = setInterval(() => {
+
+    if (isPaused) return;
+
+    intervalRef.current = setInterval(() => {
+
       nextSlide();
+
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, [nextSlide]);
+    return () => clearInterval(intervalRef.current);
+
+  }, [nextSlide, isPaused]);
 
   /* ==========================================================
-      CURRENT SLIDE DATA
+      KEYBOARD SUPPORT
   ========================================================== */
-  const currentSlide = useMemo(() => {
-    return (
-      heroSlides[activeSlide] || {
-        image: "",
-        label: "Photography",
-        title: "Documenting moments and creating visuals that tell stories.",
-        description: "I create, explore, and turn ideas into visuals.",
+
+  useEffect(() => {
+
+    const handleKey = (e) => {
+
+      if (e.key === "ArrowRight") {
+
+        nextSlide();
+
       }
-    );
-  }, [activeSlide]);
+
+      if (e.key === "ArrowLeft") {
+
+        prevSlide();
+
+      }
+
+    };
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+
+      window.removeEventListener("keydown", handleKey);
+
+    };
+
+  }, [nextSlide, prevSlide]);
+
+  /* ==========================================================
+      CURRENT SLIDE
+  ========================================================== */
+
+  const currentSlide = heroSlides[activeSlide];
 
   /* ==========================================================
       RENDER
   ========================================================== */
+
   return (
-    <section className="hero" id="home">
-      {/* ==============================
-          Background Image (Animated)
-      ============================== */}
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentSlide.image}
-          src={currentSlide.image}
-          alt={currentSlide.title}
-          className="hero-img"
-          draggable={false}
-          loading="eager"
-          fetchPriority="high"
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.03 }}
-          transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
-        />
-      </AnimatePresence>
+    <section
+  className="hero"
+  id="home"
+  onMouseEnter={() => setIsPaused(true)}
+  onMouseLeave={() => setIsPaused(false)}
+>
+  {/* ======================================
+      BACKGROUND IMAGE
+  ====================================== */}
 
-      {/* ==============================
-          Overlay
-      ============================== */}
-      <div className="hero-overlay" />
+  <AnimatePresence mode="wait">
+    <motion.img
+      key={currentSlide.image}
+      src={currentSlide.image}
+      alt={currentSlide.label}
+      className="hero-img"
+      draggable={false}
+      loading="eager"
+      fetchPriority="high"
+      initial={{
+        opacity: 0,
+        scale: 1.08,
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+      }}
+      exit={{
+        opacity: 0,
+        scale: 1.04,
+      }}
+      transition={{
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    />
+  </AnimatePresence>
 
-      {/* ==============================
-          Content Wrapper
-      ============================== */}
-      <div className="hero-wrapper">
-        {/* LEFT CONTENT */}
-        <motion.div
-          className="hero-left"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="eyebrow">Hey, I'm a</p>
-          <h1 className="hero-title">Photographer</h1>
+  {/* ======================================
+      DARK OVERLAY
+  ====================================== */}
 
-          <motion.a
-            href="#portfolio"
-            className="floating-cta"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.96 }}
-          >
-            <span>View Portfolio</span>
-            <ArrowRight size={18} />
-          </motion.a>
-        </motion.div>
+  <div className="hero-overlay" />
 
-        {/* RIGHT CARD */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSlide}
-            className="hero-card"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.45 }}
-          >
-            <span className="hero-slide-label">{currentSlide.label}</span>
-            <h2 className="hero-card-title">{currentSlide.title}</h2>
-            <p className="hero-card-description">{currentSlide.description}</p>
-          </motion.div>
-        </AnimatePresence>
-      </div>
+  {/* ======================================
+      HERO CONTENT
+  ====================================== */}
 
-      {/* =====================================
-          HERO NAVIGATION (Categories)
-      ===================================== */}
+  <div className="hero-container">
+
+    {/* ============================
+        LEFT
+    ============================ */}
+
+    <motion.div
+      className="hero-left"
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
+    >
+
+      <p className="hero-eyebrow">
+        Hey, I'm a
+      </p>
+
+      <h1 className="hero-title">
+        Photographer
+      </h1>
+
+      <motion.a
+        href="#portfolio"
+        className="hero-button"
+        whileHover={{
+          scale: 1.05,
+        }}
+        whileTap={{
+          scale: 0.96,
+        }}
+      >
+        <span>
+          View Portfolio
+        </span>
+
+        <ArrowRight size={18} />
+      </motion.a>
+
+    </motion.div>
+
+    {/* ============================
+        RIGHT CARD
+    ============================ */}
+
+    <AnimatePresence mode="wait">
+
+      <motion.div
+        key={activeSlide}
+        className="hero-card"
+        initial={{
+          opacity: 0,
+          x: 35,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        exit={{
+          opacity: 0,
+          x: -35,
+        }}
+        transition={{
+          duration: 0.45,
+        }}
+      >
+
+        <span className="hero-card-label">
+          {currentSlide.label}
+        </span>
+
+        <h2 className="hero-card-title">
+          {currentSlide.title}
+        </h2>
+
+        <p className="hero-card-description">
+          {currentSlide.description}
+        </p>
+
+      </motion.div>
+
+    </AnimatePresence>
+
+  </div>      {/* ======================================
+          HERO NAVIGATION
+      ====================================== */}
+
       <div className="hero-navigation">
-        {["Event", "Portrait", "Brand", "Automotive"].map((item, index) => (
+
+        {[
+          "Event",
+          "Portrait",
+          "Brand",
+          "Automotive",
+        ].map((item, index) => (
+
           <button
             key={item}
             type="button"
-            className={activeSlide === index ? "active" : ""}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
             onClick={() => goToSlide(index)}
           >
-            <span>#{String(index + 1).padStart(2, "0")}</span>
-            <p>{item}</p>
+
+            <span className="hero-nav-number">
+              #{String(index + 1).padStart(2, "0")}
+            </span>
+
+            <span className="hero-nav-title">
+              {item}
+            </span>
+
           </button>
+
         ))}
+
       </div>
 
-      {/* =====================================
-          SLIDER DOTS
-      ===================================== */}
-      <div className="hero-dots">
+      {/* ======================================
+          PROGRESS BAR
+      ====================================== */}
+
+      <div className="hero-progress">
+
         {heroSlides.map((slide, index) => (
+
           <button
-            key={slide.id || index}
+            key={slide.id}
             type="button"
             aria-label={`Slide ${index + 1}`}
-            className={activeSlide === index ? "active" : ""}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
             onClick={() => goToSlide(index)}
           />
+
         ))}
+
       </div>
+
     </section>
+
   );
+
 }
 
 export default Hero;
