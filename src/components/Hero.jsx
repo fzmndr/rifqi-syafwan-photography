@@ -1,39 +1,39 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { heroSlides } from "../data/heroData";
 
-export default function Hero() {
+function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  /* ==========================
-      PRELOAD IMAGE
-  ========================== */
+  /* ==============================
+     PRELOAD IMAGE
+  ============================== */
 
   useEffect(() => {
     heroSlides.forEach((slide) => {
-      const img = new Image();
-      img.src = slide.image;
+      const image = new Image();
+      image.src = slide.image;
     });
   }, []);
 
-  /* ==========================
-      AUTO SLIDER
-  ========================== */
+  /* ==============================
+     AUTO SLIDER
+  ============================== */
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setActiveSlide((prev) =>
         prev === heroSlides.length - 1 ? 0 : prev + 1
       );
     }, 4500);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, []);
 
-  /* ==========================
-      CURRENT SLIDE
-  ========================== */
+  /* ==============================
+     CURRENT SLIDE
+  ============================== */
 
   const currentSlide = useMemo(() => {
     return (
@@ -51,9 +51,7 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
 
-      {/* ==========================
-            BACKGROUND IMAGE
-      ========================== */}
+      {/* Background */}
 
       <AnimatePresence mode="wait">
 
@@ -67,7 +65,7 @@ export default function Hero() {
           draggable={false}
           initial={{
             opacity: 0,
-            scale: 1.08,
+            scale: 1.05,
           }}
           animate={{
             opacity: 1,
@@ -78,34 +76,27 @@ export default function Hero() {
             scale: 1.03,
           }}
           transition={{
-            duration: .8,
-            ease: [0.25, 1, 0.5, 1],
+            duration: 0.8,
           }}
         />
 
       </AnimatePresence>
 
-      {/* ==========================
-            OVERLAY
-      ========================== */}
+      {/* Overlay */}
 
-      <div className="hero-overlay" />
+      <div className="hero-overlay"></div>
 
-      {/* ==========================
-            CONTENT
-      ========================== */}
+      {/* Content */}
 
       <div className="hero-content">
 
-        {/* ==========================
-              LEFT
-        ========================== */}
+        {/* LEFT */}
 
         <motion.div
           className="hero-left"
           initial={{
             opacity: 0,
-            y: 35,
+            y: 30,
           }}
           animate={{
             opacity: 1,
@@ -127,17 +118,14 @@ export default function Hero() {
           <motion.a
             href="#portfolio"
             className="floating-cta"
-            aria-label="View Portfolio"
             whileHover={{
               scale: 1.05,
             }}
             whileTap={{
-              scale: .96,
+              scale: .95,
             }}
           >
-            <span>
-              View Portfolio
-            </span>
+            View Portfolio
 
             <ArrowRight size={18} />
 
@@ -145,9 +133,7 @@ export default function Hero() {
 
         </motion.div>
 
-        {/* ==========================
-              RIGHT
-        ========================== */}
+        {/* RIGHT */}
 
         <AnimatePresence mode="wait">
 
@@ -156,7 +142,7 @@ export default function Hero() {
             className="hero-right"
             initial={{
               opacity: 0,
-              x: 35,
+              x: 30,
             }}
             animate={{
               opacity: 1,
@@ -164,7 +150,7 @@ export default function Hero() {
             }}
             exit={{
               opacity: 0,
-              x: -35,
+              x: -30,
             }}
             transition={{
               duration: .45,
@@ -189,23 +175,20 @@ export default function Hero() {
 
       </div>
 
-      {/* ==========================
-            BOTTOM NAVIGATION
-      ========================== */}
+      {/* Bottom Navigation */}
 
       <motion.div
         className="hero-bottom"
         initial={{
           opacity: 0,
-          y: 25,
+          y: 20,
         }}
         animate={{
           opacity: 1,
           y: 0,
         }}
         transition={{
-          delay: .35,
-          duration: .7,
+          delay: .3,
         }}
       >
 
@@ -219,8 +202,11 @@ export default function Hero() {
           <button
             key={item}
             type="button"
-            aria-label={item}
-            className={activeSlide === index ? "active" : ""}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
             onClick={() => setActiveSlide(index)}
           >
 
@@ -238,9 +224,7 @@ export default function Hero() {
 
       </motion.div>
 
-      {/* ==========================
-            SLIDER DOTS
-      ========================== */}
+      {/* Dots */}
 
       <div className="hero-slider-dots">
 
@@ -249,8 +233,11 @@ export default function Hero() {
           <button
             key={slide.id || index}
             type="button"
-            aria-label={`Slide ${index + 1}`}
-            className={activeSlide === index ? "active" : ""}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
             onClick={() => setActiveSlide(index)}
           />
 
@@ -261,3 +248,5 @@ export default function Hero() {
     </section>
   );
 }
+
+export default Hero;

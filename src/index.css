@@ -368,239 +368,275 @@ img {
 }
 
 /* ===========================================================
-   HERO SECTION
-   =========================================================== */
+   HERO
+=========================================================== */
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 120px 40px 60px;
-  box-sizing: border-box;
-  background: #0f0f0f;
+.hero{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:120px 48px 110px;
+
+    background:#0f0f0f;
 }
 
 /* ===========================================================
-   BACKGROUND IMAGE
-   =========================================================== */
+   BACKGROUND
+=========================================================== */
 
-.hero-img {
-  position: absolute;
-  inset: 0;
+.hero-img{
 
-  width: 100%;
-  height: 100%;
+    position:absolute;
+    inset:0;
 
-  object-fit: cover;
-  object-position: center;
+    width:100%;
+    height:100%;
 
-  z-index: 1;
-  user-select: none;
-  pointer-events: none;
+    object-fit:cover;
+    object-position:center;
 
-  animation: heroZoom 14s ease-in-out infinite alternate;
+    user-select:none;
+    pointer-events:none;
+
+    z-index:1;
+
+    animation:heroZoom 14s ease-in-out infinite alternate;
+
 }
 
-@keyframes heroZoom {
-  from {
-    transform: scale(1);
-  }
+@keyframes heroZoom{
 
-  to {
-    transform: scale(1.05);
-  }
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.06);
+
+    }
+
 }
 
 /* ===========================================================
    OVERLAY
-   =========================================================== */
+=========================================================== */
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
+.hero-overlay{
 
-  z-index: 2;
+    position:absolute;
+    inset:0;
 
-  background:
+    z-index:2;
+
+    background:
     linear-gradient(
-      90deg,
-      rgba(10, 10, 10, .88) 0%,
-      rgba(10, 10, 10, .58) 40%,
-      rgba(10, 10, 10, .40) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, .15) 0%,
-      rgba(0, 0, 0, .55) 100%
+        90deg,
+        rgba(8,8,8,.92) 0%,
+        rgba(8,8,8,.62) 42%,
+        rgba(8,8,8,.35) 100%
     );
+
 }
 
 /* ===========================================================
    CONTENT
-   =========================================================== */
+=========================================================== */
 
-.hero-content {
-  position: relative;
-  z-index: 5;
+.hero-content{
 
-  width: 100%;
-  max-width: 1280px;
+    position:relative;
 
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  align-items: center;
-
-  gap: 80px;
-}
-
-/* ===========================================================
-   LEFT
-   =========================================================== */
-
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  max-width: 700px;
-}
-
-.eyebrow {
-  color: rgba(255,255,255,.85);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  margin-bottom: 14px;
-}
-
-.hero h1 {
-  color: #fff;
-
-  font-size: clamp(72px, 8vw, 118px);
-
-  line-height: .92;
-  letter-spacing: -.06em;
-
-  margin: 0 0 28px;
-
-  font-weight: 900;
-}
-
-/* ===========================================================
-   BUTTON
-   =========================================================== */
-
-.floating-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 15px 30px;
-
-  background: #ff5a1f;
-  color: #fff;
-
-  border-radius: 999px;
-
-  font-weight: 700;
-  text-decoration: none;
-
-  transition: .35s ease;
-}
-
-.floating-cta:hover {
-  transform: translateY(-4px);
-
-  box-shadow: 0 15px 35px rgba(255,90,31,.35);
-}
-
-/* ===========================================================
-   RIGHT
-   =========================================================== */
-
-.hero-right {
-  margin-left: auto;
-
-  width: 100%;
-  max-width: 420px;
-
-  padding: 34px;
-
-  border-radius: 28px;
-
-  backdrop-filter: blur(20px);
-
-  background: rgba(255,255,255,.06);
-
-  border: 1px solid rgba(255,255,255,.10);
-
-  box-shadow: 0 25px 60px rgba(0,0,0,.35);
-}
-
-.hero-slide-label {
-  display: inline-flex;
-
-  padding: 8px 16px;
-
-  border-radius: 999px;
-
-  background: rgba(255,90,31,.18);
-
-  color: #ff7d45;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  letter-spacing: .08em;
-
-  text-transform: uppercase;
-}
-
-.hero-right h2 {
-  margin-top: 20px;
-  margin-bottom: 18px;
-
-  color: #fff;
-
-  font-size: 40px;
-
-  line-height: 1.18;
-
-  letter-spacing: -.04em;
-}
-
-.hero-right p {
-  color: rgba(255,255,255,.74);
-
-  font-size: 15px;
-
-  line-height: 1.85;
-}
-/* ===========================================================
-   HERO BOTTOM
-   =========================================================== */
-
-.hero-bottom{
-
-    position:absolute;
-
-    left:50%;
-    bottom:35px;
-
-    transform:translateX(-50%);
-
-    z-index:10;
+    z-index:5;
 
     width:100%;
     max-width:1280px;
 
     display:grid;
 
+    grid-template-columns:1.2fr .8fr;
+
+    align-items:center;
+
+    gap:80px;
+
+}
+
+/* ===========================================================
+   LEFT
+=========================================================== */
+
+.hero-left{
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+
+    max-width:650px;
+
+}
+
+.eyebrow{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.hero h1{
+
+    color:#fff;
+
+    font-size:clamp(72px,8vw,118px);
+
+    line-height:.9;
+
+    letter-spacing:-0.06em;
+
+    margin:0;
+
+    font-weight:900;
+
+}
+
+/* ===========================================================
+   CTA
+=========================================================== */
+
+.floating-cta{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:36px;
+
+    padding:16px 32px;
+
+    border-radius:999px;
+
+    background:#ff5a1f;
+
+    color:#fff;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.35s ease;
+
+}
+
+.floating-cta:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(255,90,31,.35);
+
+}
+
+/* ===========================================================
+   RIGHT
+=========================================================== */
+
+.hero-right{
+
+    width:100%;
+    max-width:420px;
+
+    margin-left:auto;
+
+    padding:34px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.hero-slide-label{
+
+    display:inline-flex;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,90,31,.15);
+
+    color:#ff6b37;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+.hero-right h2{
+
+    margin:20px 0 16px;
+
+    color:#fff;
+
+    font-size:40px;
+
+    line-height:1.2;
+
+}
+
+.hero-right p{
+
+    color:rgba(255,255,255,.72);
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+/* ===========================================================
+   HERO BOTTOM NAVIGATION
+=========================================================== */
+
+.hero-bottom{
+
+    position:absolute;
+
+    left:50%;
+    bottom:40px;
+
+    transform:translateX(-50%);
+
+    width:100%;
+    max-width:1280px;
+
+    display:grid;
     grid-template-columns:repeat(4,1fr);
 
     gap:30px;
@@ -609,6 +645,8 @@ img {
 
     border-top:1px solid rgba(255,255,255,.12);
 
+    z-index:20;
+
 }
 
 .hero-bottom button{
@@ -616,23 +654,27 @@ img {
     background:none;
     border:none;
 
-    text-align:left;
-
     cursor:pointer;
+
+    color:#fff;
+
+    text-align:left;
 
     padding:0;
 
-    transition:.35s;
-
     opacity:.45;
 
-    color:#fff;
+    transition:.35s ease;
+
+    position:relative;
 
 }
 
 .hero-bottom button:hover{
 
-    opacity:.8;
+    opacity:1;
+
+    transform:translateY(-4px);
 
 }
 
@@ -642,9 +684,29 @@ img {
 
 }
 
+.hero-bottom button.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-25px;
+    left:0;
+
+    width:55px;
+    height:3px;
+
+    border-radius:999px;
+
+    background:#ff5a1f;
+
+}
+
 .hero-bottom span{
 
     display:block;
+
+    margin-bottom:8px;
 
     color:#ff5a1f;
 
@@ -652,7 +714,7 @@ img {
 
     font-weight:700;
 
-    margin-bottom:6px;
+    letter-spacing:1px;
 
 }
 
@@ -667,15 +729,15 @@ img {
 }
 
 /* ===========================================================
-   DOTS
-   =========================================================== */
+   SLIDER DOTS
+=========================================================== */
 
 .hero-slider-dots{
 
     position:absolute;
 
     left:50%;
-    bottom:130px;
+    bottom:135px;
 
     transform:translateX(-50%);
 
@@ -689,24 +751,24 @@ img {
 
 .hero-slider-dots button{
 
-    width:11px;
-    height:11px;
-
-    border-radius:50%;
+    width:10px;
+    height:10px;
 
     border:none;
 
-    background:rgba(255,255,255,.3);
+    border-radius:50%;
 
     cursor:pointer;
 
-    transition:.35s;
+    background:rgba(255,255,255,.3);
+
+    transition:.35s ease;
 
 }
 
 .hero-slider-dots button:hover{
 
-    transform:scale(1.15);
+    transform:scale(1.25);
 
 }
 
@@ -721,380 +783,14 @@ img {
 }
 
 /* ===========================================================
-   LAPTOP
-   =========================================================== */
-
-@media (max-width:1200px){
-
-.hero{
-
-padding:110px 30px 50px;
-
-}
-
-.hero-content{
-
-gap:50px;
-
-grid-template-columns:1fr .8fr;
-
-}
-
-.hero h1{
-
-font-size:clamp(64px,8vw,90px);
-
-}
-
-.hero-right{
-
-max-width:380px;
-
-padding:28px;
-
-}
-
-.hero-right h2{
-
-font-size:32px;
-
-}
-
-}
-
-/* ===========================================================
-   TABLET
-   =========================================================== */
-
-@media (max-width:991px){
-
-.hero{
-
-padding:100px 28px 150px;
-
-align-items:flex-start;
-
-}
-
-.hero-content{
-
-grid-template-columns:1fr;
-
-gap:36px;
-
-}
-
-.hero-left{
-
-max-width:100%;
-
-}
-
-.hero-right{
-
-margin:0;
-
-max-width:100%;
-
-}
-
-.hero-right h2{
-
-font-size:28px;
-
-}
-
-.hero-bottom{
-
-grid-template-columns:repeat(2,1fr);
-
-gap:18px;
-
-bottom:25px;
-
-}
-
-.hero-slider-dots{
-
-bottom:110px;
-
-}
-
-}
-
-/* ===========================================================
-   MOBILE
-   =========================================================== */
-
-@media (max-width:768px){
-
-.hero{
-
-padding:90px 20px 30px;
-
-min-height:auto;
-
-align-items:flex-start;
-
-}
-
-.hero-content{
-
-display:flex;
-
-flex-direction:column;
-
-gap:24px;
-
-}
-
-/* LEFT */
-
-.hero-left{
-
-width:100%;
-
-}
-
-.eyebrow{
-
-font-size:16px;
-
-margin-bottom:10px;
-
-}
-
-.hero h1{
-
-font-size:clamp(46px,14vw,60px);
-
-line-height:.95;
-
-margin-bottom:20px;
-
-}
-
-/* BUTTON */
+   CTA EFFECT
+=========================================================== */
 
 .floating-cta{
-
-width:100%;
-
-justify-content:center;
-
-padding:14px;
-
-}
-
-/* RIGHT */
-
-.hero-right{
-
-width:100%;
-
-padding:22px;
-
-border-radius:18px;
-
-}
-
-.hero-right h2{
-
-font-size:22px;
-
-margin-top:16px;
-
-margin-bottom:12px;
-
-}
-
-.hero-right p{
-
-font-size:14px;
-
-line-height:1.7;
-
-}
-
-/* DOTS */
-
-.hero-slider-dots{
-
-position:relative;
-
-left:auto;
-bottom:auto;
-
-transform:none;
-
-justify-content:center;
-
-margin-top:10px;
-
-}
-
-/* CATEGORY */
-
-.hero-bottom{
-
-position:relative;
-
-left:auto;
-bottom:auto;
-
-transform:none;
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:12px;
-
-border:none;
-
-padding-top:20px;
-
-margin-top:5px;
-
-}
-
-.hero-bottom button{
-
-padding:14px;
-
-border-radius:16px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-opacity:1;
-
-}
-
-.hero-bottom button.active{
-
-border-color:#ff5a1f;
-
-background:rgba(255,90,31,.08);
-
-}
-
-}
-
-/* ===========================================================
-   SMALL MOBILE
-   =========================================================== */
-
-@media (max-width:480px){
-
-.hero{
-
-padding:80px 16px 25px;
-
-}
-
-.hero h1{
-
-font-size:44px;
-
-}
-
-.hero-right{
-
-padding:18px;
-
-}
-
-.hero-right h2{
-
-font-size:20px;
-
-}
-
-.hero-right p{
-
-font-size:13px;
-
-}
-
-.hero-bottom{
-
-grid-template-columns:1fr;
-
-}
-
-.hero-bottom button{
-
-padding:12px;
-
-}
-
-.floating-cta{
-
-font-size:14px;
-
-padding:13px;
-
-}
-
-}
-/* ===========================================================
-   HERO FINISHING
-   =========================================================== */
-
-/* Smooth Rendering */
-
-.hero,
-.hero *{
-
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-
-    box-sizing:border-box;
-
-}
-
-/* Prevent Horizontal Scroll */
-
-html,
-body{
-
-    overflow-x:hidden;
-
-}
-
-/* Better Image Rendering */
-
-.hero-img{
-
-    image-rendering:auto;
-
-    will-change:transform,opacity;
-
-}
-
-/* Better Animation */
-
-.hero-content,
-.hero-left,
-.hero-right,
-.hero-bottom,
-.hero-slider-dots{
-
-    will-change:transform,opacity;
-
-}
-
-/* ===========================================================
-   CTA
-   =========================================================== */
-
-.floating-cta{
-
-    position:relative;
 
     overflow:hidden;
+
+    position:relative;
 
 }
 
@@ -1111,11 +807,10 @@ body{
     height:100%;
 
     background:
-
     linear-gradient(
         90deg,
         transparent,
-        rgba(255,255,255,.25),
+        rgba(255,255,255,.3),
         transparent
     );
 
@@ -1130,94 +825,35 @@ body{
 }
 
 /* ===========================================================
-   RIGHT CARD
-   =========================================================== */
+   RIGHT CARD EFFECT
+=========================================================== */
 
 .hero-right{
 
     transition:
-    transform .35s ease,
-    border-color .35s ease,
-    background .35s ease,
-    box-shadow .35s ease;
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
 
 }
 
 .hero-right:hover{
 
-    transform:translateY(-6px);
-
-    border-color:rgba(255,90,31,.4);
+    transform:translateY(-8px);
 
     background:rgba(255,255,255,.08);
 
+    border-color:rgba(255,90,31,.35);
+
     box-shadow:
-    0 20px 55px rgba(0,0,0,.45);
+        0 20px 60px rgba(0,0,0,.45);
 
 }
 
 /* ===========================================================
-   CATEGORY
-   =========================================================== */
-
-.hero-bottom button{
-
-    position:relative;
-
-}
-
-.hero-bottom button::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-8px;
-
-    width:0;
-
-    height:2px;
-
-    background:#ff5a1f;
-
-    transition:.35s;
-
-}
-
-.hero-bottom button:hover::after{
-
-    width:55px;
-
-}
-
-.hero-bottom button.active::after{
-
-    width:70px;
-
-}
-
-/* ===========================================================
-   DOTS
-   =========================================================== */
-
-.hero-slider-dots button{
-
-    transition:
-    .35s,
-    transform .35s ease;
-
-}
-
-.hero-slider-dots button:hover{
-
-    transform:scale(1.2);
-
-}
-
-/* ===========================================================
-   TITLE
-   =========================================================== */
+   HERO TITLE
+=========================================================== */
 
 .hero h1{
 
@@ -1231,52 +867,28 @@ body{
 
 }
 
-/* ===========================================================
-   PARAGRAPH
-   =========================================================== */
-
 .hero-right p{
 
     text-wrap:pretty;
 
 }
 
-.eyebrow{
-
-    letter-spacing:.04em;
-
-}
-
 /* ===========================================================
-   SELECTION
-   =========================================================== */
+   ACCESSIBILITY
+=========================================================== */
 
-.hero ::selection{
-
-    background:#ff5a1f;
-
-    color:#fff;
-
-}
-
-/* ===========================================================
-   FOCUS
-   =========================================================== */
-
-.hero a:focus-visible,
-.hero button:focus-visible{
+.hero button:focus-visible,
+.hero a:focus-visible{
 
     outline:2px solid #ff5a1f;
 
-    outline-offset:4px;
-
-    border-radius:12px;
+    outline-offset:5px;
 
 }
 
 /* ===========================================================
-   LARGE SCREEN
-   =========================================================== */
+   ULTRA WIDE
+=========================================================== */
 
 @media(min-width:1600px){
 
@@ -1299,76 +911,368 @@ max-width:470px;
 }
 
 }
-
 /* ===========================================================
-   EXTRA SMALL
-   =========================================================== */
+   LAPTOP
+=========================================================== */
 
-@media(max-width:360px){
+@media (max-width:1200px){
 
 .hero{
 
-padding:72px 14px 24px;
+    padding:110px 32px 90px;
+
+}
+
+.hero-content{
+
+    grid-template-columns:1fr .85fr;
+
+    gap:60px;
 
 }
 
 .hero h1{
 
-font-size:38px;
+    font-size:clamp(64px,8vw,92px);
 
 }
 
 .hero-right{
 
-padding:16px;
+    max-width:380px;
+
+    padding:30px;
 
 }
 
 .hero-right h2{
 
-font-size:18px;
+    font-size:34px;
 
 }
 
-.hero-right p{
+.hero-bottom{
 
-font-size:12px;
-
-}
-
-.hero-bottom button{
-
-padding:10px;
-
-}
-
-.floating-cta{
-
-font-size:13px;
-
-padding:12px;
+    gap:22px;
 
 }
 
 }
 
 /* ===========================================================
-   REDUCE MOTION
-   =========================================================== */
+   TABLET
+=========================================================== */
 
-@media (prefers-reduced-motion:reduce){
+@media (max-width:992px){
 
-*{
+.hero{
 
-animation:none !important;
+    padding:110px 28px 60px;
 
-transition:none !important;
+    min-height:auto;
 
-scroll-behavior:auto !important;
+}
+
+.hero-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+}
+
+.hero-left{
+
+    max-width:100%;
+
+}
+
+.hero h1{
+
+    font-size:68px;
+
+}
+
+.hero-right{
+
+    width:100%;
+
+    max-width:100%;
+
+    margin:0;
+
+}
+
+.hero-right h2{
+
+    font-size:30px;
+
+}
+
+.hero-bottom{
+
+    position:relative;
+
+    left:auto;
+    bottom:auto;
+
+    transform:none;
+
+    width:100%;
+
+    margin-top:30px;
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.hero-slider-dots{
+
+    position:relative;
+
+    left:auto;
+    bottom:auto;
+
+    transform:none;
+
+    justify-content:center;
+
+    margin-top:18px;
 
 }
 
 }
+
+/* ===========================================================
+   MOBILE
+=========================================================== */
+
+@media (max-width:768px){
+
+.hero{
+
+    padding:90px 20px 35px;
+
+}
+
+.hero-content{
+
+    gap:28px;
+
+}
+
+.hero-left{
+
+    width:100%;
+
+}
+
+.eyebrow{
+
+    font-size:16px;
+
+}
+
+.hero h1{
+
+    font-size:52px;
+
+    line-height:.95;
+
+    margin-bottom:0;
+
+}
+
+.floating-cta{
+
+    width:100%;
+
+    justify-content:center;
+
+    margin-top:28px;
+
+    padding:15px;
+
+}
+
+.hero-right{
+
+    padding:22px;
+
+    border-radius:20px;
+
+}
+
+.hero-right h2{
+
+    font-size:22px;
+
+    margin:16px 0 10px;
+
+}
+
+.hero-right p{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+.hero-bottom{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    border:none;
+
+    padding-top:0;
+
+}
+
+.hero-bottom button{
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    opacity:1;
+
+}
+
+.hero-bottom button.active{
+
+    border-color:#ff5a1f;
+
+    background:rgba(255,90,31,.08);
+
+}
+
+.hero-bottom button.active::before{
+
+    display:none;
+
+}
+
+.hero-slider-dots{
+
+    margin:18px auto;
+
+}
+
+}
+
+/* ===========================================================
+   SMALL MOBILE
+=========================================================== */
+
+@media (max-width:480px){
+
+.hero{
+
+    padding:80px 18px 30px;
+
+}
+
+.hero h1{
+
+    font-size:44px;
+
+}
+
+.hero-right{
+
+    padding:18px;
+
+}
+
+.hero-right h2{
+
+    font-size:20px;
+
+}
+
+.hero-right p{
+
+    font-size:13px;
+
+}
+
+.hero-bottom{
+
+    grid-template-columns:1fr;
+
+}
+
+.hero-bottom button{
+
+    padding:13px;
+
+}
+
+.floating-cta{
+
+    font-size:14px;
+
+}
+
+}
+
+/* ===========================================================
+   EXTRA SMALL
+=========================================================== */
+
+@media (max-width:360px){
+
+.hero{
+
+    padding:72px 14px 24px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+.hero-right{
+
+    padding:16px;
+
+}
+
+.hero-right h2{
+
+    font-size:18px;
+
+}
+
+.hero-right p{
+
+    font-size:12px;
+
+}
+
+.hero-bottom button{
+
+    padding:11px;
+
+}
+
+}
+
 
 .floating-cta {
   position: absolute;
