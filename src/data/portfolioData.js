@@ -167,7 +167,7 @@ export const portfolioItems = [
     id: 14,
     image: gallery14,
     title: "VESPA SNAKE POP UP",
-    category: "normal",
+    category: "Brand",
     size: "normal",
     year: "2025",
     service: "BRAND PHOTOGRAPHY",
