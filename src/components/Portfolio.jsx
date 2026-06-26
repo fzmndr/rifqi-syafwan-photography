@@ -253,15 +253,7 @@ function Portfolio() {
                     <strong>{selectedItem.service}</strong>
                   </div>
 
-                  <div>
-                    <small>Duration</small>
-                    <strong>{selectedItem.duration}</strong>
-                  </div>
-
-                  <div>
-                    <small>Deliverables</small>
-                    <strong>{selectedItem.deliverables}</strong>
-                  </div>
+                  
                 </div>
 
                 <a
