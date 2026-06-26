@@ -373,17 +373,16 @@ img {
 
 .hero{
     position:relative;
-    width:100%;
     min-height:100vh;
+    width:100%;
     overflow:hidden;
+    background:#0f0f0f;
 
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
-    padding:120px 48px 110px;
-
-    background:#0f0f0f;
+    padding:120px 40px 140px;
 }
 
 /* ===========================================================
@@ -406,22 +405,18 @@ img {
 
     z-index:1;
 
-    animation:heroZoom 14s ease-in-out infinite alternate;
+    animation:heroZoom 15s ease-in-out infinite alternate;
 
 }
 
 @keyframes heroZoom{
 
     from{
-
         transform:scale(1);
-
     }
 
     to{
-
-        transform:scale(1.06);
-
+        transform:scale(1.05);
     }
 
 }
@@ -440,28 +435,26 @@ img {
     background:
     linear-gradient(
         90deg,
-        rgba(8,8,8,.92) 0%,
-        rgba(8,8,8,.62) 42%,
+        rgba(8,8,8,.90) 0%,
+        rgba(8,8,8,.60) 40%,
         rgba(8,8,8,.35) 100%
     );
 
 }
 
 /* ===========================================================
-   CONTENT
+   CONTAINER
 =========================================================== */
 
-.hero-content{
+.hero-wrapper{
 
     position:relative;
-
     z-index:5;
 
     width:100%;
     max-width:1280px;
 
     display:grid;
-
     grid-template-columns:1.2fr .8fr;
 
     align-items:center;
@@ -487,54 +480,56 @@ img {
 
 .eyebrow{
 
-    color:rgba(255,255,255,.85);
+    color:#fff;
+
+    opacity:.85;
 
     font-size:18px;
 
     font-weight:700;
 
-    margin-bottom:14px;
+    margin-bottom:16px;
 
 }
 
-.hero h1{
+.hero-title{
 
     color:#fff;
 
     font-size:clamp(72px,8vw,118px);
 
+    font-weight:900;
+
     line-height:.9;
 
-    letter-spacing:-0.06em;
+    letter-spacing:-.06em;
 
     margin:0;
-
-    font-weight:900;
 
 }
 
 /* ===========================================================
-   CTA
+   BUTTON
 =========================================================== */
 
 .floating-cta{
+
+    margin-top:36px;
 
     display:inline-flex;
 
     align-items:center;
     justify-content:center;
 
-    gap:10px;
+    gap:12px;
 
-    margin-top:36px;
-
-    padding:16px 32px;
-
-    border-radius:999px;
+    padding:16px 34px;
 
     background:#ff5a1f;
 
     color:#fff;
+
+    border-radius:999px;
 
     font-weight:700;
 
@@ -548,15 +543,15 @@ img {
 
     transform:translateY(-4px);
 
-    box-shadow:0 15px 35px rgba(255,90,31,.35);
+    box-shadow:0 18px 35px rgba(255,90,31,.35);
 
 }
 
 /* ===========================================================
-   RIGHT
+   RIGHT CARD
 =========================================================== */
 
-.hero-right{
+.hero-card{
 
     width:100%;
     max-width:420px;
@@ -569,11 +564,11 @@ img {
 
     background:rgba(255,255,255,.06);
 
-    backdrop-filter:blur(18px);
-
     border:1px solid rgba(255,255,255,.12);
 
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 
 }
 
@@ -599,9 +594,9 @@ img {
 
 }
 
-.hero-right h2{
+.hero-card-title{
 
-    margin:20px 0 16px;
+    margin:22px 0 16px;
 
     color:#fff;
 
@@ -611,7 +606,7 @@ img {
 
 }
 
-.hero-right p{
+.hero-card-description{
 
     color:rgba(255,255,255,.72);
 
@@ -621,15 +616,15 @@ img {
 
 }
 /* ===========================================================
-   HERO BOTTOM NAVIGATION
+   HERO NAVIGATION
 =========================================================== */
 
-.hero-bottom{
+.hero-navigation{
 
     position:absolute;
 
     left:50%;
-    bottom:40px;
+    bottom:38px;
 
     transform:translateX(-50%);
 
@@ -639,17 +634,17 @@ img {
     display:grid;
     grid-template-columns:repeat(4,1fr);
 
-    gap:30px;
+    gap:28px;
 
     padding-top:24px;
 
     border-top:1px solid rgba(255,255,255,.12);
 
-    z-index:20;
+    z-index:10;
 
 }
 
-.hero-bottom button{
+.hero-navigation button{
 
     background:none;
     border:none;
@@ -670,7 +665,7 @@ img {
 
 }
 
-.hero-bottom button:hover{
+.hero-navigation button:hover{
 
     opacity:1;
 
@@ -678,22 +673,22 @@ img {
 
 }
 
-.hero-bottom button.active{
+.hero-navigation button.active{
 
     opacity:1;
 
 }
 
-.hero-bottom button.active::before{
+.hero-navigation button.active::before{
 
     content:"";
 
     position:absolute;
 
-    top:-25px;
     left:0;
+    top:-25px;
 
-    width:55px;
+    width:60px;
     height:3px;
 
     border-radius:999px;
@@ -702,7 +697,7 @@ img {
 
 }
 
-.hero-bottom span{
+.hero-navigation span{
 
     display:block;
 
@@ -714,11 +709,11 @@ img {
 
     font-weight:700;
 
-    letter-spacing:1px;
+    letter-spacing:.08em;
 
 }
 
-.hero-bottom p{
+.hero-navigation p{
 
     color:#fff;
 
@@ -729,15 +724,15 @@ img {
 }
 
 /* ===========================================================
-   SLIDER DOTS
+   HERO DOTS
 =========================================================== */
 
-.hero-slider-dots{
+.hero-dots{
 
     position:absolute;
 
     left:50%;
-    bottom:135px;
+    bottom:120px;
 
     transform:translateX(-50%);
 
@@ -745,11 +740,11 @@ img {
 
     gap:10px;
 
-    z-index:20;
+    z-index:15;
 
 }
 
-.hero-slider-dots button{
+.hero-dots button{
 
     width:10px;
     height:10px;
@@ -758,23 +753,23 @@ img {
 
     border-radius:50%;
 
-    cursor:pointer;
+    background:rgba(255,255,255,.35);
 
-    background:rgba(255,255,255,.3);
+    cursor:pointer;
 
     transition:.35s ease;
 
 }
 
-.hero-slider-dots button:hover{
+.hero-dots button:hover{
 
-    transform:scale(1.25);
+    transform:scale(1.2);
 
 }
 
-.hero-slider-dots button.active{
+.hero-dots button.active{
 
-    width:32px;
+    width:34px;
 
     border-radius:999px;
 
@@ -783,14 +778,14 @@ img {
 }
 
 /* ===========================================================
-   CTA EFFECT
+   CTA
 =========================================================== */
 
 .floating-cta{
 
-    overflow:hidden;
-
     position:relative;
+
+    overflow:hidden;
 
 }
 
@@ -800,17 +795,18 @@ img {
 
     position:absolute;
 
-    left:-120%;
+    left:-130%;
     top:0;
 
     width:120%;
     height:100%;
 
     background:
+
     linear-gradient(
         90deg,
         transparent,
-        rgba(255,255,255,.3),
+        rgba(255,255,255,.25),
         transparent
     );
 
@@ -820,25 +816,25 @@ img {
 
 .floating-cta:hover::before{
 
-    left:120%;
+    left:130%;
 
 }
 
 /* ===========================================================
-   RIGHT CARD EFFECT
+   HERO CARD
 =========================================================== */
 
-.hero-right{
+.hero-card{
 
     transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease,
-        box-shadow .35s ease;
+    transform .35s ease,
+    box-shadow .35s ease,
+    background .35s ease,
+    border-color .35s ease;
 
 }
 
-.hero-right:hover{
+.hero-card:hover{
 
     transform:translateY(-8px);
 
@@ -847,27 +843,27 @@ img {
     border-color:rgba(255,90,31,.35);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
+        0 25px 60px rgba(0,0,0,.45);
 
 }
 
 /* ===========================================================
-   HERO TITLE
+   BETTER TYPOGRAPHY
 =========================================================== */
 
-.hero h1{
+.hero-title{
 
     text-wrap:balance;
 
 }
 
-.hero-right h2{
+.hero-card-title{
 
     text-wrap:balance;
 
 }
 
-.hero-right p{
+.hero-card-description{
 
     text-wrap:pretty;
 
@@ -877,160 +873,104 @@ img {
    ACCESSIBILITY
 =========================================================== */
 
-.hero button:focus-visible,
-.hero a:focus-visible{
+.hero a:focus-visible,
+.hero button:focus-visible{
 
     outline:2px solid #ff5a1f;
 
     outline-offset:5px;
 
-}
-
-/* ===========================================================
-   ULTRA WIDE
-=========================================================== */
-
-@media(min-width:1600px){
-
-.hero-content{
-
-max-width:1450px;
-
-}
-
-.hero h1{
-
-font-size:130px;
-
-}
-
-.hero-right{
-
-max-width:470px;
-
-}
+    border-radius:12px;
 
 }
 /* ===========================================================
-   LAPTOP
+   RESPONSIVE - LAPTOP
 =========================================================== */
 
-@media (max-width:1200px){
+@media (max-width: 1200px){
 
-.hero{
+  .hero{
+    padding:110px 32px 120px;
+  }
 
-    padding:110px 32px 90px;
+  .hero-wrapper{
+    gap:56px;
+    grid-template-columns:1fr .8fr;
+  }
 
-}
+  .hero-title{
+    font-size:clamp(60px,8vw,88px);
+  }
 
-.hero-content{
-
-    grid-template-columns:1fr .85fr;
-
-    gap:60px;
-
-}
-
-.hero h1{
-
-    font-size:clamp(64px,8vw,92px);
-
-}
-
-.hero-right{
-
+  .hero-card{
     max-width:380px;
-
     padding:30px;
+  }
 
-}
-
-.hero-right h2{
-
-    font-size:34px;
-
-}
-
-.hero-bottom{
-
-    gap:22px;
-
-}
+  .hero-card-title{
+    font-size:32px;
+  }
 
 }
 
 /* ===========================================================
-   TABLET
+   RESPONSIVE - TABLET
 =========================================================== */
 
-@media (max-width:992px){
+@media (max-width: 992px){
 
-.hero{
-
-    padding:110px 28px 60px;
-
+  .hero{
+    padding:100px 28px 60px;
     min-height:auto;
+  }
 
-}
-
-.hero-content{
+  .hero-wrapper{
 
     display:flex;
-
     flex-direction:column;
 
     align-items:flex-start;
 
-    gap:40px;
+    gap:36px;
 
-}
+  }
 
-.hero-left{
+  .hero-left{
 
     max-width:100%;
 
-}
+  }
 
-.hero h1{
+  .hero-title{
 
-    font-size:68px;
+    font-size:64px;
 
-}
+  }
 
-.hero-right{
+  .floating-cta{
+
+    margin-top:28px;
+
+  }
+
+  .hero-card{
 
     width:100%;
-
     max-width:100%;
 
     margin:0;
 
-}
+  }
 
-.hero-right h2{
+  .hero-card-title{
 
-    font-size:30px;
+    font-size:28px;
 
-}
+  }
 
-.hero-bottom{
+  /* navigation */
 
-    position:relative;
-
-    left:auto;
-    bottom:auto;
-
-    transform:none;
-
-    width:100%;
-
-    margin-top:30px;
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-.hero-slider-dots{
+  .hero-navigation{
 
     position:relative;
 
@@ -1039,109 +979,23 @@ max-width:470px;
 
     transform:none;
 
-    justify-content:center;
-
-    margin-top:18px;
-
-}
-
-}
-
-/* ===========================================================
-   MOBILE
-=========================================================== */
-
-@media (max-width:768px){
-
-.hero{
-
-    padding:90px 20px 35px;
-
-}
-
-.hero-content{
-
-    gap:28px;
-
-}
-
-.hero-left{
-
-    width:100%;
-
-}
-
-.eyebrow{
-
-    font-size:16px;
-
-}
-
-.hero h1{
-
-    font-size:52px;
-
-    line-height:.95;
-
-    margin-bottom:0;
-
-}
-
-.floating-cta{
-
-    width:100%;
-
-    justify-content:center;
-
-    margin-top:28px;
-
-    padding:15px;
-
-}
-
-.hero-right{
-
-    padding:22px;
-
-    border-radius:20px;
-
-}
-
-.hero-right h2{
-
-    font-size:22px;
-
-    margin:16px 0 10px;
-
-}
-
-.hero-right p{
-
-    font-size:14px;
-
-    line-height:1.7;
-
-}
-
-.hero-bottom{
-
-    display:grid;
+    margin-top:40px;
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:12px;
-
-    border:none;
+    border-top:none;
 
     padding-top:0;
 
-}
+    gap:16px;
 
-.hero-bottom button{
+  }
 
-    padding:14px;
+  .hero-navigation button{
 
-    border-radius:16px;
+    padding:18px;
+
+    border-radius:18px;
 
     background:rgba(255,255,255,.05);
 
@@ -1149,27 +1003,118 @@ max-width:470px;
 
     opacity:1;
 
-}
+  }
 
-.hero-bottom button.active{
+  .hero-navigation button.active{
 
     border-color:#ff5a1f;
 
     background:rgba(255,90,31,.08);
 
-}
+  }
 
-.hero-bottom button.active::before{
+  .hero-navigation button.active::before{
 
     display:none;
 
+  }
+
+  .hero-dots{
+
+    position:relative;
+
+    left:auto;
+    bottom:auto;
+
+    transform:none;
+
+    justify-content:center;
+
+    margin-top:22px;
+
+  }
+
 }
 
-.hero-slider-dots{
+/* ===========================================================
+   RESPONSIVE - MOBILE
+=========================================================== */
 
-    margin:18px auto;
+@media (max-width:768px){
 
-}
+  .hero{
+
+    padding:90px 20px 30px;
+
+  }
+
+  .hero-wrapper{
+
+    gap:28px;
+
+  }
+
+  .eyebrow{
+
+    font-size:16px;
+
+  }
+
+  .hero-title{
+
+    font-size:48px;
+
+    line-height:.95;
+
+  }
+
+  .floating-cta{
+
+    width:100%;
+
+    justify-content:center;
+
+    padding:15px;
+
+  }
+
+  .hero-card{
+
+    padding:22px;
+
+    border-radius:18px;
+
+  }
+
+  .hero-card-title{
+
+    font-size:22px;
+
+    margin:16px 0 10px;
+
+  }
+
+  .hero-card-description{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+  }
+
+  .hero-navigation{
+
+    grid-template-columns:1fr;
+
+    gap:12px;
+
+  }
+
+  .hero-navigation button{
+
+    padding:16px;
+
+  }
 
 }
 
@@ -1179,53 +1124,43 @@ max-width:470px;
 
 @media (max-width:480px){
 
-.hero{
+  .hero{
 
-    padding:80px 18px 30px;
+    padding:80px 16px 24px;
 
-}
+  }
 
-.hero h1{
+  .hero-title{
 
-    font-size:44px;
+    font-size:42px;
 
-}
+  }
 
-.hero-right{
+  .hero-card{
 
     padding:18px;
 
-}
+  }
 
-.hero-right h2{
+  .hero-card-title{
 
     font-size:20px;
 
-}
+  }
 
-.hero-right p{
+  .hero-card-description{
 
     font-size:13px;
 
-}
+  }
 
-.hero-bottom{
-
-    grid-template-columns:1fr;
-
-}
-
-.hero-bottom button{
-
-    padding:13px;
-
-}
-
-.floating-cta{
+  .floating-cta{
 
     font-size:14px;
 
-}
+    padding:14px;
+
+  }
 
 }
 
@@ -1235,41 +1170,17 @@ max-width:470px;
 
 @media (max-width:360px){
 
-.hero{
+  .hero-title{
 
-    padding:72px 14px 24px;
+    font-size:36px;
 
-}
+  }
 
-.hero h1{
-
-    font-size:38px;
-
-}
-
-.hero-right{
+  .hero-card{
 
     padding:16px;
 
-}
-
-.hero-right h2{
-
-    font-size:18px;
-
-}
-
-.hero-right p{
-
-    font-size:12px;
-
-}
-
-.hero-bottom button{
-
-    padding:11px;
-
-}
+  }
 
 }
 
