@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { portfolioItems } from "../data/portfolioData";
@@ -25,26 +25,29 @@ function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const updatedItems = portfolioItems.map((item) => ({
-    ...item,
-    category: normalizeCategory(item.category),
-    title:
-      item.title?.toLowerCase().includes("wedding")
+  // OPTIMASI: Menggunakan useMemo agar pembersihan data hanya diproses sekali di awal,
+  // tidak dijalankan ulang setiap kali user membuka/menutup lightbox.
+  const updatedItems = useMemo(() => {
+    return portfolioItems.map((item) => ({
+      ...item,
+      category: normalizeCategory(item.category),
+      title: item.title?.toLowerCase().includes("wedding")
         ? item.title.replace(/wedding/gi, "Portrait")
         : item.title,
-    service:
-      item.service?.toLowerCase().includes("wedding")
+      service: item.service?.toLowerCase().includes("wedding")
         ? item.service.replace(/wedding/gi, "Portrait")
         : item.service,
-  }));
+    }));
+  }, []);
 
-  const filteredItems =
-    activeCategory === "All"
+  // Filter data berdasarkan kategori yang aktif
+  const filteredItems = useMemo(() => {
+    return activeCategory === "All"
       ? updatedItems
       : updatedItems.filter((item) => item.category === activeCategory);
+  }, [activeCategory, updatedItems]);
 
-  const selectedItem =
-    selectedIndex !== null ? filteredItems[selectedIndex] : null;
+  const selectedItem = selectedIndex !== null ? filteredItems[selectedIndex] : null;
 
   const closeLightbox = () => {
     setSelectedIndex(null);
@@ -64,6 +67,7 @@ function Portfolio() {
     });
   };
 
+  // Handle navigasi via Keyboard
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (selectedIndex === null) return;
@@ -71,21 +75,19 @@ function Portfolio() {
       if (event.key === "Escape") {
         closeLightbox();
       }
-
       if (event.key === "ArrowLeft") {
         showPrevious();
       }
-
       if (event.key === "ArrowRight") {
         showNext();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedIndex, filteredItems.length]);
+  }, [selectedIndex, filteredItems]); // Memasukkan filteredItems ke dependency agar indeks navigasi selalu akurat
 
+  // Mencegah background scrolling saat Lightbox terbuka
   useEffect(() => {
     if (selectedIndex !== null) {
       document.body.classList.add("no-scroll");
@@ -96,6 +98,7 @@ function Portfolio() {
     return () => document.body.classList.remove("no-scroll");
   }, [selectedIndex]);
 
+  // Reset indeks seleksi gambar ketika user berpindah kategori filter
   useEffect(() => {
     setSelectedIndex(null);
   }, [activeCategory]);
@@ -103,6 +106,8 @@ function Portfolio() {
   return (
     <section className="portfolio-section" id="portfolio">
       <div className="section-inner">
+        
+        {/* Header & Filter Kategori */}
         <motion.div
           className="portfolio-header"
           initial={{ y: 50, opacity: 0 }}
@@ -129,6 +134,7 @@ function Portfolio() {
           </div>
         </motion.div>
 
+        {/* Portfolio Grid Masonry */}
         <motion.div layout className="portfolio-grid portfolio-masonry">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
@@ -137,11 +143,11 @@ function Portfolio() {
                 className={`portfolio-card portfolio-${item.size || "normal"}`}
                 key={item.id}
                 initial={{ y: 70, opacity: 0, scale: 0.96 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ y: 30, opacity: 0, scale: 0.94 }}
                 transition={{
                   duration: 0.55,
-                  delay: index * 0.06,
+                  delay: index * 0.05, // Sedikit dipercepat per-itemnya agar transisi terasa lebih responsif
                   ease: "easeOut",
                 }}
                 onClick={() => setSelectedIndex(index)}
@@ -153,7 +159,7 @@ function Portfolio() {
                   <h3>{item.title}</h3>
                 </div>
 
-                <button type="button" className="portfolio-open">
+                <button type="button" className="portfolio-open" aria-label="Open project details">
                   <ArrowUpRight size={18} />
                 </button>
               </motion.article>
@@ -162,6 +168,7 @@ function Portfolio() {
         </motion.div>
       </div>
 
+      {/* Lightbox / Detail Project Modal */}
       <AnimatePresence>
         {selectedItem && (
           <motion.div
@@ -171,6 +178,7 @@ function Portfolio() {
             exit={{ opacity: 0 }}
             onClick={closeLightbox}
           >
+            {/* Tombol Close */}
             <button
               type="button"
               className="lightbox-close"
@@ -180,6 +188,7 @@ function Portfolio() {
               <X size={22} />
             </button>
 
+            {/* Navigasi Kiri */}
             <button
               type="button"
               className="lightbox-nav lightbox-prev"
@@ -192,6 +201,7 @@ function Portfolio() {
               <ChevronLeft size={26} />
             </button>
 
+            {/* Navigasi Kanan */}
             <button
               type="button"
               className="lightbox-nav lightbox-next"
@@ -204,6 +214,7 @@ function Portfolio() {
               <ChevronRight size={26} />
             </button>
 
+            {/* Card Detail di dalam Lightbox */}
             <motion.div
               className="lightbox-card"
               initial={{ y: 50, scale: 0.96, opacity: 0 }}
@@ -259,6 +270,7 @@ function Portfolio() {
                   )}
                   target="_blank"
                   rel="noreferrer"
+                  className="lightbox-cta-btn" // Ditambahkan class khusus jika ingin di-styling berbeda
                 >
                   Book Similar Session
                   <ArrowUpRight size={17} />
