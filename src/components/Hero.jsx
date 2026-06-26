@@ -1,140 +1,253 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { heroSlides } from "../data/heroData";
 
-function Hero() {
+export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  // Auto-play slider berganti setiap 4.5 detik
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((current) =>
-        current === heroSlides.length - 1 ? 0 : current + 1
+    const timer = setInterval(() => {
+      setActiveSlide((prev) =>
+        prev === heroSlides.length - 1 ? 0 : prev + 1
       );
-    }, 4500);
+    }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
-  // Memastikan data slide yang aktif selalu aman diakses memakai useMemo
   const currentSlide = useMemo(() => {
-    return heroSlides[activeSlide] || { image: "", label: "", title: "", description: "" };
+    return (
+      heroSlides[activeSlide] || {
+        image: "",
+        label: "Photography",
+        title: "Documenting moments beautifully.",
+        description:
+          "Capturing authentic moments through timeless visual storytelling.",
+      }
+    );
   }, [activeSlide]);
 
   return (
     <section className="hero" id="home">
-      {/* Background Gambar dengan Transisi Cross-Fade & Efek Zooming Lambat */}
+
+      {/* Background */}
+
       <AnimatePresence mode="wait">
+
         <motion.img
           key={currentSlide.image}
           src={currentSlide.image}
-          alt={currentSlide.title || "Photographer Portfolio Background"}
+          alt={currentSlide.title}
           className="hero-img"
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.04 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
+          initial={{
+            opacity: 0,
+            scale: 1.12,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.05,
+          }}
+          transition={{
+            duration: 1.1,
+          }}
         />
+
       </AnimatePresence>
 
-      {/* Layer Gelap Gradasi Sinematik */}
-      <div className="hero-overlay"></div>
+      {/* Overlay */}
 
-      {/* Konten Utama */}
+      <div className="hero-overlay" />
+
+      {/* Gradient */}
+
+      <div className="hero-gradient" />
+
+      {/* Blur */}
+
+      <div className="hero-blur-circle" />
+
+      {/* Content */}
+
       <div className="hero-content">
-        {/* Sisi Kiri: Teks Utama (Statis/Intro) */}
+
+        {/* LEFT */}
+
         <motion.div
           className="hero-left"
-          initial={{ y: 35, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: .8,
+          }}
         >
-          <p className="eyebrow">Hey, I'm a</p>
-          <h1>Photographer</h1>
+
+          <span className="hero-small-title">
+            VISUAL STORYTELLER
+          </span>
+
+          <p className="eyebrow">
+            Hey, I'm
+          </p>
+
+          <h1>
+            Rifqi
+            <br />
+            Syafwan
+          </h1>
+
+          <p className="hero-description">
+            Professional photographer specializing in portrait,
+            event, commercial branding and automotive photography.
+            Creating visuals that connect people with stories.
+          </p>
+
+          <div className="hero-buttons">
+
+            <motion.a
+              href="#portfolio"
+              className="hero-btn primary"
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: .95,
+              }}
+            >
+              View Portfolio
+
+              <ArrowRight
+                size={18}
+              />
+
+            </motion.a>
+
+            <a
+              href="#contact"
+              className="hero-btn secondary"
+            >
+              Contact Me
+            </a>
+
+          </div>
+
         </motion.div>
 
-        {/* Sisi Kanan: Detail Informasi Dinamis & Tombol CTA */}
-        <div className="hero-right">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSlide}
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -15, opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="hero-text-wrapper"
-            >
-              <span className="hero-slide-label">
-                {currentSlide.label || "Photography Session"}
-              </span>
+        {/* RIGHT */}
 
-              <h2>
-                {currentSlide.title || "Documenting moments and creating visuals that tell stories."}
-              </h2>
+        <AnimatePresence mode="wait">
 
-              <p>
-                {currentSlide.description || "I create, explore, and turn ideas into visuals."}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Tombol CTA ditempatkan di sini agar posisinya otomatis berada di bawah teks saat di HP */}
-          <motion.a
-            href="#portfolio"
-            className="floating-cta"
-            initial={{ y: 15, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          <motion.div
+            key={activeSlide}
+            className="hero-right"
+            initial={{
+              opacity: 0,
+              x: 40,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+              x: -40,
+            }}
+            transition={{
+              duration: .6,
+            }}
           >
-            View Portfolio
-            <ArrowRight size={16} />
-          </motion.a>
-        </div>
+
+            <span className="hero-slide-label">
+              {currentSlide.label}
+            </span>
+
+            <h2>
+              {currentSlide.title}
+            </h2>
+
+            <p>
+              {currentSlide.description}
+            </p>
+
+          </motion.div>
+
+        </AnimatePresence>
+
       </div>
 
-      {/* Bagian Grid Menu Kategori Bawah (Otomatis disembunyikan via CSS di HP) */}
-      <motion.div
-        className="hero-bottom"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-      >
-        <div className={activeSlide === 0 ? "active" : ""}>
-          <span>#01</span>
-          <p>Event</p>
-        </div>
+      {/* Bottom */}
 
-        <div className={activeSlide === 1 ? "active" : ""}>
-          <span>#02</span>
-          <p>Portrait</p>
-        </div>
+      <div className="hero-bottom">
 
-        <div className={activeSlide === 2 ? "active" : ""}>
-          <span>#03</span>
-          <p>Brand</p>
-        </div>
+        {[
+          "Event",
+          "Portrait",
+          "Brand",
+          "Automotive",
+        ].map((item, index) => (
 
-        <div className={activeSlide === 3 ? "active" : ""}>
-          <span>#04</span>
-          <p>Automotive</p>
-        </div>
-      </motion.div>
-
-      {/* Navigasi Titik Kecil (Slider Dots) */}
-      <div className="hero-slider-dots">
-        {heroSlides.map((slide, index) => (
-          <button
-            type="button"
-            key={slide.id || index}
-            className={activeSlide === index ? "active" : ""}
+          <div
+            key={item}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
             onClick={() => setActiveSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
+          >
+
+            <span>
+              #{String(index + 1).padStart(2, "0")}
+            </span>
+
+            <p>
+              {item}
+            </p>
+
+          </div>
+
         ))}
+
       </div>
+
+      {/* Dots */}
+
+      <div className="hero-slider-dots">
+
+        {heroSlides.map((_, index) => (
+
+          <button
+            key={index}
+            onClick={() => setActiveSlide(index)}
+            className={
+              activeSlide === index
+                ? "active"
+                : ""
+            }
+          />
+
+        ))}
+
+      </div>
+
+      {/* Scroll */}
+
+      <div className="scroll-indicator">
+
+        <span />
+
+      </div>
+
     </section>
   );
 }
-
-export default Hero;
