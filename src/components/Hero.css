@@ -1,0 +1,1064 @@
+/* ===========================================================
+   HERO
+=========================================================== */
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:120px 48px 150px;
+
+    background:#0f0f0f;
+
+}
+
+/* ===========================================================
+   BACKGROUND
+=========================================================== */
+
+.hero-img{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    animation:heroZoom 18s ease-in-out infinite alternate;
+
+}
+
+@keyframes heroZoom{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.025);
+
+    }
+
+    100%{
+
+        transform:scale(1.05);
+
+    }
+
+}
+
+/* ===========================================================
+   OVERLAY
+=========================================================== */
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    background:
+    linear-gradient(
+
+        90deg,
+
+        rgba(10,10,10,.74) 0%,
+
+        rgba(10,10,10,.42) 45%,
+
+        rgba(10,10,10,.12) 100%
+
+    );
+
+}
+
+/* ===========================================================
+   CONTAINER
+=========================================================== */
+
+.hero-container{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    max-width:1320px;
+
+    display:grid;
+
+    grid-template-columns:1.25fr .75fr;
+
+    gap:90px;
+
+    align-items:center;
+
+}
+/* ===========================================================
+   LEFT CONTENT
+=========================================================== */
+
+.hero-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    max-width:700px;
+
+}
+
+.hero-eyebrow{
+
+    display:inline-block;
+
+    color:rgba(255,255,255,.85);
+
+    font-size:18px;
+
+    font-weight:700;
+
+    letter-spacing:.04em;
+
+    margin-bottom:18px;
+
+}
+
+.hero-title{
+
+    color:#fff;
+
+    font-size:clamp(72px,8vw,118px);
+
+    line-height:.9;
+
+    font-weight:900;
+
+    letter-spacing:-.06em;
+
+    margin:0;
+
+    text-wrap:balance;
+
+    text-shadow:
+        0 12px 40px rgba(0,0,0,.25);
+
+}
+
+/* ===========================================================
+   BUTTON
+=========================================================== */
+
+.hero-button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:48px;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:#ff5a1f;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+
+    box-shadow:
+        0 12px 35px rgba(255,90,31,.28);
+
+}
+
+.hero-button:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 20px 50px rgba(255,90,31,.42);
+
+}
+
+.hero-button span{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-button svg{
+
+    position:relative;
+
+    z-index:2;
+
+    transition:.35s ease;
+
+}
+
+.hero-button:hover svg{
+
+    transform:translateX(6px);
+
+}
+
+/* ==========================================
+   Button Shine
+========================================== */
+
+.hero-button::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:120%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.28),
+            transparent
+        );
+
+    transition:.8s;
+
+}
+
+.hero-button:hover::before{
+
+    left:120%;
+
+}
+/* ===========================================================
+   HERO CARD
+=========================================================== */
+
+.hero-card{
+
+    position:relative;
+
+    width:100%;
+    max-width:430px;
+
+    margin-left:auto;
+
+    padding:36px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+
+}
+
+/* ==========================================
+   White Highlight
+========================================== */
+
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.10),
+            transparent 45%
+        );
+
+    pointer-events:none;
+
+}
+
+/* ==========================================
+   Orange Glow
+========================================== */
+
+.hero-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    top:-150px;
+    right:-150px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+
+            circle,
+
+            rgba(255,90,31,.24) 0%,
+
+            rgba(255,90,31,.08) 45%,
+
+            transparent 75%
+
+        );
+
+    filter:blur(70px);
+
+    pointer-events:none;
+
+}
+
+/* ==========================================
+   Card Content
+========================================== */
+
+.hero-card > *{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* ==========================================
+   Hover
+========================================== */
+
+.hero-card:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    background:
+        rgba(255,255,255,.10);
+
+    border-color:
+        rgba(255,90,31,.28);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.45);
+
+}
+
+/* ===========================================================
+   LABEL
+=========================================================== */
+
+.hero-card-label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,90,31,.14);
+
+    color:#ff6b37;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+    box-shadow:
+        0 0 18px rgba(255,90,31,.18);
+
+}
+
+/* ===========================================================
+   TITLE
+=========================================================== */
+
+.hero-card-title{
+
+    margin-top:24px;
+
+    margin-bottom:16px;
+
+    color:#fff;
+
+    font-size:40px;
+
+    line-height:1.15;
+
+    letter-spacing:-.04em;
+
+    font-weight:800;
+
+    text-wrap:balance;
+
+}
+
+/* ===========================================================
+   DESCRIPTION
+=========================================================== */
+
+.hero-card-description{
+
+    color:
+        rgba(255,255,255,.76);
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    text-wrap:pretty;
+
+}
+/* ===========================================================
+   HERO NAVIGATION
+=========================================================== */
+
+.hero-navigation{
+
+    position:absolute;
+
+    left:50%;
+    bottom:40px;
+
+    transform:translateX(-50%);
+
+    width:100%;
+    max-width:1320px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:32px;
+
+    padding-top:24px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    z-index:20;
+
+}
+
+.hero-navigation button{
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    text-align:left;
+
+    padding:0;
+
+    opacity:.45;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        padding-left .35s ease;
+
+    position:relative;
+
+}
+
+.hero-navigation button:hover{
+
+    opacity:1;
+
+    transform:translateY(-4px);
+
+    padding-left:10px;
+
+}
+
+.hero-navigation button.active{
+
+    opacity:1;
+
+}
+
+/* Active line */
+
+.hero-navigation button.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:-25px;
+
+    width:60px;
+
+    height:3px;
+
+    border-radius:999px;
+
+    background:#ff5a1f;
+
+}
+
+.hero-nav-number{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ff5a1f;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+}
+
+.hero-nav-title{
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+/* ===========================================================
+   PROGRESS BAR
+=========================================================== */
+
+.hero-progress{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:120px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    z-index:25;
+
+}
+
+.hero-progress button{
+
+    width:36px;
+
+    height:4px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.25);
+
+    cursor:pointer;
+
+    transition:
+        width .35s ease,
+        background .35s ease;
+
+}
+
+.hero-progress button:hover{
+
+    background:rgba(255,255,255,.55);
+
+}
+
+.hero-progress button.active{
+
+    width:100px;
+
+    background:#ff5a1f;
+
+}
+
+/* ===========================================================
+   SMOOTH ANIMATION
+=========================================================== */
+
+.hero-card,
+.hero-button,
+.hero-navigation button,
+.hero-progress button{
+
+    will-change:transform;
+
+}
+
+/* ===========================================================
+   ACCESSIBILITY
+=========================================================== */
+
+.hero button:focus-visible,
+.hero a:focus-visible{
+
+    outline:2px solid #ff5a1f;
+
+    outline-offset:5px;
+
+    border-radius:10px;
+
+}
+/* ===========================================================
+   LAPTOP
+=========================================================== */
+
+@media screen and (max-width:1200px){
+
+.hero{
+
+    padding:110px 36px 130px;
+
+}
+
+.hero-container{
+
+    grid-template-columns:1fr .8fr;
+
+    gap:60px;
+
+}
+
+.hero-title{
+
+    font-size:clamp(60px,8vw,92px);
+
+}
+
+.hero-card{
+
+    max-width:380px;
+
+    padding:30px;
+
+}
+
+.hero-card-title{
+
+    font-size:34px;
+
+}
+
+.hero-navigation{
+
+    gap:22px;
+
+}
+
+}
+
+/* ===========================================================
+   TABLET
+=========================================================== */
+
+@media screen and (max-width:992px){
+
+.hero{
+
+    min-height:auto;
+
+    padding:100px 28px 50px;
+
+}
+
+.hero-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:42px;
+
+}
+
+.hero-left{
+
+    width:100%;
+
+}
+
+.hero-title{
+
+    font-size:64px;
+
+}
+
+.hero-card{
+
+    width:100%;
+
+    max-width:100%;
+
+    margin:0;
+
+}
+
+.hero-card-title{
+
+    font-size:30px;
+
+}
+
+.hero-button{
+
+    margin-top:30px;
+
+}
+
+.hero-progress{
+
+    position:relative;
+
+    left:auto;
+
+    bottom:auto;
+
+    transform:none;
+
+    justify-content:center;
+
+    margin:26px auto;
+
+}
+
+.hero-navigation{
+
+    position:relative;
+
+    left:auto;
+
+    bottom:auto;
+
+    transform:none;
+
+    width:100%;
+
+    margin-top:20px;
+
+    border:none;
+
+    padding:0;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.hero-navigation button{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    opacity:1;
+
+}
+
+.hero-navigation button.active{
+
+    border-color:#ff5a1f;
+
+    background:rgba(255,90,31,.08);
+
+}
+
+.hero-navigation button.active::before{
+
+    display:none;
+
+}
+
+}
+
+/* ===========================================================
+   MOBILE
+=========================================================== */
+
+@media screen and (max-width:768px){
+
+.hero{
+
+    min-height:auto;
+
+    padding:90px 18px 30px;
+
+}
+
+.hero-container{
+
+    gap:28px;
+
+}
+
+.hero-left{
+
+    width:100%;
+
+}
+
+.hero-eyebrow{
+
+    font-size:16px;
+
+}
+
+.hero-title{
+
+    max-width:100%;
+
+    font-size:clamp(40px,12vw,52px);
+
+    line-height:1;
+
+    letter-spacing:-.04em;
+
+    white-space:normal;
+
+    overflow-wrap:anywhere;
+
+}
+
+.hero-button{
+
+    width:100%;
+
+    justify-content:center;
+
+    margin-top:28px;
+
+}
+
+.hero-card{
+
+    width:100%;
+
+    max-width:100%;
+
+    padding:22px;
+
+}
+
+.hero-card-title{
+
+    font-size:24px;
+
+}
+
+.hero-card-description{
+
+    font-size:14px;
+
+}
+
+.hero-progress{
+
+    margin:24px auto;
+
+}
+
+.hero-progress button{
+
+    width:28px;
+
+}
+
+.hero-progress button.active{
+
+    width:72px;
+
+}
+
+.hero-navigation{
+
+    grid-template-columns:1fr;
+
+}
+
+.hero-navigation button{
+
+    width:100%;
+
+}
+
+}
+
+/* ===========================================================
+   SMALL MOBILE
+=========================================================== */
+
+@media screen and (max-width:480px){
+
+.hero{
+
+    padding:82px 16px 24px;
+
+}
+
+.hero-title{
+
+    font-size:42px;
+
+}
+
+.hero-card{
+
+    padding:18px;
+
+}
+
+.hero-card-title{
+
+    font-size:20px;
+
+}
+
+.hero-card-description{
+
+    font-size:13px;
+
+}
+
+.hero-button{
+
+    padding:14px;
+
+    font-size:14px;
+
+}
+
+}
+
+/* ===========================================================
+   EXTRA SMALL
+=========================================================== */
+
+@media screen and (max-width:360px){
+
+.hero-title{
+
+    font-size:36px;
+
+}
+
+.hero-card{
+
+    padding:16px;
+
+}
+
+.hero-card-title{
+
+    font-size:18px;
+
+}
+
+}
