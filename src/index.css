@@ -1160,13 +1160,15 @@ margin-top:24px;
 
     width:100%;
 
-    font-size:52px;
+    font-size:clamp(40px, 12vw, 52px);
 
-    line-height:.92;
+    line-height:1;
 
-    letter-spacing:-.04em;
+    letter-spacing:-0.04em;
 
-    word-break:normal;
+    white-space:normal;
+
+    overflow-wrap:break-word;
 
 }
 
