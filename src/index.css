@@ -368,21 +368,25 @@ img {
 }
 
 /* =========================================================
-   HERO
+   HERO COMPONENT STYLES
    ========================================================= */
 
 .hero {
-  min-height: 660px;
+  min-height: 100vh; /* Menggunakan viewport height penuh agar terkesan premium */
   position: relative;
   overflow: hidden;
-  padding: 90px 36px 42px;
+  padding: 120px 36px 42px;
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-img {
   position: absolute;
   inset: 0;
   z-index: 1;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   filter: saturate(1.1) contrast(1.08);
@@ -390,13 +394,8 @@ img {
 }
 
 @keyframes heroFloat {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.045);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
 }
 
 .hero-overlay {
@@ -404,67 +403,112 @@ img {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(74, 74, 74, 0.86) 0%, rgba(74, 74, 74, 0.48) 45%, rgba(74, 74, 74, 0.16) 100%),
-    linear-gradient(0deg, rgba(74, 74, 74, 0.9) 0%, transparent 55%),
-    radial-gradient(circle at center, transparent 0%, rgba(74, 74, 74, 0.16) 100%);
+    linear-gradient(90deg, rgba(30, 30, 30, 0.88) 0%, rgba(30, 30, 30, 0.55) 45%, rgba(30, 30, 30, 0.2) 100%),
+    linear-gradient(0deg, rgba(30, 30, 30, 0.95) 0%, transparent 60%);
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
   align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .eyebrow {
-  margin-bottom: 14px;
-  color: white;
-  font-size: 19px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 18px;
   font-weight: 700;
+  opacity: 0.9;
 }
 
 .hero h1 {
-  max-width: 600px;
-  font-size: clamp(54px, 9vw, 112px);
-  line-height: 0.86;
-  letter-spacing: -0.09em;
+  max-width: 650px;
+  /* Perbaikan: Batas bawah font-size diturunkan ke 36px agar responsif di layar ponsel */
+  font-size: clamp(36px, 8.5vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.06em; /* Diperhalus sedikit agar tidak tumpang tindih di resolusi kecil */
   font-weight: 900;
+  color: #ffffff;
+  
+  /* Proteksi Anti Jebol Layar HP */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-right {
-  max-width: 370px;
+  max-width: 380px;
   margin-left: auto;
-  margin-top: 40px;
 }
 
 .hero-slide-label {
   width: fit-content;
   display: inline-flex;
   margin-bottom: 16px;
-  padding: 8px 13px;
-  border: 1px solid rgba(255, 90, 31, 0.32);
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 90, 31, 0.35);
   border-radius: 999px;
-  background: rgba(255, 90, 31, 0.16);
-  color: var(--orange-light);
-  font-size: 12px;
-  font-weight: 900;
+  background: rgba(255, 90, 31, 0.15);
+  color: #ff733b; /* Fallback warna orange terang */
+  font-size: 11px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .hero-right h2 {
   margin-bottom: 16px;
-  font-size: 28px;
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
 }
 
 .hero-right p {
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MEDIA QUERY: RESPONSIVE FOR TABLET & MOBILE (HP)
+   ========================================================= */
+@media (max-width: 992px) {
+  .hero {
+    padding: 100px 24px 120px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    /* Mengubah grid kiri-kanan menjadi tumpuk atas-bawah */
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-right {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  
+  .hero-right h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 90px 16px 100px;
+  }
+  
+  .hero h1 {
+    letter-spacing: -0.04em; /* Memberi ruang napas antar huruf di layar super kecil */
+  }
 }
 
 .floating-cta {
