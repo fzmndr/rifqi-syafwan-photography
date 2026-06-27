@@ -204,7 +204,8 @@ function Hero() {
       </p>
 
       <h1 className="hero-title">
-        Photographer
+          Photo
+          <span>grapher</span>
       </h1>
 
       <motion.a
