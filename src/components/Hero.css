@@ -299,7 +299,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 6px;
-    width: 100%;
+    width: 120%;
     padding: 8px 0;
     background: none;
     border: none;
@@ -340,9 +340,9 @@
 
 .hero-nav-title {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.2;
 }
 
 /* ===========================================================
@@ -604,4 +604,25 @@
     .hero-card-description {
         font-size: 13px;
     }
+}
+@media (max-width:768px){
+
+.hero-container{
+    display:flex !important;
+    flex-direction:column !important;
+}
+
+.hero-navigation{
+    position:relative !important;
+    left:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+
+    margin-top:24px;
+}
+
 }
