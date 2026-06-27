@@ -128,9 +128,6 @@ function Hero() {
   ========================================================== */
 
   const { scrollY } = useScroll();
-
-  const imageY = useTransform(scrollY, [0, 800], [0, 120]);
-
   const overlayOpacity = useTransform(
     scrollY,
     [0, 500],
