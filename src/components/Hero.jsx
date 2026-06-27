@@ -1,6 +1,6 @@
 import "./Hero.css";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { heroSlides } from "../data/heroData";
@@ -15,9 +15,7 @@ function Hero() {
 
   const [isPaused, setIsPaused] = useState(false);
 
-  const totalSlides = heroSlides.length;
-
-  const intervalRef = useRef(null);
+  const totalSlides = heroSlides?.length ?? 0;
 
   /* ==========================================================
       PRELOAD IMAGES
@@ -25,11 +23,11 @@ function Hero() {
 
   useEffect(() => {
 
-    heroSlides.forEach((slide) => {
+    heroSlides.forEach(({ image }) => {
 
       const img = new Image();
 
-      img.src = slide.image;
+      img.src = image;
 
     });
 
@@ -69,23 +67,15 @@ function Hero() {
 
   }, []);
 
-  /* ==========================================================
-      AUTO PLAY
-  ========================================================== */
-
   useEffect(() => {
 
-    if (isPaused) return;
+    if(isPaused) return;
 
-    intervalRef.current = setInterval(() => {
+    const interval = setInterval(nextSlide,5000);
 
-      nextSlide();
+    return () => clearInterval(interval);
 
-    }, 5000);
-
-    return () => clearInterval(intervalRef.current);
-
-  }, [nextSlide, isPaused]);
+},[nextSlide,isPaused]);
 
   /* ==========================================================
       KEYBOARD SUPPORT
@@ -123,7 +113,10 @@ function Hero() {
       CURRENT SLIDE
   ========================================================== */
 
-  const currentSlide = heroSlides[activeSlide];
+  const currentSlide =
+    heroSlides[activeSlide] ??
+    heroSlides[0] ??
+    {};
 
   /* ==========================================================
       RENDER
@@ -143,8 +136,8 @@ function Hero() {
   <AnimatePresence mode="wait">
     <motion.img
       key={currentSlide.image}
-      src={currentSlide.image}
-      alt={currentSlide.label}
+      src={currentSlide.image || ""}
+      alt={currentSlide.label || ""}
       className="hero-img"
       draggable={false}
       loading="eager"
@@ -165,6 +158,7 @@ function Hero() {
         duration: 0.9,
         ease: [0.22, 1, 0.36, 1],
       }}
+      decoding="async"
     />
   </AnimatePresence>
 
@@ -217,6 +211,9 @@ function Hero() {
         whileTap={{
           scale: 0.96,
         }}
+        whileFocus={{
+            scale:1.03
+        }}
       >
         <span>
           View Portfolio
@@ -249,7 +246,8 @@ function Hero() {
           x: -35,
         }}
         transition={{
-          duration: 0.45,
+            duration:.45,
+            ease:"easeOut",
         }}
       >
 
@@ -273,23 +271,17 @@ function Hero() {
           HERO NAVIGATION
       ====================================== */}
 
-      <nav className="hero-navigation">
+      <nav
+            className="hero-navigation"
+            aria-label="Hero Navigation"
+        >
 
-        {[
-          "Event",
-          "Portrait",
-          "Brand",
-          "Automotive",
-        ].map((item, index) => (
+        {heroSlides.map((slide, index) => (
 
           <button
-            key={item}
+            key={`${slide.label}-${index}`}
             type="button"
-            className={
-              activeSlide === index
-                ? "active"
-                : ""
-            }
+            className={activeSlide === index ? "active" : ""}
             onClick={() => goToSlide(index)}
           >
 
@@ -298,7 +290,7 @@ function Hero() {
             </span>
 
             <span className="hero-nav-title">
-              {item}
+              {slide.label}
             </span>
 
           </button>
@@ -318,7 +310,7 @@ function Hero() {
         {heroSlides.map((slide, index) => (
 
           <button
-            key={slide.id}
+            key={`${slide.label}-${index}`}
             type="button"
             aria-label={`Slide ${index + 1}`}
             className={

@@ -149,6 +149,7 @@
     position: relative;
     width: 100%;
     max-width: 430px;
+    margin-top:8px;
     margin-left: auto;
     padding: 40px;
     overflow: hidden;
@@ -394,60 +395,89 @@
 
 /* --- TABLET (992px) --- */
 @media (max-width: 992px) {
-    .hero {
-        min-height: 100vh;
-        height: auto;
-        padding: 100px 32px 60px;
-        display: flex;
-        flex-direction: column; /* Mengubah Section menjadi Flex Kolom */
-        justify-content: flex-start;
-        align-items: center;
-        gap: 40px;
+    .hero{
+
+        min-height:auto;
+
+        padding:90px 32px 50px;
+
+        display:flex;
+
+        justify-content:flex-start;
+
+        align-items:flex-start;
+
     }
 
-    .hero-container {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
+    .hero-container{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:32px;
+
     }
 
-    .hero-left {
-        max-width: 100%;
-        align-items: center;
-        text-align: center;
+    .hero-left{
+
+        width:100%;
+
+        max-width:100%;
+
+        align-items:flex-start;
+
+        text-align:left;
+
     }
 
     .hero-title {
         font-size: clamp(48px, 8vw, 68px);
     }
 
-    .hero-card {
-        max-width: 100%;
-        margin: 0;
+    .hero-card{
+
+        width:100%;
+
+        max-width:100%;
+
+        margin:0 auto;
+
     }
 
     /* Memutus absolute position agar elemen JSX di luar kontainer mengalir ke bawah alami */
-    .hero-progress {
+    .hero-progress{
         position: static;
         transform: none;
-        margin: 10px auto 0;
-        order: 3; /* Menaruh progress di bawah kartu */
+        margin: 18px auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
-    .hero-navigation {
-        position: static;
-        transform: none;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        border: none;
-        padding: 0;
-        margin-top: 0;
-        order: 4; /* Menaruh navigasi di paling bawah */
+    .hero-navigation{
+
+        position:static;
+
+        transform:none;
+
+        width:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:12px;
+
+        margin-top:20px;
+
     }
 
     .hero-navigation button {
-        padding: 18px;
+        width:100%;
+        padding: 16px;
         border-radius: 18px;
         background: rgba(255, 255, 255, .06);
         border: 1px solid rgba(255, 255, 255, .08);
@@ -467,6 +497,7 @@
 /* --- MOBILE (768px) --- */
 @media (max-width: 768px) {
     .hero {
+        min-height:100svh;
         padding: 90px 24px 50px;
         gap: 32px;
     }
@@ -485,9 +516,14 @@
         margin-bottom: 14px;
     }
 
-    .hero-title {
-        font-size: clamp(38px, 10vw, 52px);
-        line-height: 1.05;
+    .hero-title{
+
+        font-size:clamp(38px,10vw,48px);
+
+        line-height:1;
+
+        letter-spacing:-0.03em;
+
     }
 
     .hero-title span {
@@ -495,7 +531,9 @@
     }
 
     .hero-button {
-        width: 100%;
+        width:100%;
+        max-width:340px;
+        justify-content:center;
         margin-top: 28px;
     }
 
@@ -514,25 +552,38 @@
         line-height: 1.6;
     }
 
-    .hero-progress {
-        margin: 8px auto 0;
+    .hero-progress{
+
+        width:100%;
+        display:flex;
+        justify-content:center;
+        margin:18px auto;
+        position:static;
+        transform:none;
+
     }
 
     /* Mengubah grid menjadi 1 kolom penuh agar teks navigasi tidak saling menjepit */
     .hero-navigation {
-        grid-template-columns: 1fr;
         gap: 12px;
+        width:100%;
+        display:flex;
+        flex-direction:column;
     }
 
     .hero-navigation button {
         padding: 14px 18px;
         border-radius: 14px;
+        align-items:flex-start;
+        justify-content:center;
+        min-height:72px;
     }
 }
 
 /* --- SMALL MOBILE (480px & Di bawahnya) --- */
 @media (max-width: 480px) {
     .hero {
+        min-height:100svh;
         padding: 80px 16px 40px;
     }
 
