@@ -626,3 +626,36 @@
 }
 
 }
+@media (max-width:768px){
+
+.hero{
+
+    display:block !important;
+
+    min-height:auto !important;
+
+}
+
+.hero-container{
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+}
+
+.hero-navigation{
+
+    width:100% !important;
+
+    margin-top:24px;
+
+}
+
+.hero-navigation button{
+
+    width:100% !important;
+
+}
+
+}
