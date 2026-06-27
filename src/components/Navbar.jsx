@@ -11,6 +11,10 @@ function Navbar() {
     setIsOpen(false);
   };
 
+  /* ======================================================
+      ACTIVE SECTION
+  ====================================================== */
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 160;
@@ -31,24 +35,32 @@ function Navbar() {
         }
       });
     };
-    useEffect(() => {
-
-        const handleScroll = () => {
-
-            setScrolled(window.scrollY > 40);
-
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => window.removeEventListener("scroll", handleScroll);
-
-    }, []);
 
     window.addEventListener("scroll", handleScroll);
+
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  /* ======================================================
+      NAVBAR SCROLL EFFECT
+  ====================================================== */
+
+  useEffect(() => {
+    const handleNavbarScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleNavbarScroll);
+
+    handleNavbarScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleNavbarScroll);
+    };
   }, []);
 
   return (
@@ -60,8 +72,8 @@ function Navbar() {
       <nav className={`nav-menu ${isOpen ? "active" : ""}`}>
         {navLinks.map((link) => (
           <a
-            href={link.href}
             key={link.id}
+            href={link.href}
             onClick={closeMenu}
             className={activeSection === link.id ? "nav-active" : ""}
           >
@@ -71,7 +83,7 @@ function Navbar() {
       </nav>
 
       <a href="#contact" className="nav-button desktop-button">
-        Get in touch
+        Get in Touch
         <span>
           <ArrowRight size={16} />
         </span>
@@ -80,7 +92,7 @@ function Navbar() {
       <button
         className="menu-toggle"
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
         aria-label="Toggle menu"
       >
         {isOpen ? <X size={22} /> : <Menu size={22} />}
