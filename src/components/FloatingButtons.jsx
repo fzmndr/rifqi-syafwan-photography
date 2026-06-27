@@ -11,11 +11,15 @@ function FloatingButtons() {
 
   return (
     <div className="floating-buttons">
+
       <a
-        href={createWhatsAppLink("Hello Rifqi Syafwan, I want to book a photo session.")}
+        href={createWhatsAppLink(
+          "Hello Rifqi Syafwan, I want to book a photo session."
+        )}
         target="_blank"
         rel="noreferrer"
         className="float-whatsapp"
+        data-cursor
         aria-label="WhatsApp"
       >
         <MessageCircle size={20} />
@@ -25,10 +29,12 @@ function FloatingButtons() {
         type="button"
         onClick={scrollTop}
         className="float-top"
+        data-cursor
         aria-label="Back to top"
       >
         <ArrowUp size={20} />
       </button>
+
     </div>
   );
 }

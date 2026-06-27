@@ -91,7 +91,7 @@ function Contact() {
             ></textarea>
           </div>
 
-          <button type="submit">
+          <button data-cursor="SEND">
             Send via WhatsApp
             <Send size={17} />
           </button>

@@ -1,7 +1,12 @@
 import "./Hero.css";
 
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform
+} from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { heroSlides } from "../data/heroData";
 
@@ -122,6 +127,30 @@ function Hero() {
       RENDER
   ========================================================== */
 
+  const { scrollY } = useScroll();
+
+  const imageY = useTransform(scrollY, [0, 800], [0, 120]);
+
+  const overlayOpacity = useTransform(
+    scrollY,
+    [0, 500],
+    [1, 0.75]
+  );
+
+  const cardY = useTransform(
+    scrollY,
+    [0,800],
+    [0,-35]
+);
+
+const isMobile = window.innerWidth <= 768;
+
+const imageY = useTransform(
+    scrollY,
+    [0,800],
+    [0,isMobile ? 0 : 120]
+);
+
   return (
     <section
   className="hero"
@@ -142,6 +171,9 @@ function Hero() {
       draggable={false}
       loading="eager"
       fetchPriority="high"
+      style={{
+          y: imageY
+      }}
       initial={{
         opacity: 0,
         scale: 1.08,
@@ -159,6 +191,7 @@ function Hero() {
         ease: [0.22, 1, 0.36, 1],
       }}
       decoding="async"
+      
     />
   </AnimatePresence>
 
@@ -166,7 +199,12 @@ function Hero() {
       DARK OVERLAY
   ====================================== */}
 
-  <div className="hero-overlay" />
+  <motion.div
+    className="hero-overlay"
+    style={{
+        opacity: overlayOpacity
+    }}
+  />
 
   {/* ======================================
       HERO CONTENT
@@ -205,6 +243,8 @@ function Hero() {
       <motion.a
         href="#portfolio"
         className="hero-button"
+        data-cursor="OPEN"
+
         whileHover={{
           scale: 1.05,
         }}
@@ -216,7 +256,7 @@ function Hero() {
         }}
       >
         <span>
-          View Portfolio
+          Book a Session
         </span>
 
         <ArrowRight size={18} />
@@ -233,6 +273,9 @@ function Hero() {
       <motion.div
         key={activeSlide}
         className="hero-card"
+        style={{
+          y:cardY
+        }}
         initial={{
           opacity: 0,
           x: 35,

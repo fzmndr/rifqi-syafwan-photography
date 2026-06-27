@@ -71,10 +71,9 @@ function EditingPreview() {
           transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
         >
           <div
-            ref={imageRef}
-            className="before-after-image"
-            onPointerDown={handlePointerDown}
-          >
+              className="before-after-image"
+              data-cursor="DRAG"
+            >
             <img src={beforeImage} alt="Before editing" />
 
             <div className="after-image">

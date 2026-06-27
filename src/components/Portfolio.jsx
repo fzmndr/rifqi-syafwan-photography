@@ -141,6 +141,7 @@ function Portfolio() {
               <motion.article
                 layout
                 className={`portfolio-card portfolio-${item.size || "normal"}`}
+                data-cursor="VIEW"
                 key={item.id}
                 initial={{ y: 70, opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}

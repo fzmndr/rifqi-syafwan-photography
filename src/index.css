@@ -224,23 +224,50 @@ img {
   box-shadow: 0 0 24px rgba(255, 90, 31, 0.7);
 }
 
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10001;
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgba(255, 90, 31, 0.9);
-  border-radius: 999px;
-  background: rgba(255, 90, 31, 0.18);
-  pointer-events: none;
-  mix-blend-mode: difference;
+.custom-cursor{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99999;
+    width:20px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:999px;
+    pointer-events:none;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    overflow:hidden;
+    transition:
+        background .3s,
+        border .3s,
+        box-shadow .3s;
 }
 
-.custom-cursor.cursor-hover {
-  border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 90, 31, 0.32);
+.custom-cursor span{
+    opacity:0;
+    transition:.25s;
+    white-space:nowrap;
+}
+
+.custom-cursor.cursor-hover{
+    background:rgba(255,90,31,.16);
+    border-color:rgba(255,90,31,.35);
+    box-shadow:
+        0 10px 30px rgba(255,90,31,.25);
+
+}
+
+.custom-cursor.cursor-hover span{
+    opacity:1;
 }
 
 /* =========================================================
@@ -274,8 +301,8 @@ img {
 .navbar.scrolled{
 
     height:72px;
-    background:rgba(8,8,8,.82);
-    border-color:rgba(255,90,31,.18);
+    background:rgba(8,8,8,.86);
+    border-color:rgba(255,90,31,.2);
     backdrop-filter:blur(30px);
     box-shadow:
       0 20px 60px rgba(0,0,0,.28);
@@ -1316,67 +1343,145 @@ img {
    FLOATING BUTTONS & THEME TOGGLE
    ========================================================= */
 
-.floating-buttons {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 80;
-  display: grid;
-  gap: 12px;
+.floating-buttons{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:90;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
 .floating-buttons a,
-.floating-buttons button {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  border: none;
-  border-radius: 999px;
-  color: white;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-  transition: 0.3s ease;
+.floating-buttons button{
+    width:56px;
+    height:56px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:none;
+    border-radius:50%;
+    color:#fff;
+    cursor:pointer;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.18);
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease,
+        border-color .35s ease;
 }
 
-.float-whatsapp {
-  background: #25d366;
+.float-whatsapp{
+    background:rgba(37,211,102,.95);
+    border:1px solid rgba(255,255,255,.12);
 }
 
-.float-top {
-  background: var(--orange);
+.float-whatsapp:hover{
+    transform:
+        translateY(-6px)
+        scale(1.08);
+    box-shadow:
+        0 18px 45px rgba(37,211,102,.35);
 }
 
-.floating-buttons a:hover,
-.floating-buttons button:hover {
-  transform: translateY(-5px);
+.float-top{
+    background:rgba(255,90,31,.95);
+    border:1px solid rgba(255,255,255,.12);
 }
 
-.theme-toggle {
-  position: fixed;
-  right: 22px;
-  bottom: 134px;
-  z-index: 90;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 0 16px;
-  border: none;
-  border-radius: 999px;
-  background: white;
-  color: #111;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-  font-size: 12px;
-  font-weight: 900;
-  transition: 0.3s ease;
+.float-top:hover{
+    transform:
+        translateY(-6px)
+        scale(1.08);
+    box-shadow:
+        0 18px 45px rgba(255,90,31,.35);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-5px) rotate(2deg);
+.floating-buttons svg{
+    transition:
+        transform .35s ease;
+}
+
+.floating-buttons a:hover svg,
+.floating-buttons button:hover svg{
+    transform:translateY(-2px);
+}
+
+.floating-buttons a:active,
+.floating-buttons button:active{
+    transform:scale(.94);
+}
+
+.theme-toggle{
+    position:fixed;
+    right:24px;
+    bottom:148px;
+    z-index:91;
+    height:56px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 18px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:999px;
+    background:rgba(18,18,18,.82);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    color:#fff;
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.18);
+    font-size:12px;
+    font-weight:700;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+.theme-toggle:hover{
+    transform:
+      translateY(-6px);
+    background:rgba(255,90,31,.12);
+    box-shadow:
+      0 18px 45px rgba(255,90,31,.22);
 }
 
 .theme-toggle span {
   line-height: 1;
+}
+
+@media(max-width:768px){
+
+.floating-buttons{
+
+    right:18px;
+    bottom:18px;
+
+}
+
+.floating-buttons a,
+.floating-buttons button{
+
+    width:52px;
+    height:52px;
+
+}
+
+.theme-toggle{
+
+    right:18px;
+    bottom:136px;
+
+    height:52px;
+
+    padding:0 16px;
+
+}
+
 }
 
 /* =========================================================
