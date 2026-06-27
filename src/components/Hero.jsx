@@ -272,7 +272,7 @@ function Hero() {
           HERO NAVIGATION
       ====================================== */}
 
-      <div className="hero-navigation">
+      <nav className="hero-navigation">
 
         {[
           "Event",
@@ -304,13 +304,15 @@ function Hero() {
 
         ))}
 
-      </div>
+      </nav>
 
       {/* ======================================
           PROGRESS BAR
       ====================================== */}
 
-      <div className="hero-progress">
+      <div className="hero-progress"
+      aria-label="Hero slide navigation"
+      >
 
         {heroSlides.map((slide, index) => (
 
