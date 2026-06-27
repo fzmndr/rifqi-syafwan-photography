@@ -5,6 +5,7 @@ import { navLinks } from "../data/siteData";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -30,6 +31,19 @@ function Navbar() {
         }
       });
     };
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            setScrolled(window.scrollY > 40);
+
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+
+    }, []);
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
@@ -38,7 +52,7 @@ function Navbar() {
   }, []);
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <a href="#home" className="logo" onClick={closeMenu}>
         Rifqi<span>Syafwan</span>
       </a>
