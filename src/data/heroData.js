@@ -10,7 +10,7 @@ export const heroSlides = [
     label: "Wedding",
 
     title:
-      "Documenting moments and creating visuals that tell stories.",
+      "Document moments and creating visuals that tell stories.",
 
     description:
       "I create, explore, and turn ideas into visuals.",
