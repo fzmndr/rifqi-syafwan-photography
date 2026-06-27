@@ -201,14 +201,14 @@
 
     font-weight:900;
 
-    line-height:.9;
+    line-height:0.95;
 
-    letter-spacing:-0.06em;
-
-    text-wrap:balance;
+    letter-spacing:-0.05em;
 
     text-shadow:
         0 12px 40px rgba(0,0,0,.35);
+
+    max-width:700px;
 
 }
 
@@ -1052,5 +1052,374 @@
 .hero-progress button{
 
     will-change:transform;
+
+}
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+/* =========================
+   Laptop
+========================= */
+
+@media (max-width:1200px){
+
+    .hero{
+
+        padding:100px 40px 120px;
+
+    }
+
+    .hero-container{
+
+        gap:60px;
+
+        grid-template-columns:1fr .8fr;
+
+    }
+
+    .hero-title{
+
+        font-size:clamp(60px,7vw,90px);
+
+    }
+
+    .hero-card{
+
+        max-width:360px;
+
+    }
+
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width:992px){
+
+    .hero{
+
+        padding:90px 30px 50px;
+
+        min-height:auto;
+
+        align-items:flex-start;
+
+    }
+
+    .hero-container{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:35px;
+
+    }
+
+    .hero-left{
+
+        max-width:100%;
+
+    }
+
+    .hero-title{
+
+        font-size:58px;
+
+    }
+
+    .hero-card{
+
+        max-width:100%;
+
+        margin:0;
+
+    }
+
+    .hero-progress{
+
+        position:relative;
+
+        left:auto;
+
+        bottom:auto;
+
+        transform:none;
+
+        margin:30px auto 10px;
+
+    }
+
+    .hero-navigation{
+
+        position:relative;
+
+        left:auto;
+
+        bottom:auto;
+
+        transform:none;
+
+        border:none;
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:16px;
+
+        padding:0;
+
+    }
+
+    .hero-navigation button{
+
+        padding:18px;
+
+        border-radius:18px;
+
+        background:rgba(255,255,255,.05);
+
+        border:1px solid rgba(255,255,255,.08);
+
+        opacity:1;
+
+    }
+
+    .hero-navigation button.active::before{
+
+        display:none;
+
+    }
+
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width:768px){
+
+    .hero{
+
+        padding:80px 20px 30px;
+
+        min-height:100svh;
+
+    }
+
+    .hero-container{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:28px;
+
+    }
+
+    .hero-left{
+
+        width:100%;
+
+    }
+
+    .hero-eyebrow{
+
+        font-size:16px;
+
+    }
+
+    .hero-title{
+
+        font-size:clamp(38px,11vw,48px);
+
+        line-height:1;
+
+        letter-spacing:-0.04em;
+
+        max-width:100%;
+
+        word-break:break-word;
+
+    }
+
+    .hero-button{
+
+        width:100%;
+
+        justify-content:center;
+
+        margin-top:28px;
+
+    }
+
+    .hero-card{
+
+        width:100%;
+
+        max-width:100%;
+
+        margin:0;
+
+        padding:22px;
+
+    }
+
+    .hero-card-title{
+
+        font-size:26px;
+
+    }
+
+    .hero-card-description{
+
+        font-size:14px;
+
+    }
+
+    .hero-progress{
+
+        position:relative;
+
+        left:auto;
+
+        bottom:auto;
+
+        transform:none;
+
+        margin:28px auto 10px;
+
+    }
+
+    .hero-progress button{
+
+        width:26px;
+
+    }
+
+    .hero-progress button.active{
+
+        width:70px;
+
+    }
+
+    .hero-navigation{
+
+        position:relative;
+
+        left:auto;
+
+        bottom:auto;
+
+        transform:none;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:12px;
+
+        border:none;
+
+        padding:0;
+
+        margin-top:10px;
+
+    }
+
+    .hero-navigation button{
+
+        width:100%;
+
+        padding:16px;
+
+        background:rgba(255,255,255,.05);
+
+        border:1px solid rgba(255,255,255,.08);
+
+        border-radius:16px;
+
+        opacity:1;
+
+    }
+
+    .hero-navigation button.active{
+
+        border-color:#ff5a1f;
+
+    }
+
+    .hero-navigation button.active::before{
+
+        display:none;
+
+    }
+
+}
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width:480px){
+
+    .hero{
+
+        padding:70px 16px 24px;
+
+    }
+
+    .hero-title{
+
+        font-size:36px;
+
+    }
+
+    .hero-card{
+
+        padding:18px;
+
+    }
+
+    .hero-card-title{
+
+        font-size:22px;
+
+    }
+
+    .hero-button{
+
+        padding:14px 20px;
+
+    }
+
+}
+
+/* =========================
+   Extra Small
+========================= */
+
+@media (max-width:360px){
+
+    .hero-title{
+
+        font-size:32px;
+
+    }
+
+    .hero-card{
+
+        padding:16px;
+
+    }
+
+    .hero-card-title{
+
+        font-size:20px;
+
+    }
 
 }
