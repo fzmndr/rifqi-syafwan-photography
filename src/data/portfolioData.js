@@ -1,40 +1,35 @@
-import gallery1 from "../assets/gallery-1.jpeg";
-import gallery2 from "../assets/gallery-2.jpeg";
-import gallery3 from "../assets/gallery-3.jpeg";
-import gallery4 from "../assets/gallery-4.jpeg";
-import gallery5 from "../assets/gallery-5.jpeg";
-import gallery6 from "../assets/gallery-6.jpeg";
-import gallery7 from "../assets/gallery7.jpg";
-import gallery8 from "../assets/gallery8.jpg";
-import gallery9 from "../assets/gallery9.jpg";
-import gallery10 from "../assets/gallery10.jpg";
-import gallery11 from "../assets/gallery11.jpg";
-import gallery12 from "../assets/gallery12.jpg";
-import gallery13 from "../assets/gallery13.jpg";
-import gallery14 from "../assets/gallery14.jpg";
-import gallery15 from "../assets/gallery15.jpg";
-import gallery16 from "../assets/gallery16.jpeg";
-import gallery17 from "../assets/gallery17.jpeg";
-import gallery18 from "../assets/gallery18.jpeg";
-import gallery19 from "../assets/gallery19.jpeg";
-import gallery20 from "../assets/gallery20.jpeg";
-
 export const portfolioItems = [
   {
     id: 1,
-    // Masukkan semua gambar dalam satu array 'images'
-    images: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
+    // Panggil gambar langsung menggunakan string path absolut
+    images: [
+      "/assets/gallery-1.jpeg", 
+      "/assets/gallery-2.jpeg", 
+      "/assets/gallery-3.jpeg", 
+      "/assets/gallery-4.jpeg", 
+      "/assets/gallery-5.jpeg", 
+      "/assets/gallery-6.jpeg"
+    ],
     title: "VESPA OFFICINA 8",
     category: "Brand",
     year: "2025",
     service: "BRAND PHOTOGRAPHY",
     location: "Jakarta, Indonesia",
-    // Cukup 1 deskripsi/caption utama untuk postingan ini
     desc: "A cinematic portrait story captured with warm tones, intimate details, and timeless emotion. Premium brand photography crafted for campaigns, identity, and digital presence.",
   },
   {
     id: 2,
-    images: [gallery7, gallery8, gallery9, gallery10, gallery11, gallery12, gallery13, gallery14, gallery15],
+    images: [
+      "/assets/gallery7.jpg", 
+      "/assets/gallery8.jpg", 
+      "/assets/gallery9.jpg", 
+      "/assets/gallery10.jpg", 
+      "/assets/gallery11.jpg", 
+      "/assets/gallery12.jpg", 
+      "/assets/gallery13.jpg", 
+      "/assets/gallery14.jpg", 
+      "/assets/gallery15.jpg"
+    ],
     title: "VESPA SNAKE POP UP",
     category: "Brand",
     year: "2025",
@@ -44,7 +39,13 @@ export const portfolioItems = [
   },
   {
     id: 3,
-    images: [gallery16, gallery17, gallery18, gallery19, gallery20],
+    images: [
+      "/assets/gallery16.jpeg", 
+      "/assets/gallery17.jpeg", 
+      "/assets/gallery18.jpeg", 
+      "/assets/gallery19.jpeg", 
+      "/assets/gallery20.jpeg"
+    ],
     title: "VICTORIA'S SECRET BOMSHELL MIDNIGHT",
     category: "Brand",
     year: "2025",
