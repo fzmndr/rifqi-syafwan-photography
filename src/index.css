@@ -597,12 +597,11 @@ img {
 }
 
 /* ==========================
-        FEED LAYOUT
+       FEED LAYOUT
 ========================== */
 
 .instagram-feed-grid {
     display: grid;
-    /* Grid responsif: otomatis menyesuaikan lebar, mirip feed web IG */
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 40px;
     margin-top: 40px;
@@ -610,7 +609,7 @@ img {
 
 .instagram-post-card {
     background: #111;
-    border-radius: 32px; /* Mengikuti radius besarmu */
+    border-radius: 32px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, .08);
     display: flex;
@@ -676,7 +675,7 @@ img {
 .post-media-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 5; /* Rasio potret IG (Tinggi & Sinematik) */
+    aspect-ratio: 4 / 5;
     background: #000;
 }
 
@@ -711,10 +710,9 @@ img {
 }
 
 .post-media-slide:hover img {
-    transform: scale(1.05); /* Efek zoom tipis saat di-hover */
+    transform: scale(1.05);
 }
 
-/* Gradasi gelap di bawah agar gambar terlihat dramatis */
 .post-media-slide::after {
     content: "";
     position: absolute;
@@ -771,13 +769,8 @@ img {
     transform: translateY(-50%) scale(1.08);
 }
 
-.arrow-left {
-    left: 16px;
-}
-
-.arrow-right {
-    right: 16px;
-}
+.arrow-left { left: 16px; }
+.arrow-right { right: 16px; }
 
 /* ==========================
      DOTS (EXPANDING STYLE)
@@ -799,7 +792,6 @@ img {
     transition: .35s ease;
 }
 
-/* Gaya melebarnya tetap saya pertahankan */
 .feed-dot.active {
     width: 28px; 
     border-radius: 999px;
@@ -842,21 +834,233 @@ img {
 }
 
 .view-details-btn:hover {
-    transform: translateX(6px); /* Efek panah maju saat dihover */
+    transform: translateX(6px);
+}
+
+/* =========================================================
+   LIGHTBOX OVERLAY & CARD (FIXED FOR THE PORTFOLIO COMPONENT)
+========================================================= */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.lightbox-close:hover {
+    background: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+/* Tombol Navigasi Antar Project */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-nav:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+}
+
+.lightbox-prev { left: 40px; }
+.lightbox-next { right: 40px; }
+
+/* Container Utama Modal */
+.lightbox-card.scrollable-lightbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1150px;
+    height: 85vh;
+    background: #0c0c0c;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Sisi Kiri: Scroll Gambar Kebawah */
+.lightbox-gallery {
+    flex: 1.4;
+    background: #000;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.lightbox-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.lightbox-gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 4px solid #0c0c0c;
+}
+
+/* Sisi Kanan: Panel Informasi */
+.lightbox-sidebar {
+    flex: 1;
+    background: #121212;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    overflow-y: auto;
+}
+
+/* Header Info di dalam Sidebar */
+.lightbox-sidebar .lightbox-header {
+    padding: 0 0 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 24px;
+}
+
+.lightbox-sidebar h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 12px 0;
+}
+
+.lightbox-sidebar .lightbox-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+}
+
+/* Metadata Grid Box */
+.project-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.project-meta > div {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.project-meta small {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.project-meta strong {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Tombol CTAs */
+.lightbox-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: 0.3s ease;
+    margin-top: auto;
+}
+
+.lightbox-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(255, 102, 0, 0.25);
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
 
 /* ==========================
         MOBILE RESPONSIVE
 ========================== */
 
+@media (max-width: 992px) {
+    .lightbox-card.scrollable-lightbox {
+        flex-direction: column;
+        height: 85vh;
+    }
+    .lightbox-gallery {
+        flex: 1.2;
+    }
+    .lightbox-sidebar {
+        flex: 1;
+        padding: 24px;
+    }
+    .lightbox-nav {
+        width: 44px;
+        height: 44px;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+}
+
 @media (max-width: 768px) {
     .instagram-feed-grid {
-        grid-template-columns: 1fr; /* Jadi 1 kolom full di HP */
+        grid-template-columns: 1fr;
         gap: 24px;
     }
 
     .instagram-post-card {
-        border-radius: 24px; /* Sedikit dikecilkan untuk HP */
+        border-radius: 24px;
     }
 
     .post-header-info {
