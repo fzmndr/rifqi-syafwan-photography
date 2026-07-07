@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { X, ArrowUpRight, ChevronLeft, ChevronRight, ArrowRight, Images } from "lucide-react";
 import { portfolioItems, portfolioCategories } from "../data/portfolioData";
-import { createWhatsAppLink } from "../utils/whatsapp";
+import { createWhatsAppLink } from "../utils/whatsapp"; // Pastikan path ini sesuai dengan struktur folder Anda
 
 function normalizeCategory(category) {
   if (!category) return "Portrait";
@@ -23,12 +23,13 @@ const PostCard = ({ item, onClickViewDetails }) => {
   const handleScroll = () => {
     if (!trackRef.current) return;
     const { scrollLeft, clientWidth } = trackRef.current;
+    // Menggunakan Math.round agar dot berpindah saat gambar sudah lebih dari setengah digeser
     const index = Math.round(scrollLeft / clientWidth);
     setCurrentImgIndex(index);
   };
 
   const scrollTrack = (direction, e) => {
-    e.stopPropagation(); // Mencegah klik tembus ke detail project
+    e.stopPropagation(); 
     if (!trackRef.current) return;
     const { clientWidth } = trackRef.current;
     const targetScroll = direction === "next"
@@ -52,7 +53,7 @@ const PostCard = ({ item, onClickViewDetails }) => {
         <div className="avatar-placeholder">RS</div>
         <div>
           <h4>Rifqi Syafwan</h4>
-          <p>{item.location}</p>
+          <p>{item.location || "Indonesia"}</p>
         </div>
         <div className="post-category-tag">{item.category}</div>
       </div>
@@ -61,28 +62,29 @@ const PostCard = ({ item, onClickViewDetails }) => {
       <div className="post-media-container">
         {/* Badge Hitungan Frame (Kaca) */}
         {item.images.length > 1 && (
-          <div className="post-counter-badge">
-            {currentImgIndex + 1} / {item.images.length}
+          <div className="post-counter-badge" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Images size={14} />
+            <span>{currentImgIndex + 1} / {item.images.length}</span>
           </div>
         )}
 
-        {/* Panah Kiri Kanan (Glassmorphism) */}
-        {currentImgIndex > 0 && (
+        {/* Panah Kiri Kanan (Glassmorphism) - Hanya muncul jika ada lebih dari 1 gambar */}
+        {item.images.length > 1 && currentImgIndex > 0 && (
           <button type="button" className="post-arrow arrow-left" onClick={(e) => scrollTrack("prev", e)}>
             <ChevronLeft size={24} />
           </button>
         )}
         
-        {currentImgIndex < item.images.length - 1 && (
+        {item.images.length > 1 && currentImgIndex < item.images.length - 1 && (
           <button type="button" className="post-arrow arrow-right" onClick={(e) => scrollTrack("next", e)}>
             <ChevronRight size={24} />
           </button>
         )}
 
-        {/* Track Area */}
+        {/* Track Area: Menampilkan seluruh gambar dari array images */}
         <div className="post-media-track" ref={trackRef} onScroll={handleScroll}>
           {item.images.map((img, idx) => (
-            <div className="post-media-slide" key={idx} onClick={onClickViewDetails}>
+            <div className="post-media-slide" key={idx}>
               <img src={img} alt={`${item.title} - Frame ${idx + 1}`} loading="lazy" />
             </div>
           ))}
@@ -103,8 +105,9 @@ const PostCard = ({ item, onClickViewDetails }) => {
         <strong>{item.title}</strong>
         {item.desc}
         <br />
+        {/* Tombol View Gallery untuk membuka Lightbox */}
         <button type="button" className="view-details-btn" onClick={onClickViewDetails}>
-          VIEW GALLERY <ArrowRight size={16} />
+          VIEW FULL GALLERY <ArrowRight size={16} />
         </button>
       </div>
     </motion.article>
@@ -147,7 +150,7 @@ function Portfolio() {
   const showPrevious = () => setSelectedIndex((c) => (c === 0 ? filteredItems.length - 1 : c - 1));
   const showNext = () => setSelectedIndex((c) => (c === filteredItems.length - 1 ? 0 : c + 1));
 
-  // Keyboard Event untuk Lightbox
+  // Keyboard Event untuk Lightbox (Esc, Kiri, Kanan)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (selectedIndex === null) return;
@@ -159,7 +162,7 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, filteredItems]);
 
-  // Prevent scroll saat lightbox terbuka
+  // Prevent scroll pada body saat lightbox terbuka
   useEffect(() => {
     document.body.classList.toggle("no-scroll", selectedIndex !== null);
     return () => document.body.classList.remove("no-scroll");
@@ -213,7 +216,7 @@ function Portfolio() {
 
       </div>
 
-      {/* LIGHTBOX MODAL (Tetap dipertahankan untuk melihat full gallery) */}
+      {/* LIGHTBOX MODAL (Gallery Detail) */}
       <AnimatePresence>
         {selectedItem && (
           <motion.div
@@ -227,6 +230,7 @@ function Portfolio() {
               <X size={24} />
             </button>
 
+            {/* Navigasi pindah antar Project */}
             <button type="button" className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); showPrevious(); }}>
               <ChevronLeft size={32} />
             </button>
@@ -243,12 +247,14 @@ function Portfolio() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Sisi Kiri: Scrollable Image List */}
               <div className="lightbox-gallery">
                 {selectedItem.images.map((img, idx) => (
                   <img key={idx} src={img} alt={`${selectedItem.title} - ${idx + 1}`} loading="lazy" />
                 ))}
               </div>
 
+              {/* Sisi Kanan: Project Info (Sticky/Tetap) */}
               <div className="lightbox-sidebar">
                 <div className="post-header-info" style={{ padding: 0, border: 'none', marginBottom: '24px' }}>
                    <div className="avatar-placeholder">RS</div>
@@ -258,14 +264,26 @@ function Portfolio() {
                    </div>
                 </div>
                 
-                <h3 style={{ color: "#111" }}>{selectedItem.title}</h3>
+                <h3 style={{ color: "#111", margin: "0 0 12px 0" }}>{selectedItem.title}</h3>
                 <p className="lightbox-desc">{selectedItem.desc}</p>
 
                 <div className="project-meta">
-                  <div><small>Category</small><strong>{selectedItem.category}</strong></div>
-                  <div><small>Year</small><strong>{selectedItem.year}</strong></div>
-                  <div><small>Service</small><strong>{selectedItem.service}</strong></div>
-                  <div><small>Total Photos</small><strong>{selectedItem.images.length} Frames</strong></div>
+                  <div style={{ marginBottom: "12px" }}>
+                    <small style={{ display: "block", color: "#888", fontSize: "12px" }}>Category</small>
+                    <strong style={{ color: "#111" }}>{selectedItem.category}</strong>
+                  </div>
+                  <div style={{ marginBottom: "12px" }}>
+                    <small style={{ display: "block", color: "#888", fontSize: "12px" }}>Year</small>
+                    <strong style={{ color: "#111" }}>{selectedItem.year}</strong>
+                  </div>
+                  <div style={{ marginBottom: "12px" }}>
+                    <small style={{ display: "block", color: "#888", fontSize: "12px" }}>Service</small>
+                    <strong style={{ color: "#111" }}>{selectedItem.service}</strong>
+                  </div>
+                  <div style={{ marginBottom: "24px" }}>
+                    <small style={{ display: "block", color: "#888", fontSize: "12px" }}>Total Photos</small>
+                    <strong style={{ color: "#111" }}>{selectedItem.images.length} Frames</strong>
+                  </div>
                 </div>
 
                 <a
@@ -273,6 +291,19 @@ function Portfolio() {
                   target="_blank"
                   rel="noreferrer"
                   className="lightbox-cta-btn"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    background: "var(--orange)",
+                    color: "#fff",
+                    padding: "14px",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    marginTop: "auto"
+                  }}
                 >
                   Book This Session <ArrowUpRight size={17} />
                 </a>
