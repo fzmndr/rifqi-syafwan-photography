@@ -47,16 +47,6 @@ const PostCard = ({ item, onClickViewDetails }) => {
       transition={{ duration: 0.4 }}
       className="instagram-post-card"
     >
-      {/* 1. HEADER POST */}
-      <div className="post-header-info">
-        <div className="avatar-placeholder">RS</div>
-        <div>
-          <h4>Rifqi Syafwan</h4>
-          <p>{item.location || "Indonesia"}</p>
-        </div>
-        <div className="post-category-tag">{item.category}</div>
-      </div>
-
       {/* 2. MEDIA CONTAINER (GAMBAR & CAROUSEL) */}
       <div className="post-media-container">
         {item.images.length > 1 && (
@@ -174,7 +164,7 @@ function Portfolio() {
             <p className="section-label" style={{ color: "var(--orange)", fontWeight: 700, letterSpacing: "2px", marginBottom: "8px" }}>
               SELECTED WORKS
             </p>
-            <h2 style={{ fontSize: "2.5rem", color: "#fff", margin: 0 }}>My Portfolio Feed</h2>
+            <h2 style={{ fontSize: "2.5rem", color: "#fff", margin: 0 }}>Featured Works</h2>
           </div>
 
           <div className="portfolio-filter">
