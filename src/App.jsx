@@ -87,7 +87,6 @@ function App() {
           <Hero />
         </section>
 
-        <About />
         <Portfolio />
         <EditingPreview />
         <Services />
