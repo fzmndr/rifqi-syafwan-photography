@@ -838,195 +838,231 @@ img {
 }
 
 /* =========================================================
-   LIGHTBOX OVERLAY & CARD (FIXED FOR THE PORTFOLIO COMPONENT)
+   NEW PORTFOLIO LIGHTBOX
 ========================================================= */
 
-.lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.lightbox{
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(14px);
 }
 
-.lightbox-close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 100;
+.lightbox-card{
+
+    width:min(1400px,95vw);
+    height:min(860px,90vh);
+    display:grid;
+    grid-template-columns:1.45fr .85fr;
+    background:#111;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+
 }
 
-.lightbox-close:hover {
-    background: #ff4d4d;
-    border-color: #ff4d4d;
+.lightbox-gallery{
+
+    position:relative;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 
-/* Tombol Navigasi Antar Project */
-.lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s;
-    backdrop-filter: blur(8px);
+.lightbox-gallery img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.lightbox-nav:hover {
-    background: var(--orange);
-    border-color: var(--orange);
+/* ===========================
+        SIDEBAR
+=========================== */
+
+.lightbox-sidebar{
+    background:#141414;
+    display:flex;
+    flex-direction:column;
+    padding:40px;
+    overflow:hidden;
 }
 
-.lightbox-prev { left: 40px; }
-.lightbox-next { right: 40px; }
-
-/* Container Utama Modal */
-.lightbox-card.scrollable-lightbox {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 1150px;
-    height: 85vh;
-    background: #0c0c0c;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+.lightbox-project-info{
+    padding-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* Sisi Kiri: Scroll Gambar Kebawah */
-.lightbox-gallery {
-    flex: 1.4;
-    background: #000;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.lightbox-project-info h2{
+    font-size:34px;
+    color:#fff;
+    font-weight:700;
+    margin-bottom:8px;
 }
 
-.lightbox-gallery::-webkit-scrollbar {
-    display: none;
+.lightbox-project-info p{
+    color:rgba(255,255,255,.55);
+    font-size:14px;
 }
 
-.lightbox-gallery img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-bottom: 4px solid #0c0c0c;
+/* ===========================
+      THUMBNAILS
+=========================== */
+
+.lightbox-thumbnails{
+    margin-top:28px;
+    overflow-y:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    padding-right:6px;
 }
 
-/* Sisi Kanan: Panel Informasi */
-.lightbox-sidebar {
-    flex: 1;
-    background: #121212;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
-    overflow-y: auto;
+.lightbox-thumbnails::-webkit-scrollbar{
+    width:6px;
 }
 
-/* Header Info di dalam Sidebar */
-.lightbox-sidebar .lightbox-header {
-    padding: 0 0 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    margin-bottom: 24px;
+.lightbox-thumbnails::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.15);
+    border-radius:999px;
 }
 
-.lightbox-sidebar h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 12px 0;
+.lightbox-thumb{
+    border:none;
+    background:none;
+    cursor:pointer;
+    text-align:left;
+    transition:.35s;
 }
 
-.lightbox-sidebar .lightbox-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 32px;
+.lightbox-thumb:hover{
+    transform:translateY(-4px);
 }
 
-/* Metadata Grid Box */
-.project-meta {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
+.lightbox-thumb.active img{
+    border:2px solid var(--orange);
 }
 
-.project-meta > div {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 16px;
-    border-radius: 16px;
+.lightbox-thumb img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:14px;
+    margin-bottom:10px;
 }
 
-.project-meta small {
-    display: block;
-    font-size: 11px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+.lightbox-thumb small{
+    display:block;
+    color:var(--orange);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
 }
 
-.project-meta strong {
-    font-size: 14px;
-    color: #fff;
-    font-weight: 600;
+.lightbox-thumb h5{
+    color:#fff;
+    font-size:15px;
+    margin:4px 0;
+    line-height:1.3;
 }
 
-/* Tombol CTAs */
-.lightbox-cta-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--orange);
-    color: #fff;
-    padding: 16px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    transition: 0.3s ease;
-    margin-top: auto;
+.lightbox-thumb span{
+    color:rgba(255,255,255,.45);
+    font-size:12px;
 }
 
-.lightbox-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(255, 102, 0, 0.25);
+/* ===========================
+      CLOSE BUTTON
+=========================== */
+
+.lightbox-close{
+    position:absolute;
+    top:30px;
+    right:30px;
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    color:#111;
+    cursor:pointer;
+    z-index:20;
 }
 
-body.no-scroll {
-    overflow: hidden;
+.lightbox-close:hover{
+    background:var(--orange);
+    color:#fff;
+}
+
+/* ===========================
+      NAVIGATION
+=========================== */
+
+.lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:56px;
+    height:56px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    color:#111;
+    cursor:pointer;
+    z-index:20;
+}
+
+.lightbox-prev{
+    left:25px;
+}
+
+.lightbox-next{
+    right:25px;
+}
+
+.lightbox-nav:hover{
+    background:var(--orange);
+    color:#fff;
+}
+
+/* ===========================
+      MOBILE
+=========================== */
+
+@media(max-width:992px){
+
+.lightbox{
+    padding:16px;
+}
+
+.lightbox-card{
+    grid-template-columns:1fr;
+    height:90vh;
+}
+
+.lightbox-gallery{
+    height:45vh;
+}
+
+.lightbox-sidebar{
+    padding:24px;
+}
+.lightbox-thumbnails{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+@media(max-width:640px){
+.lightbox-thumbnails{
+    grid-template-columns:1fr;
+}
 }
 
 /* ==========================

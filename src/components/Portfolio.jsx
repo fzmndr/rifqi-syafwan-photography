@@ -106,6 +106,7 @@ const PostCard = ({ item, onClickViewDetails }) => {
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [activeImage, setActiveImage] = useState(0);
 
   const updatedItems = useMemo(() => {
     return portfolioItems.map((item) => ({
@@ -128,7 +129,10 @@ function Portfolio() {
 
   const selectedItem = selectedIndex !== null ? filteredItems[selectedIndex] : null;
 
-  const closeLightbox = () => setSelectedIndex(null);
+  const closeLightbox = () => {
+    setSelectedIndex(null);
+    setActiveImage(0);
+  };
   const showPrevious = () => setSelectedIndex((c) => (c === 0 ? filteredItems.length - 1 : c - 1));
   const showNext = () => setSelectedIndex((c) => (c === filteredItems.length - 1 ? 0 : c + 1));
 
@@ -219,61 +223,52 @@ function Portfolio() {
             </button>
 
             <motion.div
-              className="lightbox-card scrollable-lightbox"
-              initial={{ y: 50, scale: 0.96, opacity: 0 }}
-              animate={{ y: 0, scale: 1, opacity: 1 }}
-              exit={{ y: 40, scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
+                className="lightbox-card"
+                initial={{ opacity: 0, scale: .95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: .95 }}
+                transition={{ duration: .3 }}
+                onClick={(e)=>e.stopPropagation()}
             >
-              {/* Kiri: Scrollable Gallery */}
-              <div className="lightbox-gallery">
-                {selectedItem.images.map((img, idx) => (
-                  <img key={idx} src={img} alt={`${selectedItem.title} - ${idx + 1}`} loading="lazy" />
-                ))}
-              </div>
 
-              {/* Kanan: Project Info */}
-              <div className="lightbox-sidebar">
-                <div className="post-header-info lightbox-header">
-                   <div className="avatar-placeholder">RS</div>
-                   <div>
-                      <h4>Rifqi Syafwan</h4>
-                      <p>{selectedItem.location}</p>
-                   </div>
-                </div>
-                
-                <h3>{selectedItem.title}</h3>
-                <p className="lightbox-desc">{selectedItem.desc}</p>
-
-                <div className="project-meta">
-                  <div>
-                    <small>Category</small>
-                    <strong>{selectedItem.category}</strong>
-                  </div>
-                  <div>
-                    <small>Year</small>
-                    <strong>{selectedItem.year}</strong>
-                  </div>
-                  <div>
-                    <small>Service</small>
-                    <strong>{selectedItem.service}</strong>
-                  </div>
-                  <div>
-                    <small>Total Photos</small>
-                    <strong>{selectedItem.images.length} Frames</strong>
-                  </div>
+                <div className="lightbox-gallery">
+                    <img
+                        src={selectedItem.images[activeImage]}
+                        alt={selectedItem.title}
+                    />
                 </div>
 
-                <a
-                  href={createWhatsAppLink(`Halo Rifqi, saya tertarik membuat sesi foto seperti project ${selectedItem.title}.`)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="lightbox-cta-btn"
-                >
-                  Book This Session <ArrowUpRight size={17} />
-                </a>
-              </div>
+                <div className="lightbox-sidebar">
+                    <div className="lightbox-project-info">
+                        <h2>{selectedItem.title}</h2>
+                        <p>{selectedItem.location}</p>
+                    </div>
+                    <div className="lightbox-thumbnails">
+                        {selectedItem.images.map((img,index)=>(
+                            <button
+                                key={index}
+                                className={`lightbox-thumb ${activeImage===index ? "active" : ""}`}
+                                onClick={()=>setActiveImage(index)}
+                            >
+                                <img
+                                    src={img}
+                                    alt=""
+                                />
+                                <small>
+                                    {selectedItem.category}
+                                </small>
+
+                                <h5>
+                                    {selectedItem.title}
+                                </h5>
+
+                                <span>
+                                    {selectedItem.year}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </motion.div>
           </motion.div>
         )}
