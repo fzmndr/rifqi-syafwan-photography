@@ -134,12 +134,6 @@ function Hero() {
     [1, 0.75]
   );
 
-  const cardY = useTransform(
-    scrollY,
-    [0,800],
-    [0,-35]
-);
-
 const isMobile = window.innerWidth <= 768;
 
 const imageY = useTransform(
@@ -229,13 +223,17 @@ const imageY = useTransform(
     >
 
       <p className="hero-eyebrow">
-        Hey, I'm a
+        Selected Visual Storyteller
       </p>
 
       <h1 className="hero-title">
-          Photo
-          <span>grapher</span>
+        Crafting Visuals
+        <br />
+        That Feel Alive
       </h1>
+      <p className="hero-description">
+        I'm a photographer focused on creating clean, emotional, and story-driven imagery that people truly connect with.
+      </p>
 
       <motion.a
         href="#portfolio"
@@ -253,7 +251,7 @@ const imageY = useTransform(
         }}
       >
         <span>
-          Book a Session
+          Get in Touch
         </span>
 
         <ArrowRight size={18} />
@@ -261,52 +259,7 @@ const imageY = useTransform(
 
     </motion.div>
 
-    {/* ============================
-        RIGHT CARD
-    ============================ */}
-
-    <AnimatePresence mode="wait">
-
-      <motion.div
-        key={activeSlide}
-        className="hero-card"
-        style={{
-          y:cardY
-        }}
-        initial={{
-          opacity: 0,
-          x: 35,
-        }}
-        animate={{
-          opacity: 1,
-          x: 0,
-        }}
-        exit={{
-          opacity: 0,
-          x: -35,
-        }}
-        transition={{
-            duration:.45,
-            ease:"easeOut",
-        }}
-      >
-
-        <span className="hero-card-label">
-          {currentSlide.label}
-        </span>
-
-        <h2 className="hero-card-title">
-          {currentSlide.title}
-        </h2>
-
-        <p className="hero-card-description">
-          {currentSlide.description}
-        </p>
-
-      </motion.div>
-
-    </AnimatePresence>
-
+    
   </div>      {/* ======================================
           HERO NAVIGATION
       ====================================== */}
