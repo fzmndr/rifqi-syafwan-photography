@@ -910,6 +910,14 @@ img {
     color:rgba(255,255,255,.55);
     font-size:14px;
 }
+.lightbox-project-info{
+
+    position:sticky;
+    top:0;
+    background:#141414;
+    z-index:2;
+
+}
 
 /* ===========================
       THUMBNAILS
@@ -967,15 +975,43 @@ img {
 }
 
 .lightbox-thumb h5{
-    color:#fff;
-    font-size:15px;
-    margin:4px 0;
-    line-height:1.3;
+
+    font-size:14px;
+    margin-top:6px;
+    margin-bottom:2px;
+
 }
 
 .lightbox-thumb span{
+
+    font-size:11px;
     color:rgba(255,255,255,.45);
-    font-size:12px;
+
+}
+.lightbox-thumb{
+
+    transition:.3s ease;
+}
+
+.lightbox-thumb img{
+
+    transition:.3s ease;
+}
+
+.lightbox-thumb.active{
+  
+    transform:translateY(-4px);
+}
+
+.lightbox-thumb.active img{
+
+    border:3px solid var(--orange);
+    box-shadow:0 10px 25px rgba(255,90,31,.25);
+
+}
+
+.lightbox-thumb:hover img{
+    transform:scale(1.04);
 }
 
 /* ===========================

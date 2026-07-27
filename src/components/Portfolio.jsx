@@ -133,8 +133,19 @@ function Portfolio() {
     setSelectedIndex(null);
     setActiveImage(0);
   };
-  const showPrevious = () => setSelectedIndex((c) => (c === 0 ? filteredItems.length - 1 : c - 1));
-  const showNext = () => setSelectedIndex((c) => (c === filteredItems.length - 1 ? 0 : c + 1));
+  const showPrevious = () => {
+    setSelectedIndex((c) =>
+      c === 0 ? filteredItems.length - 1 : c - 1
+    );
+    setActiveImage(0);
+  };
+
+  const showNext = () => {
+    setSelectedIndex((c) =>
+      c === filteredItems.length - 1 ? 0 : c + 1
+    );
+    setActiveImage(0);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -192,7 +203,10 @@ function Portfolio() {
               <PostCard 
                 key={item.id} 
                 item={item} 
-                onClickViewDetails={() => setSelectedIndex(index)} 
+                onClickViewDetails={() => {
+                    setSelectedIndex(index);
+                    setActiveImage(0);
+                }} 
               />
             ))}
           </AnimatePresence>
