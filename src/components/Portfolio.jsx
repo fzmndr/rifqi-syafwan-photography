@@ -84,7 +84,18 @@ const PostCard = ({ item, onClickViewDetails }) => {
               ref={trackRef}
               onScroll={handleScroll}
           >
-              ...
+              {item.images.map((img, idx) => (
+                <div
+                    className="post-media-slide"
+                    key={idx}
+                >
+                    <img
+                        src={img}
+                        alt={`${item.title} - ${idx + 1}`}
+                        loading="lazy"
+                    />
+                </div>
+            ))}
           </div>
       </div>
 
