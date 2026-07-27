@@ -891,7 +891,14 @@ img {
     display:flex;
     flex-direction:column;
     padding:40px;
-    overflow:hidden;
+    overflow-y:auto;
+}
+.lightbox-sidebar::-webkit-scrollbar{
+    display:none;
+}
+
+.lightbox-thumbnails{
+    overflow:visible;
 }
 
 .lightbox-project-info{
@@ -925,7 +932,12 @@ img {
 
 .lightbox-thumbnails{
     margin-top:28px;
+    overflow:visible;
     overflow-y:auto;
+    scroll-behavior:smooth;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    scrollbar-width:thin;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
@@ -999,7 +1011,7 @@ img {
 }
 
 .lightbox-thumb.active{
-  
+
     transform:translateY(-4px);
 }
 
