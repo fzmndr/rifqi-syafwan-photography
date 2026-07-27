@@ -47,39 +47,45 @@ const PostCard = ({ item, onClickViewDetails }) => {
       transition={{ duration: 0.4 }}
       className="instagram-post-card"
     >
-      <div className="post-header">
-          <span className="post-category">
-              {item.category}
-          </span>
-      </div>
       {/* 2. MEDIA CONTAINER (GAMBAR & CAROUSEL) */}
       <div className="post-media-container">
-        {item.images.length > 1 && (
-          <div className="post-counter-badge" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Images size={14} />
-            <span>{currentImgIndex + 1} / {item.images.length}</span>
+          <div className="post-category-badge">
+              {item.category}
           </div>
-        )}
-
-        {item.images.length > 1 && currentImgIndex > 0 && (
-          <button type="button" className="post-arrow arrow-left" onClick={(e) => scrollTrack("prev", e)}>
-            <ChevronLeft size={24} />
-          </button>
-        )}
-        
-        {item.images.length > 1 && currentImgIndex < item.images.length - 1 && (
-          <button type="button" className="post-arrow arrow-right" onClick={(e) => scrollTrack("next", e)}>
-            <ChevronRight size={24} />
-          </button>
-        )}
-
-        <div className="post-media-track" ref={trackRef} onScroll={handleScroll}>
-          {item.images.map((img, idx) => (
-            <div className="post-media-slide" key={idx}>
-              <img src={img} alt={`${item.title} - Frame ${idx + 1}`} loading="lazy" />
-            </div>
-          ))}
-        </div>
+          {item.images.length > 1 && (
+              <div
+                  className="post-counter-badge"
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
+              >
+                  <Images size={14} />
+                  <span>{currentImgIndex + 1} / {item.images.length}</span>
+              </div>
+          )}
+          {item.images.length > 1 && currentImgIndex > 0 && (
+              <button
+                  type="button"
+                  className="post-arrow arrow-left"
+                  onClick={(e) => scrollTrack("prev", e)}
+              >
+                  <ChevronLeft size={24} />
+              </button>
+          )}
+          {item.images.length > 1 && currentImgIndex < item.images.length - 1 && (
+              <button
+                  type="button"
+                  className="post-arrow arrow-right"
+                  onClick={(e) => scrollTrack("next", e)}
+              >
+                  <ChevronRight size={24} />
+              </button>
+          )}
+          <div
+              className="post-media-track"
+              ref={trackRef}
+              onScroll={handleScroll}
+          >
+              ...
+          </div>
       </div>
 
       {/* 3. DOTS PAGINATION */}
