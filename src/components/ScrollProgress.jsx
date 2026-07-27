@@ -2,6 +2,16 @@ import { useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Lenis from "lenis";
 
+let lenis = null;
+
+export const stopLenis = () => {
+  lenis?.stop();
+};
+
+export const startLenis = () => {
+  lenis?.start();
+};
+
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
 
@@ -12,27 +22,27 @@ function ScrollProgress() {
   });
 
   useEffect(() => {
-  lenisInstance = new Lenis({
-    duration: 1.2,
-    smoothWheel: true,
-    smoothTouch: false,
-    wheelMultiplier: 1,
-    touchMultiplier: 1.5,
-  });
+    lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+    });
 
-  function raf(time) {
-    lenisInstance.raf(time);
-    requestAnimationFrame(raf);
-  }
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  const animationFrame = requestAnimationFrame(raf);
+    const animationFrame = requestAnimationFrame(raf);
 
-  return () => {
-    cancelAnimationFrame(animationFrame);
-    lenisInstance.destroy();
-    lenisInstance = null;
-  };
-}, []);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      lenis.destroy();
+      lenis = null;
+    };
+  }, []);
 
   return <motion.div className="scroll-progress" style={{ scaleX }} />;
 }

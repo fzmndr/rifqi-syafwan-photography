@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, ChevronLeft, ChevronRight, ArrowRight, Images } from "lucide-react";
 import { portfolioItems, portfolioCategories } from "../data/portfolioData";
 import { createWhatsAppLink } from "../utils/whatsapp";
+import { stopLenis, startLenis } from "./ScrollProgress";
 
 function normalizeCategory(category) {
   if (!category) return "Portrait";
@@ -158,22 +159,20 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, filteredItems]);
 
- useEffect(() => {
+  useEffect(() => {
     document.body.classList.toggle("no-scroll", selectedIndex !== null);
 
-    if (lenisInstance) {
-        if (selectedIndex !== null) {
-            lenisInstance.stop();
-        } else {
-            lenisInstance.start();
-        }
+    if (selectedIndex !== null) {
+      stopLenis();
+    } else {
+      startLenis();
     }
 
     return () => {
-        document.body.classList.remove("no-scroll");
-        lenisInstance?.start();
+      document.body.classList.remove("no-scroll");
+      startLenis();
     };
-}, [selectedIndex]);
+  }, [selectedIndex]);
 
   return (
     <section className="portfolio-section" id="portfolio">
