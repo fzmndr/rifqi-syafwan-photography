@@ -47,6 +47,11 @@ const PostCard = ({ item, onClickViewDetails }) => {
       transition={{ duration: 0.4 }}
       className="instagram-post-card"
     >
+      <div className="post-header">
+          <span className="post-category">
+              {item.category}
+          </span>
+      </div>
       {/* 2. MEDIA CONTAINER (GAMBAR & CAROUSEL) */}
       <div className="post-media-container">
         {item.images.length > 1 && (
