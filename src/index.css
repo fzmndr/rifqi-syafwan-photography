@@ -1021,11 +1021,11 @@ img {
 }
 
 .lightbox-thumb h5{
-
     font-size:14px;
     margin-top:6px;
     margin-bottom:2px;
-
+    color:#fff;
+    font-weight:600;
 }
 
 .lightbox-thumb span{
