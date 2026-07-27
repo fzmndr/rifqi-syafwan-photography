@@ -258,6 +258,10 @@ function Portfolio() {
                         <p>{selectedItem.location}</p>
                     </div>
                     <div className="lightbox-thumbnails">
+                      onWheel={(e) => {
+                        console.log("wheel", e.deltaY);
+                      }}
+
                         {selectedItem.images.map((img,index)=>(
                             <button
                                 key={index}

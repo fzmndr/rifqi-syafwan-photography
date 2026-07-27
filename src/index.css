@@ -851,6 +851,7 @@ img {
     padding:40px;
     background:rgba(0,0,0,.85);
     backdrop-filter:blur(14px);
+    overscroll-behavior: contain;
 }
 
 .lightbox-card{
@@ -935,16 +936,16 @@ img {
 =========================== */
 
 .lightbox-thumbnails{
-
     flex:1;
+    min-height:0;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    overflow-y:auto;
-    min-height:0;
     align-content:start;
     padding-top:24px;
-
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-width:none;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
