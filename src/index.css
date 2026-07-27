@@ -667,27 +667,6 @@ img {
     padding: 8px 14px;
     border-radius: 999px;
 }
-.post-media-container{
-    position:relative;
-}
-.post-category-badge{
-    position:absolute;
-    top:18px;
-    left:18px;
-    z-index:5;
-    padding:10px 18px;
-    border-radius:999px;
-    background:rgba(0,0,0,.28);
-    backdrop-filter:blur(18px);
-    box-shadow:0 8px 30px rgba(0,0,0,.25);
-    border:1px solid rgba(255,255,255,.08);
-    color:#fff;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    transition:.3s;
-}
 
 /* ==========================
      MEDIA TRACK (CAROUSEL)
@@ -698,6 +677,35 @@ img {
     width: 100%;
     aspect-ratio: 4 / 5;
     background: #000;
+}
+.post-category-badge{
+    position:absolute;
+    top:18px;
+    left:18px;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(0,0,0,.28);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.08);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+.post-category-badge::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--orange);
 }
 
 .post-media-track {
