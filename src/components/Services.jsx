@@ -4,7 +4,7 @@ import { Heart, Camera, CalendarDays, Car } from "lucide-react";
 const updatedServices = [
   {
     icon: Heart,
-    title: "Wedding",
+    title: "BRAND",
     desc: "Timeless wedding photography with cinematic emotion and natural storytelling.",
   },
   {
