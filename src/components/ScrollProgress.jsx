@@ -12,26 +12,27 @@ function ScrollProgress() {
   });
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-      smoothTouch: false,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-    });
+  lenisInstance = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.5,
+  });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  function raf(time) {
+    lenisInstance.raf(time);
+    requestAnimationFrame(raf);
+  }
 
-    const animationFrame = requestAnimationFrame(raf);
+  const animationFrame = requestAnimationFrame(raf);
 
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      lenis.destroy();
-    };
-  }, []);
+  return () => {
+    cancelAnimationFrame(animationFrame);
+    lenisInstance.destroy();
+    lenisInstance = null;
+  };
+}, []);
 
   return <motion.div className="scroll-progress" style={{ scaleX }} />;
 }

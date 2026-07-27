@@ -158,10 +158,22 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, filteredItems]);
 
-  useEffect(() => {
+ useEffect(() => {
     document.body.classList.toggle("no-scroll", selectedIndex !== null);
-    return () => document.body.classList.remove("no-scroll");
-  }, [selectedIndex]);
+
+    if (lenisInstance) {
+        if (selectedIndex !== null) {
+            lenisInstance.stop();
+        } else {
+            lenisInstance.start();
+        }
+    }
+
+    return () => {
+        document.body.classList.remove("no-scroll");
+        lenisInstance?.start();
+    };
+}, [selectedIndex]);
 
   return (
     <section className="portfolio-section" id="portfolio">
@@ -258,10 +270,6 @@ function Portfolio() {
                         <p>{selectedItem.location}</p>
                     </div>
                     <div className="lightbox-thumbnails">
-                      onWheel={(e) => {
-                        console.log("wheel", e.deltaY);
-                      }}
-
                         {selectedItem.images.map((img,index)=>(
                             <button
                                 key={index}
