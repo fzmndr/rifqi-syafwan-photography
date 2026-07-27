@@ -2,16 +2,6 @@ import { useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Lenis from "lenis";
 
-let lenis = null;
-
-export const stopLenis = () => {
-  lenis?.stop();
-};
-
-export const startLenis = () => {
-  lenis?.start();
-};
-
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
 
@@ -22,12 +12,17 @@ function ScrollProgress() {
   });
 
   useEffect(() => {
-    lenis = new Lenis({
+    const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
       smoothTouch: false,
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
+
+      // Jangan intervensi scroll di dalam lightbox
+      prevent: (node) => {
+        return !!node.closest(".lightbox");
+      },
     });
 
     function raf(time) {
@@ -40,11 +35,15 @@ function ScrollProgress() {
     return () => {
       cancelAnimationFrame(animationFrame);
       lenis.destroy();
-      lenis = null;
     };
   }, []);
 
-  return <motion.div className="scroll-progress" style={{ scaleX }} />;
+  return (
+    <motion.div
+      className="scroll-progress"
+      style={{ scaleX }}
+    />
+  );
 }
 
 export default ScrollProgress;
