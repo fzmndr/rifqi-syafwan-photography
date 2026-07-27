@@ -934,15 +934,13 @@ img {
 =========================== */
 
 .lightbox-thumbnails{
-
     flex:1;
     min-height:0;
     overflow-y:auto;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    scroll-behavior:smooth;
-
+    max-height:400px;   /* hanya untuk tes */
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
