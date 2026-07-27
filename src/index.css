@@ -892,7 +892,13 @@ img {
     flex-direction:column;
     padding:40px;
     overflow-y:auto;
+    overflow-x:hidden;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    scroll-behavior:smooth;
+    overscroll-behavior:contain;
 }
+
 .lightbox-sidebar::-webkit-scrollbar{
     display:none;
 }
@@ -932,16 +938,9 @@ img {
 
 .lightbox-thumbnails{
     margin-top:28px;
-    overflow:visible;
-    overflow-y:auto;
-    scroll-behavior:smooth;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
-    scrollbar-width:thin;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    padding-right:6px;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
@@ -959,6 +958,7 @@ img {
     cursor:pointer;
     text-align:left;
     transition:.35s;
+    scroll-margin-top:24px;
 }
 
 .lightbox-thumb:hover{
