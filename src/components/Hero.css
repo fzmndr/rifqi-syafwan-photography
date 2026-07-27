@@ -199,7 +199,7 @@
     position: absolute;
     left: 50%;
     bottom:18px;
-    transform: translateX(-50%);
+    transform: translateX(-47%);
     width: 100%;
     max-width: 1320px;
     display: grid;
@@ -217,8 +217,8 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 6px;
-    width: 120%;
-    padding: 8px 0;
+    width: 100%;      
+    padding: 8px 12px; 
     background: none;
     border: none;
     color: #ffffff;
