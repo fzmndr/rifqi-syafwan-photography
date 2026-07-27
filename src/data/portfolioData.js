@@ -24,7 +24,20 @@ import gallery20 from "../assets/gallery20.jpeg";
 export const portfolioItems = [
   {
     id: 1,
-    images: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
+    images: [
+  gallery1,
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+  gallery6,
+  gallery1,
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+  gallery6,
+],
     title: "VESPA OFFICINA 8",
     category: "Brand",
     year: "2025",

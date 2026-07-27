@@ -891,9 +891,8 @@ img {
     display:flex;
     flex-direction:column;
     height:100%;
-    min-height:0;
-    overflow:hidden;
     padding:40px;
+    overflow:hidden;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
@@ -905,6 +904,7 @@ img {
 }
 
 .lightbox-project-info{
+    flex-shrink:0;
     padding-bottom:24px;
     border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -934,13 +934,16 @@ img {
 =========================== */
 
 .lightbox-thumbnails{
+
     flex:1;
-    min-height:0;
-    overflow-y:auto;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    max-height:400px;   /* hanya untuk tes */
+    overflow-y:auto;
+    min-height:0;
+    align-content:start;
+    padding-top:24px;
+
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
