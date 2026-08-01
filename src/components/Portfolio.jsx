@@ -261,7 +261,7 @@ function Portfolio() {
               <ChevronRight size={32} />
             </button>
 
-            <motion.div
+            <div
                 className="lightbox-card"
                 initial={{ opacity: 0, scale: .95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -308,7 +308,7 @@ function Portfolio() {
                         ))}
                     </div>
                 </div>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
