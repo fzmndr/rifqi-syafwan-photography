@@ -884,13 +884,16 @@ img {
 }
 
 .lightbox-card{
+
     width:min(1400px,95vw);
-    height:90vh;
+    height:min(860px,90vh);
     display:grid;
     grid-template-columns:1.45fr .85fr;
-    overflow:hidden;
-    border-radius:30px;
     background:#111;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+
 }
 
 .lightbox-gallery{
@@ -914,12 +917,14 @@ img {
 =========================== */
 
 .lightbox-sidebar{
+    background:#141414;
     display:flex;
     flex-direction:column;
     height:100%;
-    overflow-y:auto;
+    min-height:0;
     padding:40px;
-    background:#141414;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
@@ -933,9 +938,7 @@ img {
 .lightbox-project-info{
     flex-shrink:0;
     padding-bottom:24px;
-    margin-bottom:24px;
     border-bottom:1px solid rgba(255,255,255,.08);
-    position:relative;
 }
 
 .lightbox-project-info h2{
@@ -959,10 +962,16 @@ img {
 =========================== */
 
 .lightbox-thumbnails{
+    flex:1;
+    min-height:0;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    padding-bottom:40px;
+    align-content:start;
+    padding-top:24px;
+    overflow:visible;
+    scrollbar-width:none;
+    padding-bottom:80px;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
@@ -1108,35 +1117,31 @@ img {
 
 @media(max-width:992px){
 
-  .lightbox-card{
-      grid-template-columns:1fr;
-      height:90vh;
+.lightbox{
+    padding:16px;
+}
 
-  }
-  .lightbox-gallery{
+.lightbox-card{
+    grid-template-columns:1fr;
+    height:90vh;
+}
 
-      height:45vh;
+.lightbox-gallery{
+    height:45vh;
+}
 
-  }
-  .lightbox-sidebar{
+.lightbox-sidebar{
+    padding:24px;
+}
+.lightbox-thumbnails{
+    grid-template-columns:repeat(2,1fr);
+}
 
-      overflow-y:auto;
-      padding:24px;
-
-  }
-  .lightbox-thumbnails{
-
-      grid-template-columns:repeat(2,1fr);
-
-  }
-  }
-  @media(max-width:640px){
-
-  .lightbox-thumbnails{
-
-      grid-template-columns:1fr;
-
-  }
+}
+@media(max-width:640px){
+.lightbox-thumbnails{
+    grid-template-columns:1fr;
+}
 }
 
 /* ==========================
