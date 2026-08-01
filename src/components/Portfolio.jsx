@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { useEffect, useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, ChevronLeft, ChevronRight, ArrowRight, Images } from "lucide-react";
@@ -241,77 +242,93 @@ function Portfolio() {
 
       {/* LIGHTBOX MODAL (Premium Dark Detail) */}
       <AnimatePresence>
-        {selectedItem && (
-          <motion.div
-            className="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeLightbox}
-          >
-            <button type="button" className="lightbox-close" onClick={closeLightbox}>
-              <X size={24} />
-            </button>
+  {selectedItem &&
+    createPortal(
 
-            <button type="button" className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); showPrevious(); }}>
-              <ChevronLeft size={32} />
-            </button>
+      <motion.div
+        className="lightbox"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={closeLightbox}
+      >
 
-            <button type="button" className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); showNext(); }}>
-              <ChevronRight size={32} />
-            </button>
+        <button
+          className="lightbox-close"
+          onClick={closeLightbox}
+        >
+          <X size={24}/>
+        </button>
 
-            <motion.div
-                className="lightbox-card"
-                initial={{ opacity: 0, scale: .95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: .95 }}
-                transition={{ duration: .3 }}
-                onClick={(e)=>e.stopPropagation()}
-            >
+        <button
+          className="lightbox-nav lightbox-prev"
+          onClick={(e)=>{
+            e.stopPropagation();
+            showPrevious();
+          }}
+        >
+          <ChevronLeft size={32}/>
+        </button>
 
-                <div className="lightbox-gallery">
-                    <img
-                        src={selectedItem.images[activeImage]}
-                        alt={selectedItem.title}
-                    />
-                </div>
+        <button
+          className="lightbox-nav lightbox-next"
+          onClick={(e)=>{
+            e.stopPropagation();
+            showNext();
+          }}
+        >
+          <ChevronRight size={32}/>
+        </button>
 
-                <div className="lightbox-sidebar">
-                    <div className="lightbox-project-info">
-                        <h2>{selectedItem.title}</h2>
-                        <p>{selectedItem.location}</p>
-                    </div>
-                    <div className="lightbox-thumbnails">
-                        {selectedItem.images.map((img,index)=>(
-                            <button
-                                key={index}
-                                className={`lightbox-thumb ${activeImage===index ? "active" : ""}`}
-                                onClick={()=>setActiveImage(index)}
-                            >
-                                <img
-                                    src={img}
-                                    alt=""
-                                />
-                                <small>
-                                    {selectedItem.category}
-                                </small>
+        <motion.div
+          className="lightbox-card"
+          initial={{ scale:.95, opacity:0 }}
+          animate={{ scale:1, opacity:1 }}
+          exit={{ scale:.95, opacity:0 }}
+          transition={{ duration:.25 }}
+          onClick={(e)=>e.stopPropagation()}
+        >
 
-                                <h5>
-                                    {selectedItem.title}
-                                </h5>
+          <div className="lightbox-gallery">
 
-                                <span>
-                                    {selectedItem.year}
-                                </span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <img
+              src={selectedItem.images[activeImage]}
+              alt={selectedItem.title}
+            />
+
+          </div>
+
+          <div className="lightbox-sidebar">
+
+            <div className="lightbox-project-info">
+              <h2>{selectedItem.title}</h2>
+              <p>{selectedItem.location}</p>
+            </div>
+
+            <div className="lightbox-thumbnails">
+
+              {selectedItem.images.map((img,index)=>(
+                <button
+                  key={index}
+                  className={`lightbox-thumb ${
+                    activeImage===index ? "active" : ""
+                  }`}
+                  onClick={()=>setActiveImage(index)}
+                >
+                  <img src={img} alt="" />
+                  <small>{selectedItem.category}</small>
+                  <h5>{selectedItem.title}</h5>
+                  <span>{selectedItem.year}</span>
+
+                </button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>,
+      document.body
+    )}
+</AnimatePresence>
     </section>
   );
 }
