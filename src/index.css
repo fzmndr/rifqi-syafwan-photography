@@ -969,9 +969,9 @@ img {
     gap:18px;
     align-content:start;
     padding-top:24px;
-    overflow:visible;
-    scrollbar-width:none;
     padding-bottom:80px;
+    overflow-y:auto;
+    box-sizing:border-box;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
