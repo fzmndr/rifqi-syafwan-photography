@@ -893,7 +893,7 @@ img {
 .lightbox-card{
 
     width:min(1400px,95vw);
-    height:min(860px,90vh);
+    max-height:90vh;
     display:grid;
     grid-template-columns:1.45fr .85fr;
     background:#111;
@@ -1167,8 +1167,7 @@ img {
 
     .lightbox-gallery{
         flex:none;
-        height:42vh;
-        min-height:260px;
+        height:28vh;
     }
 
     .lightbox-sidebar{
@@ -1205,11 +1204,64 @@ img {
 
 @media (max-width:768px){
 
+    .lightbox-card{
+        width:96%;
+        height:95dvh;
+        border-radius:20px;
+    }
+
+    .lightbox-gallery{
+        height:30vh;
+        min-height:180px;
+        overflow:hidden;
+    }
+
+    .lightbox-sidebar{
+        padding:16px;
+        overflow-y:auto;
+        min-height:0;
+        -webkit-overflow-scrolling:touch;
+        overscroll-behavior:contain;
+        scrollbar-gutter:stable;
+        scroll-padding-top:16px;
+    }
+
+    .lightbox-project-info h2{
+        font-size:2rem;
+        line-height:1.05;
+        margin-bottom:10px;
+    }
+
+    .lightbox-project-info p{
+        font-size:.95rem;
+        margin-bottom:16px;
+    }
+
     .lightbox-thumbnails{
         display:grid;
         grid-template-columns:repeat(2,1fr);
-        gap:16px;
-        padding-bottom:24px;
+        gap:12px;
+        padding-bottom:20px;
+        overflow-y:auto;
+        min-height:0;
+    }
+
+    .lightbox-thumb img{
+        aspect-ratio:1;
+        object-fit:cover;
+    }
+
+    .lightbox-thumb h5{
+        font-size:.9rem;
+    }
+
+    .lightbox-thumb span{
+        font-size:.8rem;
+    }
+
+    .lightbox-nav{
+        width:38px;
+        height:38px;
     }
 
 }
