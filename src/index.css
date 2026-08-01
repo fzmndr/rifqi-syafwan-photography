@@ -1195,23 +1195,6 @@ img {
     }
 }
 
-/* =========================================================
-   LIGHTBOX
-   ========================================================= */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 90, 31, 0.18), transparent 32%),
-    rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(16px);
-}
-
 .lightbox-card {
   width: min(1080px, 100%);
   max-height: 90vh;
