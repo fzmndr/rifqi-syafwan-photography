@@ -222,10 +222,6 @@ const imageY = useTransform(
       }}
     >
 
-      <p className="hero-eyebrow">
-        Selected Visual Storyteller
-      </p>
-
       <h1 className="hero-title">
         Crafting Visuals
         <br />

@@ -923,7 +923,8 @@ img {
     height:100%;
     min-height:0;
     padding:40px;
-    overflow:hidden;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
@@ -972,8 +973,7 @@ img {
     gap:18px;
     align-content:start;
     padding-top:24px;
-    overflow-y:auto;
-    overscroll-behavior:contain;
+    overflow:visible;
     scrollbar-width:none;
 }
 
