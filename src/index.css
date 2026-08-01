@@ -971,6 +971,7 @@ img {
     padding-top:24px;
     overflow:visible;
     scrollbar-width:none;
+    padding-bottom:80px;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar{
