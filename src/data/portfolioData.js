@@ -21,6 +21,22 @@ import gallery18 from "../assets/gallery18.jpeg";
 import gallery19 from "../assets/gallery19.jpeg";
 import gallery20 from "../assets/gallery20.jpeg";
 
+import gallery21 from "../assets/gallery21.jpg";
+import gallery22 from "../assets/gallery22.jpg";
+import gallery23 from "../assets/gallery23.jpg";
+import gallery24 from "../assets/gallery24.jpg";
+import gallery25 from "../assets/gallery25.jpg";
+import gallery26 from "../assets/gallery26.jpg";
+import gallery27 from "../assets/gallery27.jpg";
+import gallery28 from "../assets/gallery28.jpg";
+import gallery29 from "../assets/gallery29.jpg";
+import gallery30 from "../assets/gallery30.jpg";
+import gallery31 from "../assets/gallery31.jpg";
+import gallery32 from "../assets/gallery32.jpg";
+import gallery33 from "../assets/gallery33.jpg";
+import gallery34 from "../assets/gallery34.jpg";
+import gallery35 from "../assets/gallery35.jpg";
+
 export const portfolioItems = [
   {
     id: 1,
@@ -51,7 +67,17 @@ export const portfolioItems = [
     service: "BRAND PHOTOGRAPHY",
     location: "Jakarta, Indonesia",
     desc: "A modern portrait concept with dramatic lighting.",
-  }
+  },
+  {
+    id: 4,
+    images: [gallery21, gallery22, gallery23, gallery24, gallery25, gallery26, gallery27, gallery28, gallery29, gallery30, gallery31, gallery32, gallery33, gallery34, gallery35],
+    title: "ALTERED PERSPECTIVE S/S 27 - EVELYNHERWANTO",
+    category: "Potrait",
+    year: "2025",
+    service: "POTRAIT PHOTOGRAPHY",
+    location: "Jakarta, Indonesia",
+    desc: "A modern portrait concept with dramatic lighting.",
+  },
 ];
 
 export const portfolioCategories = ["All", "Portrait", "Brand", "Automotive"];
