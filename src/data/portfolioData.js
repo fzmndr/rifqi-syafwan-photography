@@ -78,6 +78,25 @@ import gallery71 from "../assets/gallery71.jpg";
 import gallery72 from "../assets/gallery72.jpg";
 import gallery73 from "../assets/gallery73.jpg";
 
+import gallery74 from "../assets/gallery74.jpg";
+import gallery75 from "../assets/gallery75.jpg";
+import gallery76 from "../assets/gallery76.jpg";
+import gallery77 from "../assets/gallery77.jpg";
+import gallery78 from "../assets/gallery78.jpg";
+import gallery79 from "../assets/gallery79.jpg";
+import gallery80 from "../assets/gallery80.jpg";
+import gallery81 from "../assets/gallery81.jpg";
+import gallery82 from "../assets/gallery82.jpg";
+import gallery83 from "../assets/gallery83.jpg";
+import gallery84 from "../assets/gallery84.jpg";
+import gallery85 from "../assets/gallery85.jpg";
+import gallery86 from "../assets/gallery86.jpg";
+import gallery87 from "../assets/gallery87.jpg";
+import gallery88 from "../assets/gallery88.jpg";
+import gallery89 from "../assets/gallery89.jpg";
+import gallery90 from "../assets/gallery90.jpg";
+import gallery91 from "../assets/gallery91.jpg";
+
 export const portfolioItems = [
   {
     id: 1,
@@ -144,6 +163,16 @@ export const portfolioItems = [
     images: [gallery57, gallery58, gallery59, gallery60, gallery61, gallery62, gallery63, gallery64, gallery65, gallery66, gallery67, gallery68, gallery69, gallery70, gallery71, gallery72, gallery73],
     title: "DEBZ EXCLUSIVE PREVIEW LUNAR COLLECTION 2026",
     category: "Brand",
+    year: "2026",
+    service: "BRAND PHOTOGRAPHY",
+    location: "Jakarta, Indonesia",
+    desc: "A modern portrait concept with dramatic lighting.",
+  },
+  {
+    id: 8,
+    images: [gallery74, gallery75, gallery76, gallery77, gallery78, gallery79, gallery80, gallery81, gallery82, gallery83, gallery84, gallery85, gallery86, gallery87, gallery88, gallery89, gallery90, gallery91],
+    title: "KART.INC PRO LEAGUE SEASON 1",
+    category: "Automotive",
     year: "2026",
     service: "BRAND PHOTOGRAPHY",
     location: "Jakarta, Indonesia",
