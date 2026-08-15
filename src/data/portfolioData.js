@@ -114,7 +114,7 @@ export const portfolioItems = [
   {
     id: 6,
     images: [gallery46, gallery47, gallery48, gallery49, gallery50, gallery51, gallery52, gallery53, gallery54, gallery55, gallery56],
-    title: "ARTOTEL LIVING WORLD CIBUBUR",
+    title: "MARTENITY PHOTOSHOOT (SAFIERA)",
     category: "Portrait",
     year: "2025",
     service: "PORTRAIT PHOTOGRAPHY",
