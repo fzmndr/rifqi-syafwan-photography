@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import beforeImage from "../assets/before.JPG";
+import beforeImage from "../assets/before.jpg";
 import afterImage from "../assets/after.jpg";
 
 function EditingPreview() {
