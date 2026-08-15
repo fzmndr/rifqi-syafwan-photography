@@ -60,6 +60,24 @@ import gallery54 from "../assets/gallery54.jpg";
 import gallery55 from "../assets/gallery55.jpg";
 import gallery56 from "../assets/gallery56.jpg";
 
+import gallery57 from "../assets/gallery57.jpg";
+import gallery58 from "../assets/gallery58.jpg";
+import gallery59 from "../assets/gallery59.jpg";
+import gallery60 from "../assets/gallery60.jpg";
+import gallery61 from "../assets/gallery61.jpg";
+import gallery62 from "../assets/gallery62.jpg";
+import gallery63 from "../assets/gallery63.jpg";
+import gallery64 from "../assets/gallery64.jpg";
+import gallery65 from "../assets/gallery65.jpg";
+import gallery66 from "../assets/gallery66.jpg";
+import gallery67 from "../assets/gallery67.jpg";
+import gallery68 from "../assets/gallery68.jpg";
+import gallery69 from "../assets/gallery69.jpg";
+import gallery70 from "../assets/gallery70.jpg";
+import gallery71 from "../assets/gallery71.jpg";
+import gallery72 from "../assets/gallery72.jpg";
+import gallery73 from "../assets/gallery73.jpg";
+
 export const portfolioItems = [
   {
     id: 1,
@@ -114,6 +132,16 @@ export const portfolioItems = [
   {
     id: 6,
     images: [gallery46, gallery47, gallery48, gallery49, gallery50, gallery51, gallery52, gallery53, gallery54, gallery55, gallery56],
+    title: "MARTENITY PHOTOSHOOT (SAFIERA)",
+    category: "Portrait",
+    year: "2025",
+    service: "PORTRAIT PHOTOGRAPHY",
+    location: "Jakarta, Indonesia",
+    desc: "A modern portrait concept with dramatic lighting.",
+  },
+  {
+    id: 7,
+    images: [gallery57, gallery58, gallery59, gallery60, gallery61, gallery62, gallery63, gallery64, gallery65, gallery66, gallery67, gallery68, gallery69, gallery70, gallery71, gallery72, gallery73],
     title: "MARTENITY PHOTOSHOOT (SAFIERA)",
     category: "Portrait",
     year: "2025",
