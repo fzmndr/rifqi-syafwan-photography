@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import beforeImage from "../assets/before.jpeg";
-import afterImage from "../assets/after.jpeg";
+import beforeImage from "../assets/before.JPG";
+import afterImage from "../assets/after.jpg";
 
 function EditingPreview() {
   const [sliderPosition, setSliderPosition] = useState(50);
