@@ -1,6 +1,6 @@
 import gallery1 from "../assets/gallery-1.jpeg";
-import gallery10 from "../assets/gallery10.jpg";
-import gallery13 from "../assets/gallery13.jpg";
+import gallery21 from "../assets/gallery21.jpg";
+import gallery85 from "../assets/gallery85.jpg";
 
 export const heroSlides = [
   {
@@ -10,12 +10,12 @@ export const heroSlides = [
   },
   {
     id: 2,
-    image: gallery10,
+    image: gallery21,
     label: "Portrait",
   },
   {
     id: 3,
-    image: gallery13,
-    label: "Commercial",
+    image: gallery85,
+    label: "Automotive",
   },
 ];

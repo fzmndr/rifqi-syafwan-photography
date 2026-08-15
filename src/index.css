@@ -892,6 +892,7 @@ img {
 
 .lightbox-card{
     width:min(1400px,95vw);
+    height:min(860px,90vh);
     max-height:90vh;
     display:grid;
     grid-template-columns:1.45fr .85fr;
@@ -905,10 +906,12 @@ img {
 .lightbox-gallery{
 
     position:relative;
+    height:100%;
     background:#000;
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow:hidden;
 
 }
 
@@ -929,8 +932,7 @@ img {
     height:100%;
     min-height:0;
     padding:40px;
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 .lightbox-project-info{
@@ -969,7 +971,7 @@ img {
     padding-bottom:80px;
     overflow-y:auto;
     box-sizing:border-box;
-    scrollbar-width:none;
+    scrollbar-width:thin;
 }
 
 
@@ -1552,15 +1554,15 @@ img {
 
 .after-image {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  inset: 0 0 0 auto;
+  width: var(--slider-position);
   overflow: hidden;
-  clip-path: inset(0 calc(100% - var(--slider-position)) 0 0);
 }
 
 .after-image img {
-  width: 100%;
+  width: auto;
   height: 100%;
+  min-width: 100%;
   object-fit: cover;
 }
 
