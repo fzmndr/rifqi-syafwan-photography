@@ -891,18 +891,15 @@ img {
 }
 
 .lightbox-card{
-
     width:min(1400px,95vw);
     max-height:90vh;
     display:grid;
     grid-template-columns:1.45fr .85fr;
     background:#111;
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
     border-radius:30px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow: 0 45px 140px rgba(0, 0, 0, 0.45);
-
+    box-shadow:0 45px 140px rgba(0,0,0,.45);
 }
 
 .lightbox-gallery{
@@ -934,14 +931,6 @@ img {
     padding:40px;
     overflow-y:auto;
     overflow-x:hidden;
-}
-
-.lightbox-thumbnails::-webkit-scrollbar{
-    display:none;
-}
-
-.lightbox-thumbnails{
-    scrollbar-width:none;
 }
 
 .lightbox-project-info{
@@ -1071,20 +1060,6 @@ img {
       CLOSE BUTTON
 =========================== */
 
-.lightbox-close{
-    position:absolute;
-    top:30px;
-    right:30px;
-    width:52px;
-    height:52px;
-    border:none;
-    border-radius:50%;
-    background:#fff;
-    color:#111;
-    cursor:pointer;
-    z-index:20;
-}
-
 .lightbox-close:hover{
     background:var(--orange);
     color:#fff;
@@ -1129,11 +1104,6 @@ img {
 
 .lightbox{
     padding:16px;
-}
-
-.lightbox-card{
-    grid-template-columns:1fr;
-    height:90vh;
 }
 
 .lightbox-gallery{
