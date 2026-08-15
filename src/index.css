@@ -897,9 +897,11 @@ img {
     display:grid;
     grid-template-columns:1.45fr .85fr;
     background:#111;
+    border: 1px solid var(--border);
     border-radius:30px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,.08);
+    box-shadow: 0 45px 140px rgba(0, 0, 0, 0.45);
 
 }
 
@@ -946,6 +948,8 @@ img {
     flex-shrink:0;
     padding-bottom:24px;
     border-bottom:1px solid rgba(255,255,255,.08);
+    position:relative;
+    background:#141414;
 }
 
 .lightbox-project-info h2{
@@ -959,16 +963,13 @@ img {
     color:rgba(255,255,255,.55);
     font-size:14px;
 }
-.lightbox-project-info{
-    position:relative;
-    background:#141414;
-}
 
 /* ===========================
       THUMBNAILS
 =========================== */
 
-.lightbox-thumbnails{
+.lightbox-thumbnails {
+
     flex:1;
     min-height:0;
     display:grid;
@@ -979,7 +980,9 @@ img {
     padding-bottom:80px;
     overflow-y:auto;
     box-sizing:border-box;
+    scrollbar-width:none;
 }
+
 
 .lightbox-thumbnails::-webkit-scrollbar{
     width:6px;
@@ -1199,6 +1202,10 @@ img {
     .lightbox-next{
         right:12px;
     }
+    .lightbox-thumbnails{
+        gap:18px;
+        padding-bottom:30px;
+    }
 
 }
 
@@ -1238,12 +1245,9 @@ img {
     }
 
     .lightbox-thumbnails{
-        display:grid;
         grid-template-columns:repeat(2,1fr);
         gap:12px;
         padding-bottom:20px;
-        overflow-y:auto;
-        min-height:0;
     }
 
     .lightbox-thumb img{
@@ -1299,17 +1303,7 @@ img {
   }
 }
 
-.lightbox-card  {
-  width: min(1080px, 100%);
-  max-height: 90vh;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 34px;
-  background: #5a5a5a;
-  box-shadow: 0 45px 140px rgba(0, 0, 0, 0.45);
-}
+
 
 .lightbox-image-wrap {
   position: relative;
