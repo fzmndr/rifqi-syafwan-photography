@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import beforeImage from "../assets/before.jpg";
 import afterImage from "../assets/after.jpg";
 
 function EditingPreview() {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [hasDragged, setHasDragged] = useState(false);
   const imageRef = useRef(null);
   const updateSliderPosition = (clientX) => {
     if (!imageRef.current) return;
@@ -24,9 +23,6 @@ function EditingPreview() {
 
   const handlePointerDown = (event) => {
     event.preventDefault();
-    if (!hasDragged) {
-      setHasDragged(true);
-    }
     updateSliderPosition(event.clientX);
     const handlePointerMove = (moveEvent) => {
       updateSliderPosition(moveEvent.clientX);
@@ -118,34 +114,6 @@ function EditingPreview() {
             className="before-after-image"
             data-cursor="DRAG"
           >
-          <AnimatePresence>
-            {!hasDragged && (
-              <motion.div
-                className="drag-hint"
-                initial={{
-                  opacity: 0,
-                  y: 12,
-                  scale: .9
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -12,
-                  scale: .9
-                }}
-                transition={{
-                  duration: .45
-                }}
-              >
-                ↔ Drag
-              </motion.div>
-            )}
-          </AnimatePresence>
-
             <img
               src={beforeImage}
               alt="Before editing"

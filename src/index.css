@@ -1553,17 +1553,31 @@ img {
 /* AFTER IMAGE */
 
 .after-image {
-  position: absolute;
-  inset: 0 0 0 auto;
-  width: var(--slider-position);
-  overflow: hidden;
+    position:absolute;
+    inset:0;
+    width:var(--slider-position);
+    overflow:hidden;
+    z-index:2;
 }
 
 .after-image img {
-  width: auto;
-  height: 100%;
-  min-width: 100%;
-  object-fit: cover;
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    max-width:none;
+    object-fit:cover;
+}
+
+.before-after-image > img,
+.after-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
 }
 
 /* LABEL */
