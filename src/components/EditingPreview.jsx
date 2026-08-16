@@ -117,9 +117,9 @@ function EditingPreview() {
             <img
               src={beforeImage}
               alt="Before editing"
+              className="before-image"
               draggable={false}
             />
-
             <div className="after-image">
               <img
                 src={afterImage}
